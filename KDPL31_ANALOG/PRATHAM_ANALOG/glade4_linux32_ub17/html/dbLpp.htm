@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- #BeginTemplate "/Templates/glade.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Glade Reference Manual</title>
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<div align="left"><img src="images/canvasview" width="32" height="32" align="right"><br>
+</div>
+<div align="left">
+  <p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade 
+    Reference</font></b></font></p>
+  <hr>
+  <!-- #BeginEditable "text" -->
+<h2 pbzloc="1306"><font face="Arial, Helvetica, sans-serif" pbzloc="1305">lpp (formerly dbLpp)</font></h2>
+
+<p><font face="Arial, Helvetica, sans-serif">A lpp object forms a layer-purpose pair. It manages objects in a tree structure for fast spatial searching.</font></p>
+
+<p>&nbsp;</p>
+
+<p pbzloc="1248"><font face="Arial"><strong pbzloc="1251">l = lpp(<a href="cellview.htm">cellView </a>*cv)</strong></font></p>
+
+<p><font face="Arial">Constructs a lpp object with master cellView cv.</font></p>
+
+<p>&nbsp;</p>
+
+<h4><font face="Arial, Helvetica, sans-serif">l.layerName(const char *name)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1252">Sets the layer name of the lpp.</font></p>
+
+<p>&nbsp;</p>
+
+<h4><font face="Arial, Helvetica, sans-serif">const char * l.layerName()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the lpp&#39;s layer name</font></p>
+
+<p>&nbsp;</p>
+
+<h4><font face="Arial, Helvetica, sans-serif">l.purpose(const char *name)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets the purpose name of the lpp.</font></p>
+
+<p>&nbsp;</p>
+
+<h4><font face="Arial, Helvetica, sans-serif">const char * l.purpose()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1258">Gets the lpp&#39;s purpose name</font></p>
+
+<p pbzloc="1256">&nbsp;</p>
+
+<h4><font face="Arial, Helvetica, sans-serif">l.layerNum(int layerNum)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets the layer number of the lpp.</font></p>
+
+<p>&nbsp;</p>
+
+<h4><font face="Arial, Helvetica, sans-serif">int l.layerNum()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1266">Gets the lpp&#39;s layer number</font></p>
+
+<p>&nbsp;</p>
+
+<h4><font face="Arial, Helvetica, sans-serif">int l.numShapes()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1259">Gets the number of shapes in this lpp.</font></p>
+
+<p>&nbsp;</p>
+
+<p pbzloc="1264"><strong><font face="Arial, Helvetica, sans-serif" pbzloc="1261">cellView *cv = l.cv()</font></strong></p>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1275">Get the cellView for this lpp.</font></p>
+
+<p>&nbsp;</p>
+
+<p pbzloc="1273"><strong><font face="Arial, Helvetica, sans-serif" pbzloc="1270">Rect box = l.bBox()</font></strong></p>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1369">Get the bounding box of all shapes in this lpp.</font></p>
+
+<p pbzloc="1304">&nbsp;</p>
+
+<h4><font face="Arial, Helvetica, sans-serif">l.bBox(Rect box)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Set the bounding box of the lpp.</font></p>
+
+<p>&nbsp;</p>
+
+<h4><font face="Arial, Helvetica, sans-serif">l.optimiseTree()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Optimise the lpp. Must be carried out after adding objects.</font></p>
+
+<p pbzloc="1310">&nbsp;</p>
+
+<h4><font face="Arial, Helvetica, sans-serif">l.updateTree(dbObj *obj)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1367">Update the lpp for an object</font></p>
+
+<p pbzloc="1365">&nbsp;</p>
+
+<h4 pbzloc="1342"><font face="Arial, Helvetica, sans-serif" pbzloc="1340"><a href="dbObjList.htm">dbObjList</a>&lt;<a href="dbObj.htm">dbObj</a>&gt; * list = l.getOverlaps (<a href="Rect.htm">Rect </a>searchRect, int filterSize=0)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1366">Search the lpp for shapes overlapping the search rectangle <i>searchRect</i>. If <i>filterSize</i> is non-zero, only shapes with a width and height greater than <i>filterSize</i> are reported.</font></p>
+
+<h4 pbzloc="1335"><font face="Arial, Helvetica, sans-serif" pbzloc="1333">list = l.getOverlaps_py (<a href="Rect.htm">Rect </a>searchRect, int filterSize=0)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1343">As above, but returns a Python list.</font></p>
+
+<h4 pbzloc="1364"><font face="Arial, Helvetica, sans-serif" pbzloc="1362">l.getOverlaps (<a href="dbObjList.htm">dbObjList</a>&lt;<a href="dbObj.htm">dbObj</a>&gt; *list, <a href="Rect.htm">Rect </a>searchRect, int filterSize=0)</font></h4>
+
+<p pbzloc="1298"><font face="Arial, Helvetica, sans-serif">As getOverlaps, but shapes are appended to the existing <i>list</i>.</font></p>
+<p pbzloc="1298">&nbsp;</p>
+
+<p align="left"><font face="Arial" size="5"><strong><u>Iterator</u></strong></font></p>
+<p align="left"><font face="Arial"> An iterator to allow traversing the objects in the lpp using Python.</font></p>
+<p align="left">&nbsp;</p>
+<p align="left"><font face="Arial"><strong>iter = objIterator(lpp *l)</strong></font></p>
+<p align="left"><font face="Arial">Initialises the <a href="dbObj.htm">dbObj</a> iterator for the lpp. For example:</font></p>
+<blockquote>
+  <p align="left"><font face="Arial"><br />
+      iter = objIterator(lpp)<br />
+      while not iter.end() :<br />
+      &nbsp;&nbsp;&nbsp; obj = iter.value()<br />
+      &nbsp;&nbsp;&nbsp; type = obj.objType()<br />
+      &nbsp;&nbsp;&nbsp; print &quot;object type = &quot;, type<br />
+      &nbsp;&nbsp;&nbsp; iter.next() </font></p>
+  <p align="left">&nbsp;</p>
+</blockquote>
+<p align="left"><font face="Arial"><a href="dbObj.htm"><strong>dbObj</strong></a><strong> 
+</strong><strong>*obj = iter.value()</strong></font></p>
+<p align="left"><font face="Arial">Returns the current object.</font></p>
+<p align="left">&nbsp;</p>
+<p align="left"><font face="Arial"><strong>iter.next()</strong></font></p>
+<p align="left"><font face="Arial">Advances the iterator to the next dbObj.</font></p>
+&nbsp;</p>
+<p align="left"><font face="Arial"><strong>bool iter.end()</strong></font></p>
+<p align="left"><font face="Arial">Returns false if there are more objects, else returns true if there are no more.</font></p>
+<p align="left">&nbsp;</p>
+
+
+<!-- #EndEditable --> 
+  <p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-2">Copyright &copy; Peardrop 
+    Design 2017.</font></p>
+</div>
+</body>
+<!-- #EndTemplate --></html>

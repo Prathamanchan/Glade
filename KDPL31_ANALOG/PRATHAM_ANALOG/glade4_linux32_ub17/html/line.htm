@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- #BeginTemplate "/Templates/glade.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Glade Reference Manual</title>
+<link href="CSS Docs/shadowHeading1.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<div align="left"><img src="images/canvasview" width="32" height="32" align="right"><br>
+</div>
+<div align="left">
+  <p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade 
+    Reference</font></b></font></p>
+  <hr>
+  <!-- #BeginEditable "text" -->
+<h2><font face="Arial, Helvetica, sans-serif">line class</font></h2>
+
+<p><font face="Arial, Helvetica, sans-serif">The line class is derived from a shape. A line can be considered a zero width path. This class is normally created in a cellView using the dbCreateLine() function.</font></p>
+<p>&nbsp;</p>
+<p class="shadowHeading1"><strong>l = line</strong></p>
+<p>Creates a new line object. </p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="228"><font face="Arial, Helvetica, sans-serif" pbzloc="229"><a href="Rect.htm" pbzloc="227">Rect </a>b = l.bBox()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the bounding box of this line. This is the convex hull of the points in the line.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="241"><font face="Arial, Helvetica, sans-serif" pbzloc="239">l</font><font face="Arial, Helvetica, sans-serif" pbzloc="239">.bBox(<a href="Rect.htm">Rect </a>b)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Set the bounding box of this line. Not useful and will throw an exception if called.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="242">dbtype_t t = l.objType()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Returns the object type of this line as LINE.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">char *name = l.objName()</font></h4>
+
+<p pbzloc="234"><font face="Arial, Helvetica, sans-serif" pbzloc="248">Returns the object name of this line as &quot;LINE&quot;.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="243">int num = l.nPoints()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Returns the number of points of the line.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="247"><font face="Arial, Helvetica, sans-serif" pbzloc="244"><a href="Point.htm" pbzloc="246">Point </a>* pts = l.ptlist()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Returns the point list of this line as a C array of Points.</font></p>
+<p>&nbsp;</p>
+<p class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><strong><a href="Point.htm">Point</a> p = l.at(index)</strong></font></p>
+<p><font face="Arial, Helvetica, sans-serif">Returns the Point <em>p</em> at the <em>index</em> into the list of points.</font></p>
+<p>&nbsp;</p>
+<p class="shadowHeading1"><strong>bool l.addPoint(<a href="Point.htm">Point</a> *p)</strong></p>
+<p>Adds a Point to the end of this line.</p>
+<p>&nbsp;</p>
+<p class="shadowHeading1"><strong>bool l.deletePoint(int <em>index</em>)</strong></p>
+<p>Deletes the vertex index of this line.</p>
+<p>&nbsp;</p>
+<p class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><strong>l.setPoint(int index, <a href="Point.htm">Point</a> p)</strong></font></p>
+<p><font face="Arial, Helvetica, sans-serif">Sets the vertex <em>index</em> of the line to Point p.</font></p>
+<p>&nbsp;</p>
+<p class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><strong>l.setPoint(int <em>index</em>, int x, int y)</strong></font></p>
+<p><font face="Arial, Helvetica, sans-serif">Sets the vertex index of the line to the point given by x, y.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="267"><font face="Arial, Helvetica, sans-serif" pbzloc="265">int dist = l.getNearestEdge(<a href="Point.htm">Point </a>p, <a href="segment.htm">segment </a>&amp;s)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the distance of the nearest segment <i>s</i> of this line to the point <i>p</i>;</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="286"><font face="Arial, Helvetica, sans-serif" pbzloc="284">int dist = l.getNearestVertex(<a href="Point.htm">Point </a>p, <a href="vertex.htm">vertex </a>&amp;s)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the distance of the nearest vertex <i>s</i> of this line to the point <i>p</i>;</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">double area = l.area()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the area of this line.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int perim = l.perimeter()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the perimeter of this line.</font></p>
+<p>&nbsp;</p>
+<p class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><strong>int length = l.length()</strong></font></p>
+<p><font face="Arial, Helvetica, sans-serif">Get the length of this line.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="306">l</font><font face="Arial, Helvetica, sans-serif" pbzloc="306">.transform(<a href="transform.htm">transform</a> trans)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Transform this line using <i>trans</i>.</font></p>
+<p>&nbsp;</p>
+<p><font face="Arial, Helvetica, sans-serif" class="shadowHeading1"><strong>bool b = l.ptInPoly(Point p, bool includeEnds = True)</strong></font></p>
+<p><font face="Arial, Helvetica, sans-serif">Returns True if the point p is on the line. If includeEnds is true, this includes the line start and end point.</font></p>
+<p>&nbsp;</p>
+<p class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><strong>bool b = l.ptInRect(Rect r)</strong></font></p>
+<p><font face="Arial, Helvetica, sans-serif">Returns true if the line crosses (intersects) a rectangle r.</font></p>
+<p>&nbsp;</p>
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">l</font><font face="Arial, Helvetica, sans-serif">.Move(<a href="cellview.htm">cellView</a> cv, <a href="Point.htm">Point</a> delta, bool opt = True)</font></h4>
+<p><font face="Arial, Helvetica, sans-serif">Move this line by distance <i>delta</i>.&nbsp; If opt is True then the database is 
+  re-optimised for the new line position. If there are a lot of objects to 
+  move it makes sense to turn this off and instead use the cellView update() 
+  function after moving them all. </font></p>
+<p>&nbsp;</p>
+<h4><font face="Arial, Helvetica, sans-serif"><a href="dbObj.htm">dbObj</a> obj = l.Copy(<a href="cellview.htm">cellView</a> cv, <a href="Point.htm" class="shadowHeading1">Point</a> delta, int layerNum = -1)</font></h4>
+<p><font face="Arial, Helvetica, sans-serif">Copy this line to cellView <i>cv</i>, with offset <i>delta</i>. If layerNum is non negative the line 
+  will be copied to the new layer number.</font></p>
+<p>&nbsp;</p>
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="dbObj.htm">dbObj</a> obj = l.Flatten(<a href="cellview.htm">cellView</a> cv, <a href="transform.htm">transform </a>trans)</font></h4>
+<p><font face="Arial, Helvetica, sans-serif">Flatten this line into cellView <i>cv</i> with transformation <i>trans</i>.</font></p>
+<p>&nbsp;</p>
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">l</font><font face="Arial, Helvetica, sans-serif">.Stretch(<a href="Point.htm">Point</a> delta, <a href="segment.htm">segment</a> seg)</font></h4>
+<p><font face="Arial, Helvetica, sans-serif">Stretch a segment <i>seg</i> of this 
+  line by <i>delta</i>.</font></p>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<p pbzloc="386">&nbsp;</p>
+<!-- #EndEditable --> 
+  <p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-2">Copyright &copy; Peardrop 
+    Design 2018.</font></p>
+</div>
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<meta name="GENERATOR" content="PageBreeze Free HTML Editor (http://www.pagebreeze.com)">
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" >
+<title>Edge.htm</title>
+<link href="CSS Docs/shadowHeading1.css" rel="stylesheet" type="text/css">
+</head>
+<body bgcolor="#ffffff">
+<div align="left" pbzloc="0"><img align="right" height="32" src="canvasview" width="32" /></div>
+
+<div align="left">
+<p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade Reference</font></b></font></p>
+
+<hr /><!-- #BeginEditable "text" -->
+<h2><font face="Arial, Helvetica, sans-serif">Edge&nbsp;class</font></h2>
+
+<p><font face="Arial, Helvetica, sans-serif">The Edge&nbsp;class represents an edge, i.e a connected pair of vertices.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">Edge e &nbsp; = Edge</font></h4>
+
+<p><font face="Arial">Creates and edge object. The endpoints are undefined.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1" pbzloc="1504"><font face="Arial"><strong pbzloc="1507">Edge e = Edge(<a href="Point.htm">Point </a>p0, <a href="Point.htm">Point </a>p1)</strong></font></p>
+
+<p><font face="Arial">Creates and Edge object and initialises the endpoints.</font></p>
+
+<p>&nbsp;</p>
+<p class="shadowHeading1" pbzloc="1504"><font face="Arial"><strong pbzloc="1507">Edge e = Edge(x0, y0, x1, y1)</strong></font></p>
+<p><font face="Arial">Creates and Edge object and initialises the endpoints.</font></p>
+<p>&nbsp;</p>
+
+<p class="shadowHeading1" pbzloc="1509"><font face="Arial"><strong pbzloc="1514"><a href="Point.htm" pbzloc="1510">Point </a>p = e.getP0()</strong></font></p>
+
+<p><font face="Arial" pbzloc="2">Gets one endpoint P0.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1" pbzloc="1512"><font face="Arial"><strong pbzloc="1511"><a href="Point.htm" pbzloc="1513">Point </a>p = e.getP1()</strong></font></p>
+
+<p><font face="Arial" pbzloc="1525">Gets the other endpoint P1.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1" pbzloc="1516"><font face="Arial"><strong pbzloc="1519">e.setP0(<a href="Point.htm">Point </a>p)</strong></font></p>
+
+<p><font face="Arial">sets endpoint P0 to p.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1" pbzloc="1521"><font face="Arial"><strong pbzloc="1524">e.setP1(<a href="Point.htm">Point </a>p)</strong></font></p>
+
+<p><font face="Arial">sets endpoint P1 to p.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong>e.offset(int dx, int dy)</strong></font></p>
+
+<p><font face="Arial">Transposes the edge by the distance specified by dx, dy.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong pbzloc="1495">bool operator ==</strong></font></p>
+
+<p><font face="Arial">Returns True (1) if the edges are the same i.e. endpoints P0 and P1 are identical.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong pbzloc="1497">bool operator !=</strong></font></p>
+
+<p><font face="Arial" pbzloc="1496">Returns True (1) if of the edges are not the same i.e. endpoints P0 and P1 are not identical.</font></p>
+
+<p pbzloc="1537">&nbsp;</p>
+
+<p class="shadowHeading1" pbzloc="1527"><font face="Arial"><strong pbzloc="1531">int dist = e.pointToEdge(<a href="Point.htm">Point </a>p)</strong></font></p>
+
+<p><font face="Arial" pbzloc="9">Returns the shortest distance from a point p to the edge.</font></p>
+
+<p pbzloc="4">&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong pbzloc="1494">int i = e.length()</strong></font></p>
+
+<p><font face="Arial">Returns the Euclidian length of the edge e.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong>bool b = e.isHorizontal()</strong></font></p>
+
+<p><font face="Arial">Returns true if the edge is horizontal.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong>bool b = e.isVertical()</strong></font></p>
+
+<p><font face="Arial">Returns true if the edge is vertical.</font></p>
+<p>&nbsp;</p>
+<p class="shadowHeading1"><font face="Arial"><strong>bool b = e.isDiagonal()</strong></font></p>
+<p><font face="Arial">Returns true if the edge is diagonal.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong>bool b = e.isOrthogonal()</strong></font></p>
+
+<p><font face="Arial">Returns true if the edge is either horizontal or vertical (this should really be renamed isManhattan() ).</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong pbzloc="1491">int e.deltax()</strong></font></p>
+
+<p><font face="Arial">Returns the horizontal distance between the edges endpoints i.e. P1-P0.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong>int e.deltay()</strong></font></p>
+
+<p><font face="Arial" pbzloc="12">Returns the vertical distance between the edges endpoints i.e. P1-P0.</font></p>
+
+<p>&nbsp;</p>
+<p class="shadowHeading1">bool b = e.contains(<a href="Point.htm">Point</a> p, bool includeEnds=True)</p>
+<p pbzloc="23"><font face="Arial" pbzloc="21">Returns True if the point p lies on the edge e. If <em>includeEnds </em>is true, the point <em>p</em> can lie on the endpoints of the edge and be considered &#39;contained&#39;.</font></p>
+<p pbzloc="23">&nbsp;</p>
+<p class="shadowHeading1" pbzloc="23"><font face="Arial"><strong>bool b = e.crosses(<a href="Rect.htm">Rect</a> r, bool touch = True)</strong></font></p>
+<p pbzloc="23"><font face="Arial">Returns True if the edge crosses the Rect r, i.e. if the edge intersects one of the Rect's edges. If touch is True, this includes the endpoint of the edge touching an edge of the Rect.</font></p>
+<p pbzloc="23">&nbsp;</p>
+
+<p pbzloc="23"><font face="Arial" class="shadowHeading1"><strong>bool b = e.crosses(<a href="Point.htm">Point</a> *pts, int numPoints, bool touch = True)</strong></font></p>
+<p pbzloc="23"><font face="Arial">Returns True if the edge crosses the polygon given by pts, i.e. if the edge intersects one of the polygon's edges. If touch is True, this includes the endpoint of the edge touching an edge of the polygon.</font></p>
+<p pbzloc="23">&nbsp;</p>
+<p class="shadowHeading1" pbzloc="23"><font face="Arial"><strong>int dist = e.pointToEdge(<a href="Point.htm">Point</a> p</strong></font></p>
+<p pbzloc="23"><font face="Arial">Returns the distance of a point p to the edge.</font></p>
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong pbzloc="16">bool b = e.intersects(<a href="Edge.htm">Edge</a> other, bool includeEnds=True)</strong></font></p>
+
+<p><font face="Arial" pbzloc="1546">Returns true if the edges intersect at some point. If includeEnds is true, returns true if the edges intersect at endpoint(s).</font></p>
+
+<p pbzloc="1547">&nbsp;</p>
+
+<p><span class="shadowHeading1"><font face="Arial" class="shadowHeading1"><strong pbzloc="24">Point p = e.interSectsAt(<a href="Edge.htm">Edge</a> other)</strong></font></span></p>
+
+<p><font face="Arial" pbzloc="17">Returns the point of intersection of two edges. The result is only valid if the edges intersect.</font></p>
+
+<p>&nbsp;</p>
+
+<p><font face="Arial" class="shadowHeading1"><strong>bool b = e.isColinear(<a href="Edge.htm">Edge</a> other)</strong></font></p>
+
+<p><font face="Arial">Returns true if the edges are colinear, i.e. the edges are parallel and a point of one </font><font face="Arial" pbzloc="25">edge</font><font face="Arial"> is on the other </font><font face="Arial" pbzloc="25">edge</font><font face="Arial">.</font></p>
+
+<p>&nbsp;</p>
+<p><font face="Arial" class="shadowHeading1"><strong>bool b = e.projects(Edge e1, Edge e2, Edge &amp;e3, Edge &amp;e4)</strong></font></p>
+<p><font face="Arial">Returns true if the edges are parallel and project onto each other. Edges e3 and e4 are the projecting edges.</font></p>
+<p>&nbsp;</p>
+<p class="shadowHeading1"><font face="Arial"><strong><a href="Point.htm">Point</a> p = e.nearestPoint(<a href="Point.htm" class="shadowHeading1">Point pt)</a></strong></font></p>
+<p><font face="Arial">Returns the point on the </font><font face="Arial" pbzloc="25">edge</font><font face="Arial"> that is nearest the Point <em>pt</em>. The point p is either on a line perpendicular to the </font><font face="Arial" pbzloc="25">edge</font><font face="Arial">, or if no such line exists, is the nearest endpoint of the </font><font face="Arial" pbzloc="25">edge</font><font face="Arial">.</font></p>
+<p>&nbsp;</p>
+<p class="shadowHeading1"><font face="Arial"><a href="Vector.htm">Vector</a> v = e.normalTo(<a href="Point.htm">Point</a> pt)</font></p>
+<p><font face="Arial">Returns a <a href="Vector.htm">Vector</a> that is the perpendicular distance from the Point <em>pt</em> to the </font><font face="Arial" pbzloc="25">edge</font><font face="Arial">.</font></p>
+<p>&nbsp;</p>
+<p pbzloc="1539"><font face="Arial" class="shadowHeading1"><strong pbzloc="26">bool b = e.left(<a href="Point.htm">Point </a>p)</strong></font></p>
+
+<p><font face="Arial" pbzloc="25">Returns true if point p is to the left of edge e, i.e. &#39;inside&#39;. Note this assumes the direction of the Ededgege is from endpoint P0 to endpoint P1.</font></p>
+
+<p pbzloc="1487">&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1489" size="-2">Copyright &copy; Peardrop Design&nbsp; Systems Ltd 2017.</font></p>
+</div>
+</body>
+</html>

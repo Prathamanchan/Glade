@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- #BeginTemplate "/Templates/glade.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>Glade Reference Manual</title>
+<link href="CSS Docs/shadowHeading1.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<div align="left"><img src="images/canvasview" width="32" height="32" align="right"><br>
+</div>
+<div align="left">
+  <p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade 
+    Reference</font></b></font></p>
+  <hr>
+  <!-- #BeginEditable "text" -->
+  <h2>ellipse class</h2>
+  <p>An <a href="#_ellipse_class">ellipse</a> is represented by a centre point and an X and Y radius. If X and Y are equal,  you have a circle. An <a href="#_ellipse_class">ellipse</a> is normally created  by the cellView::dbCreateEllipse() or cellView::dbCreateCircle() function.</p>
+  <p class="shadowHeading1"><strong>int x = e.left()</strong></p>
+  <p><br>
+    Returns the least X value of the <a href="#_ellipse_class">ellipse</a>&rsquo;s  bounding box.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>int x = e.right()</strong></p>
+  <p><br>
+    Returns the greatest X value of the <a href="#_ellipse_class">ellipse</a>&rsquo;s  bounding box.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>int e.bottom()</strong></p>
+  <p><br>
+    Returns the lowest Y value of the <a href="#_ellipse_class">ellipse</a>&rsquo;s  bounding box.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>int e.top()</strong></p>
+  <p><br>
+    Returns the highest Y value of the <a href="#_ellipse_class">ellipse</a>&rsquo;s  bounding box.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>e.setOrigin(Point  origin)</strong><br>
+    <strong>e.setOrigin(int x,  int y)</strong></p>
+  <p><br>
+    Sets the <a href="#_ellipse_class">ellipse</a>&rsquo;s centre  point.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>int origin =  e.origin()</strong></p>
+  <p><br>
+    Returns the <a href="#_ellipse_class">ellipse</a>&rsquo;s centre  point.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>int h = e.height()</strong></p>
+  <p><br>
+    Returns the height of the <a href="#_ellipse_class">ellipse</a>.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>int w = e.width()</strong></p>
+  <p><br>
+    Returns the width of the <a href="#_ellipse_class">ellipse</a>.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>Rect e.bBox()</strong></p>
+  <p><br>
+    Returns the <a href="#_ellipse_class">ellipse</a>&rsquo;s bounding  box.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>e.setXRadius(int r)</strong></p>
+  <p><br>
+    Set the X radius of the <a href="#_ellipse_class">ellipse</a></p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>e.setYRadius(int r)</strong></p>
+  <p><br>
+    Set the Y radius of the <a href="#_ellipse_class">ellipse</a>.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>int r = e.xRadius()</strong></p>
+  <p><br>
+    Returns the X radius of the <a href="#_ellipse_class">ellipse</a>.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>int r = e. yRadius()</strong></p>
+  <p><br>
+    Returns the Y radius of the <a href="#_ellipse_class">ellipse</a>.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>e.setNumChords(int n)</strong></p>
+  <p><br>
+    Sets the number of edges that the <a href="#_ellipse_class">ellipse</a> will be fractured into when converting to a polygon.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>int n = e.numChords()</strong></p>
+  <p><br>
+    Get the number of chords for the <a href="#_ellipse_class">ellipse</a>.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>dbtype_t type =  e.objType()</strong></p>
+  <p><br>
+    Returns the object&rsquo;s type as ELLIPSE</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>char *name =  e.objName()</strong></p>
+  <p><br>
+    Returns the object&rsquo;s name as &ldquo;ELLIPSE&rdquo;</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>double a = e.area()</strong></p>
+  <p><br>
+    Returns the <a href="#_ellipse_class">ellipse</a>&rsquo;s area.</p>
+  <p class="shadowHeading1"><strong>int p = e.perimeter()</strong></p>
+  <p><br>
+    Returns the <a href="#_ellipse_class">ellipse</a>&rsquo;s  perimeter.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>bool ok =  e.offGrid(int grid)</strong></p>
+  <p><br>
+    Returns true if the <a href="#_ellipse_class">ellipse</a>&rsquo;s  xRadius or yRadius is offgrid.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>e.transform(</strong><a href="#_transform_class"><strong>transform</strong></a><strong> trans)</strong></p>
+  <p><br>
+    Transforms the <a href="#_ellipse_class">ellipse</a> by <em>trans</em>.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>e.Move(</strong><a href="#_cellView_class"><strong>cellView</strong></a><strong> dest, </strong><a href="#_Point_class"><strong>Point</strong></a><strong> delta, bool opt=True)</strong></p>
+  <p><br>
+    Move this <a href="#_ellipse_class">ellipse</a> by distance <em>delta</em>.&nbsp;If <em>opt</em> is True then the database is re-optimised for the new rectangle  position. If there are a lot of objects to move it makes sense to turn this off  and instead use the cellView update() function after moving them all.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><a href="#_dbObj_class"><strong>dbObj</strong></a><strong> obj = e.Copy(</strong><a href="#_cellView_class"><strong>cellView</strong></a><strong> dest, </strong><a href="#_Point_class"><strong>Point</strong></a><strong> delta, layer=-1)</strong></p>
+  <p><br>
+    Copy this <a href="#_ellipse_class">ellipse</a> to cellView <em>dest</em>, with offset <em>delta</em>. If <em>layer</em> is non  negative the rectangle will be copied to the new layer number.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><a href="#_dbObjList_class"><strong>dbObjList</strong></a><strong>&lt;</strong><a href="#_dbObj_class"><strong>dbObj</strong></a><strong>&gt; objs = e.Flatten(</strong><a href="#_cellView_class"><strong>cellView</strong></a><strong> dest, </strong><a href="#_transform_class"><strong>transform</strong></a><strong> trans, bool hier=True)</strong></p>
+  <p><br>
+    Flatten this <a href="#_ellipse_class">ellipse</a> into <a href="#_cellView_class">cellView</a> <em>dest</em> with transformation <em>trans</em>.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>e.bias(int bias, int  xgrid, int ygrid, int layer=-1)</strong></p>
+  <p><br>
+    Bias this <a href="#_ellipse_class">ellipse</a> by bias,  snapping to the grid <em>xgrid</em> and <em>ygrid</em>.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>e.scale(double scale,  int grid)</strong></p>
+  <p>Scale this <a href="#_ellipse_class">ellipse</a> by <em>scale</em>, snapping to the grid <em>grid</em>.  </p>
+  <p>&nbsp;</p>
+  <!-- #EndEditable --> 
+  <p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-2">Copyright &copy; Peardrop 
+    Design 2018.</font></p>
+</div>
+</body>
+<!-- #EndTemplate --></html>

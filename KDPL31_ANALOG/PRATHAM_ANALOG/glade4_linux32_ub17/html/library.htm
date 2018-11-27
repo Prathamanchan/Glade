@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- #BeginTemplate "/Templates/glade.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Glade Reference Manual</title>
+<link href="CSS Docs/shadowHeading1.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<div align="left"><img src="images/canvasview" width="32" height="32" align="right"><br>
+</div>
+<div align="left">
+  <p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade 
+    Reference</font></b></font></p>
+  <hr>
+  <!-- #BeginEditable "text" -->
+<h2><font face="Arial, Helvetica, sans-serif">Libraries</font></h2>
+
+<p><font face="Arial, Helvetica, sans-serif">All design data is stored in libraries. Libraries contain&nbsp; cells and views; the combination of a cell and a view is a cellView, which contains the actual design data. For example a library may contain a cell &#39;NAND2&#39;. This cell may contain a cellView &#39;NAND2&#39; &#39;layout&#39;, where &#39;layout is the view of the cell.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">lib = library(&quot;fred&quot;)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Construct a library called &quot;fred&quot;, returning the library object.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool result = lib.dbOpenLib(&quot;libPath&quot;)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1">Opens and reads a previously saved library. libPath is the full path to the library, including the library name. Returns True if the library can be opened successfully, otherwise False.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool result = lib.dbSaveLib(&quot;libPath&quot;)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="3">Saves a library to disk. libPath is the full path to the library, including the library name. Returns True if the library can be saved successfully, otherwise False.</font></p>
+
+<p pbzloc="5">&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="4">lib.dbClose(&quot;cellName&quot;, &quot;viewName&quot;)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Closes a cellview. Currently this does not purge the cellview from virtual memory.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="7">list = lib.cellNames()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="8">Returns a Python list of all the cell names in the library.</font></p>
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><strong>list = lib.getCells()</strong></p>
+<p>Returns a Python list of the cells in the library.</p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="9">list = lib.viewNames()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Returns a Python list of all the view names in the library.</font></p>
+
+<p>&nbsp;</p>
+<p class="shadowHeading1"><strong>list = lib.getViews()</strong></p>
+<p>Returns a Python list of the views in the library.</p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="15">int size = lib.dbu()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Return the size of a database unit in meters.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int num = lib.dbuPerUU()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Return the number of database units per micron (defaults to 1000)</font></p>
+<p>&nbsp;</p>
+<p class="shadowHeading1"><strong>lib.dbBindInstMasters()</strong></p>
+<p>Rebinds the instance masters for this library. All cellViews in the library are checked, and if their master cellView is unbound, then a search is performed in the currently open libraries in an attempt to rebind it. For example, to rebind all open libraries you can use the following:</p>
+
+<blockquote> 
+  <pre>libs = getLibList()
+for lib in libs :
+ 	lib.dbBindInstMasters()</pre></blockquote>
+<h4 class="shadowHeading1" pbzloc="14"><font face="Arial, Helvetica, sans-serif" pbzloc="11"><a href="cellview.htm" pbzloc="13">cellView </a>*cv = lib.dbOpenCellView(&quot;cellName&quot;, &quot;viewName&quot;, &#39;mode&#39;)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Returns a cellView object. &quot;mode&quot; can be &#39;r&#39;, &#39;w&#39; or &#39;a&#39;. &#39;w&#39; mode is used to create a new cellView; the cellView must not exist. &#39;a&#39; mode is used to append (edit) an existing cellView; the cellView must exist. &#39;r&#39; mode is used to read an existing cellView; the cellView must exist. An exception is thrown on failure.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool result = lib.dbCopyCellView(&quot;newCellName&quot;, &quot;newViewName&quot;, &quot;oldLibName&quot;, &quot;oldCellName&quot;, &quot;oldViewName&quot;)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="17">Copies a cellview. Returns True if successful.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="42">bool result = lib.dbRenameCellView(&quot;newCellName&quot;, &quot;newViewName&quot;, &quot;oldCellName&quot;, &quot;oldViewName&quot;)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="47">Renames a cellView. Returns True if successful.</font></p>
+
+<p pbzloc="19">&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="36"><font face="Arial, Helvetica, sans-serif" pbzloc="33"><a href="cellview.htm" pbzloc="35">cellView </a>*cv = lib.dbFindCellViewByName(&quot;cellName&quot;, &quot;viewName&quot;)</font></h4>
+
+<p pbzloc="23"><font face="Arial, Helvetica, sans-serif" pbzloc="22">Returns a cellView object corresponding to the given <em>cellName </em>and <em>viewName</em>, or None if it does not exist in the library.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="41"><font face="Arial, Helvetica, sans-serif" pbzloc="38"><a href="cell.htm" pbzloc="40">cell </a>* c = lib.dbFindCellByName(&quot;cellName&quot;)</font></h4>
+
+<p pbzloc="26"><font face="Arial, Helvetica, sans-serif" pbzloc="25">Returns a cell object corresponding to the given <em>cellName</em>, or None if it does not exist.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="46"><font face="Arial, Helvetica, sans-serif" pbzloc="43"><a href="view.htm" pbzloc="45">view </a>*v = lib.dbFindViewByName(&quot;viewName&quot;)</font></h4>
+
+<p pbzloc="28"><font face="Arial, Helvetica, sans-serif" pbzloc="30">Returns a view object corresponding to the given <em>viewName</em>, or None if it does not exist.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="48">bool result = lib.dbDeleteCellView(&quot;cellName&quot;, &quot;viewName&quot;)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="49">Deletes the cellview specified by cellName and viewName and returns True if sucessful, None if not.</font></p>
+
+<p pbzloc="55">&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="51">bool result = lib.dbRenameCell(&quot;newCellName&quot;, &quot;oldCellName&quot;)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="52">Renames a cell. Returns True if sucessful, False if not.</font></p>
+
+<h4 pbzloc="56">&nbsp;</h4>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool result = lib.dbDeleteCell(&quot;cellName&quot;)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="53">Deletes the cell specified by cellName and returns True if sucessful, False if not.</font></p>
+
+<h4>&nbsp;</h4>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="57">char * name = lib.libName()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Returns the name of the library.</font></p>
+
+<p pbzloc="58">&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">char * path = lib.libPath()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Returns the library path if the library has been read or saved on disk, otherwise None.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="64"><font face="Arial, Helvetica, sans-serif" pbzloc="61"><a href="techfile_into.htm" pbzloc="63">techfile </a>*tech = lib.tech()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="69">Returns a pointer to the library&#39;s techfile.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="68"><font face="Arial, Helvetica, sans-serif" pbzloc="75"><a href="library.htm" pbzloc="67">library </a>*lib = cvar.dbptr.getLibByName(&quot;libName&quot;)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="60">Get a library by name.</font></p>
+
+<p>&nbsp;</p>
+
+<p pbzloc="71"><font face="Arial" class="shadowHeading1"><strong pbzloc="74">int index = lib.addVia(<a href="via.htm">via </a>*v, bool check)</strong></font></p>
+
+<p><font face="Arial">Adds a via&nbsp; <em>v</em> to the library via table and returns the via&#39;s index in that table. If check is true (the default is false), the via name is checked and the new via will NOT be added; the index returned is that of the existing via.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong><a href="via.htm">via</a> *v = lib.getVia(int index)</strong></font></p>
+
+<p><font face="Arial">Gets a via by index from the library. No bounds checking is performed.</font></p>
+
+<p>&nbsp;</p>
+
+<p><font face="Arial" class="shadowHeading1"><strong><a href="via.htm">via</a> *v = lib.getViaByName(char *name)</strong></font></p>
+
+<p><font face="Arial">Gets a via by name.</font></p>
+
+<p>&nbsp;</p>
+
+<p><font face="Arial" class="shadowHeading1"><strong>int index&nbsp;= lib.getViaIndexByName(char *name)</strong></font></p>
+
+<p><font face="Arial">Gets a via&#39;s index by the via name.</font></p>
+
+<p>&nbsp;</p>
+
+<p><font face="Arial" class="shadowHeading1"><strong>char *name = lib.getViaNameByindex(int index)</strong></font></p>
+
+<p><font face="Arial">Gets a via&#39;s name from its index.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong>int num = lib.getNumVias()</strong></font></p>
+
+<p><font face="Arial">Gets the number of vias in the library&#39;s via table. Note the table size is currently limited to 8192 vias.</font></p>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<p align="left"><font face="Arial" size="5"><strong><u>Iterators</u></strong></font></p>
+<p align="left"><font face="Arial">It is possible to use iterators in Python:</font></p>
+<p align="left" class="shadowHeading1"><font face="Arial"><strong>iter = cellIterator(library *lib)</strong></font></p>
+<p align="left"><font face="Arial">Initialises the cell iterator for the library. For example:</font></p>
+<pre>
+	# Script to print cell names in a library
+	#
+	from ui import *
+	#
+	cv = getEditCellView()<br>	lib = cv.lib()
+	iter = cellIterator(lib)
+	while not iter.end() :
+		cell = iter.value()
+		name = cell.name()
+		print &quot;Cell name = &quot;, name
+		iter.next()
+	#
+</pre>
+<p align="left" class="shadowHeading1"><strong>iter.next()</strong></p>
+<p align="left">Advances the iterator to the next instance.</p>
+<p align="left">&nbsp;</p>
+<p align="left" class="shadowHeading1"><strong>bool iter.end()</strong></p>
+<p align="left">Returns false if there are more instances, else returns true if there are no more.</p>
+<p align="left">&nbsp;</p>
+<p align="left" class="shadowHeading1"><a href="inst.htm"><strong>inst</strong></a><strong> = iter.value()</strong></p>
+<p align="left">Returns the current instance.</p>
+<p align="left">&nbsp;</p>
+<p align="left" class="shadowHeading1"><strong>iter = viewIterator(library *lib)</strong></p>
+<p align="left">Initialises the view iterator for the library. The iterator has similar next(), end();and value() functions as above.</p>
+<p pbzloc="78">&nbsp;</p>
+
+<p>&nbsp;</p>
+<!-- #EndEditable --> 
+  <p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-2">Copyright &copy; Peardrop 
+    Design 2018.</font></p>
+</div>
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,33 @@
+/* Glade Example Style Sheet */
+/* See doc.qt.io/qt-5/stylesheet-examples.html */
+
+* { font-size: 12px; }
+
+QCheckBox::indicator {
+	width: 16px;
+	height: 16px;
+}
+
+QDockWidget {
+	border: 2px;
+}
+
+QFrame {
+	border: 2px;
+}
+
+QRadioButton::indicator {
+	width: 16px;
+	height: 16px;
+}
+
+QScrollBar::vertical {
+	width: 20px;
+}
+QScrollBar::horizontal {
+	height: 20px;
+}
+
+QTabBar::tab {
+	height: 30px;
+}

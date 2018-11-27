@@ -1,0 +1,79 @@
+*******************************************************************************
+* CDL netlist
+*
+* Library : layouts
+* Top Cell Name: AOI22_X2
+* View Name: extracted
+* Netlist created: 4.Mar.2015
+*******************************************************************************
+
+*.SCALE METER
+*.GLOBAL 
+
+*******************************************************************************
+* Library Name: layouts
+* Cell Name:    AOI22_X2
+* View Name:    extracted
+*******************************************************************************
+
+.SUBCKT AOI22_X2 ZN Vss B1 Vdd B2 A2
+*.PININFO ZN:B Vss:B B1:B Vdd:B B2:B A2:B
+
+MM29 n5 n7 n7 Vdd n9 pmos_ex w=0.63u l=0.05u as=0.02205u ps=1.54u
+MM24 n12 A2 A2 Vss n8 nmos_ex w=0.415u l=0.05u as=0.014525u ps=1.11u
+MM20 n10 B2 B2 Vss n8 nmos_ex w=0.415u l=0.05u as=0.014525u ps=1.11u
+MM26 ZN n6 n6 n13 n8 nmos_ex w=0.415u l=0.05u as=0.014525u ps=1.11u
+CCP18 VSS Vss C=2.73087e-14
+MM27 n13 A2 A2 Vss n8 nmos_ex w=0.415u l=0.05u as=0.014525u ps=1.11u
+CCP25 VSS A2 C=1.79387e-14
+CCP21 VSS ZN C=1.80617e-14
+CCP14 VSS Vdd C=1.51339e-14
+CCP24 VSS ZN C=2.17821e-14
+MM22 ZN n7 n7 n11 n8 nmos_ex w=0.415u l=0.05u as=0.014525u ps=1.11u
+CCP15 VSS Vdd C=1.08668e-14
+CCP32 VSS Vss C=7.6564e-15
+MM14 n5 n7 Vdd n9 pmos_ex w=0.63u l=0.05u as=0.02205u ps=1.54u
+MM12 n5 B2 Vdd n9 pmos_ex w=0.63u l=0.05u as=0.02205u ps=1.54u
+MM4 n10 B2 Vss n8 nmos_ex w=0.415u l=0.05u as=0.014525u ps=1.11u
+MM18 ZN n6 n5 n9 pmos_ex w=0.63u l=0.05u as=0.02205u ps=1.54u
+MM6 ZN n7 n11 n8 nmos_ex w=0.415u l=0.05u as=0.014525u ps=1.11u
+CCP17 VSS B2 C=1.05286e-14
+CCP22 VSS A2 C=9.29865e-15
+MM17 n5 n6 ZN n9 pmos_ex w=0.63u l=0.05u as=0.02205u ps=1.54u
+MM28 n5 B2 B2 Vdd n9 pmos_ex w=0.63u l=0.05u as=0.02205u ps=1.54u
+MM23 n11 B2 B2 Vss n8 nmos_ex w=0.415u l=0.05u as=0.014525u ps=1.11u
+CCP27 VSS n5 C=4.91474e-14
+CCP23 VSS ZN C=1.62783e-14
+CCP16 VSS B2 C=1.79387e-14
+CCP20 VSS Vss C=1.48639e-14
+MM19 n5 A2 ZN n9 pmos_ex w=0.63u l=0.05u as=0.02205u ps=1.54u
+MM11 n13 A2 Vss n8 nmos_ex w=0.415u l=0.05u as=0.014525u ps=1.11u
+MM16 ZN A2 n5 n9 pmos_ex w=0.63u l=0.05u as=0.02205u ps=1.54u
+MM9 n12 n6 ZN n8 nmos_ex w=0.415u l=0.05u as=0.014525u ps=1.11u
+MM34 n5 n6 n6 ZN n9 pmos_ex w=0.63u l=0.05u as=0.02205u ps=1.54u
+CCP29 VSS n5 C=6.93109e-15
+CCP26 VSS A2 C=9.60613e-15
+MM15 n5 B2 Vdd n9 pmos_ex w=0.63u l=0.05u as=0.02205u ps=1.54u
+MM30 n5 n7 n7 Vdd n9 pmos_ex w=0.63u l=0.05u as=0.02205u ps=1.54u
+MM25 n12 n6 n6 ZN n8 nmos_ex w=0.415u l=0.05u as=0.014525u ps=1.11u
+CCP30 VSS Vss C=1.48639e-14
+CCP12 VSS Vdd C=1.30248e-14
+CCP31 VSS Vdd C=4.06659e-14
+MM35 ZN A2 A2 n5 n9 pmos_ex w=0.63u l=0.05u as=0.02205u ps=1.54u
+MM5 n10 n7 ZN n8 nmos_ex w=0.415u l=0.05u as=0.014525u ps=1.11u
+MM21 n10 n7 n7 ZN n8 nmos_ex w=0.415u l=0.05u as=0.014525u ps=1.11u
+CCP11 VSS B2 C=1.1451e-14
+MM32 n5 A2 A2 ZN n9 pmos_ex w=0.63u l=0.05u as=0.02205u ps=1.54u
+MM8 n12 A2 Vss n8 nmos_ex w=0.415u l=0.05u as=0.014525u ps=1.11u
+MM7 n11 B2 Vss n8 nmos_ex w=0.415u l=0.05u as=0.014525u ps=1.11u
+CCP13 VSS Vdd C=1.08668e-14
+MM31 n5 B2 B2 Vdd n9 pmos_ex w=0.63u l=0.05u as=0.02205u ps=1.54u
+CCP19 VSS ZN C=1.60016e-14
+MM13 n5 n7 Vdd n9 pmos_ex w=0.63u l=0.05u as=0.02205u ps=1.54u
+CCP9 VSS n5 C=7.14633e-15
+CCP10 VSS Vss C=1.48639e-14
+CCP28 VSS Vss C=2.98651e-14
+CCP8 VSS Vss C=7.0173e-15
+MM33 ZN n6 n6 n5 n9 pmos_ex w=0.63u l=0.05u as=0.02205u ps=1.54u
+MM10 ZN n6 n13 n8 nmos_ex w=0.415u l=0.05u as=0.014525u ps=1.11u
+.ENDS

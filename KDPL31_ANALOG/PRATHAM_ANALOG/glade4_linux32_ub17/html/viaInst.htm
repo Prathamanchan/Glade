@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- #BeginTemplate "/Templates/glade.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Glade Reference Manual</title>
+<link href="CSS Docs/shadowHeading1.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<div align="left"><img src="images/canvasview" width="32" height="32" align="right"><br>
+</div>
+<div align="left">
+  <p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade 
+    Reference</font></b></font></p>
+  <hr>
+  <!-- #BeginEditable "text" --> 
+  <h2><font face="Arial, Helvetica, sans-serif">viaInst</font></h2>
+  <p><font face="Arial, Helvetica, sans-serif">A viaInst is a reference to a <a href="via.htm">via</a>, 
+in a <a href="cellview.htm">cellview</a>. viaInsts are like instances but 
+require less memory and have a specific function, i.e. to be instances of <a 
+href="via.htm">via</a>s which again are a type of <a 
+href="cellview.htm">cellView</a> with a specific function, i.e to hold 
+rectangular shapes of the via. Normally viaInsts are created in a <a 
+href="cellview.htm">cellView</a>       
+                
+        using the dbCreateViaInst() function.</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int coord = vi.left()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Get the left edge of the viaInst's 
+    bounding box</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int coord = vi.bottom()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Get the bottom edge of the viaInst's 
+    bounding box</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int coord = vi.right()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Get the right edge of the viaInst's 
+    bounding box</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int coord = vi.top()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Get the top edge of the viaInst's 
+    bounding box</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <p><font face="Arial" class="shadowHeading1"><strong>bool&nbsp;&nbsp;vi.offGrid(int 
+grid)</strong> </font></p>
+  <p><font face="Arial">Checks if a viaInst's origin is on the 
+grid <em>grid,</em> which is in database units.</font></p>
+  <p class="shadowHeading1"><br>
+    <font face="Arial"><strong>&nbsp;vi.orient(orient_t 
+o)</strong>&nbsp;</font></p>
+  <p><font face="Arial">Set the viaInst's orientation. orient_t 
+can be one of: R0, R90, R180, R270, MX, MXR90, MY, MYR90.</font></p>
+  <p class="shadowHeading1"><br>
+  <font 
+face=Arial><strong>&nbsp;orient_t&nbsp;&nbsp;vi.orient 
+()</strong>&nbsp;</font></p>
+  <p><font face="Arial">Get the viaInst's 
+orientation.</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <p class="shadowHeading1"><font face="Arial"><strong>vi.origin(<a href="Point.htm">Point</a> origin)</strong></font></p>
+  <p><font face="Arial">Sets the viaInst's 
+origin to the&nbsp;Point <em>origin</em>   
+.<br>&nbsp;&nbsp;</font><br></p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int vi.origin()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Get the viaInst's origin.</font></p>
+  <h4>
+  <p>&nbsp;</p>
+  </h4>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="Rect.htm">Rect</a> box = vi.bBox()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Get the viaInst's bounding box.</font></p>
+  <p><font face="Arial">      
+              
+          
+<font size="2" face="Consolas"><font size="2" face="Consolas">&nbsp;</p>
+<p class="shadowHeading1"><font size="3" face="Arial"><strong>dbtype_t vi.objType()</strong></font></p>
+<p><font size="3" face="Arial">Returns the objects type as VIAINST</font></p>
+<p><font size="3" face="Arial"></font>&nbsp;</p>
+<p class="shadowHeading1"><font size="3" face="Arial"><strong>char * vi.objName()</strong></font></p>
+<p><font size="3" face="Arial">Returns the print name i.e. "VIAINST"</font></p>
+<p>&nbsp;</p>
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">vi.transform(<a href="transform.htm">transform</a> 
+    trans)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Transform the instance by the given 
+    transform.</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">vi.scale(double scalefactor, double 
+    grid)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Scale the instance origin coordinates 
+    by scalefactor, snapping to grid.</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">vi.Move(cellView *cv, <a href="Point.htm">Point</a> delta, bool opt=   1)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Move the viaInst's origin by delta.&nbsp; If opt is 1 then 
+the database is re-optimised for the new inst position. If there are a lot of 
+objects to move it makes sense to turn this off and instead use the cellView 
+update() function after moving them all.</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="dbObj.htm">dbObj</a> *obj = vi.Copy(<a href="cellview.htm">cellView</a> *cv, 
+    <a href="Point.htm">Point</a> delta)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Copy the viaInst's . <em>cv</em> is the destination cellview, 
+<em>delta</em>       
+      is the offset from the current origin. </font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="dbObj.htm">dbObj</a> *obj = vi.Flatten(<a href="cellview.htm">cellView</a> *cv, <a href="transform.htm">transform</a> trans)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Flatten the viaInst's into the cellView <em>cv</em>, with 
+the given transform <em>trans</em>      
+         .</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <h4>
+  <p class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="via.htm">via</a> *v =       
+  vi.getVia()</font></p></h4>
+  <p><font face="Arial">Gets the via master for this viaInst</font></p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+<!-- #EndEditable --> 
+  <p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-2">Copyright &copy; Peardrop 
+    Design 2018.</font></p>
+</div>
+</body>
+<!-- #EndTemplate --></html>

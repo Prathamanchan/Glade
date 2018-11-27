@@ -1,0 +1,27 @@
+*******************************************************************************
+* CDL netlist
+*
+* Library : sriganesh
+* Top Cell Name: csamp
+* View Name: extracted
+* Netlist created: 16.Mar.2017
+*******************************************************************************
+
+*.SCALE METER
+*.GLOBAL vss vdd
+
+*******************************************************************************
+* Library Name: sriganesh
+* Cell Name:    csamp
+* View Name:    extracted
+*******************************************************************************
+
+.SUBCKT csamp vin vout
+*.PININFO vin:B vout:B
+
+RR3 n3 vdd R=5450 l=5e-06 w=1e-06
+RR1 n3 n4 R=5450 l=5e-06 w=1e-06
+MM1 vout n16 vss n6 NCH_SVT_1P8V_EX w=2e-06 l=1.8e-07 as=4.11e-12 ps=6.11e-06 ad=3.53e-12 pd=5.53e-06
+RR2 n5 n4 R=5450 l=5e-06 w=1e-06
+RR0 n5 vout R=5450 l=5e-06 w=1e-06
+.ENDS

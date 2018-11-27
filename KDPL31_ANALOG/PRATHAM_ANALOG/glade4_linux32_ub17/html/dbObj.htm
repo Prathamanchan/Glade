@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- #BeginTemplate "/Templates/glade.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Glade Reference Manual</title>
+<link href="CSS Docs/shadowHeading1.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<div align="left"><img src="images/canvasview" width="32" height="32" align="right"><br>
+</div>
+<div align="left">
+  <p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade 
+    Reference</font></b></font></p>
+  <hr>
+  <!-- #BeginEditable "text" -->
+<h2><font face="Arial, Helvetica, sans-serif">dbObj class</font></h2>
+
+<p pbzloc="1373"><font face="Arial, Helvetica, sans-serif">The dbObj class is the base class of Glade database objects (it is derived from a lower level memory allocation class which caches objects, but the user need not be concerned about that). A dbObj is never created directly. Most access to dbObjs is at the derived class level.</font></p>
+
+<p pbzloc="1374">&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">dbtype_t type = obj.objType()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the type of the object.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">char * name = obj.objName()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the print name of the object, e.g. &quot;POLYGON&quot;.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="1372">bool val = </font><font face="Arial, Helvetica, sans-serif">obj</font><font face="Arial, Helvetica, sans-serif" pbzloc="1372">.isInst()</font></h4>
+
+<p pbzloc="1375"><font face="Arial, Helvetica, sans-serif">Returns&nbsp;True if the object is an inst or an array.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool val = obj.isShape()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1376">Returns&nbsp;True if the object is a shape.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool val = obj.isViaInst()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1377">Returns&nbsp;True if the object is a viaInst.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool val = obj.isSeg()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1378">Retuens&nbsp;True is the object is a segment of some shape.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool val = obj.isVertex()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1379">Returns&nbsp;True if the object is a vertex of some shape.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">obj.dbAddProp(char *propName, char *propVal)</font></h4>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">obj.dbAddProp(char *propName, int propVal)</font></h4>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">obj.dbAddProp(char *propName, double propVal)</font></h4>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">obj.dbAddProp(char *propName, bool propVal)</font></h4>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">obj.dbAddProp(char *propName, orient_t propVal)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Add a property to a dbObject of the given type. If the property given by <em>propName</em> already exists, its value is updated to <em>propVal</em> .</font></p>
+
+<h4>&nbsp;</h4>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">obj.dbReplaceProp(char *propName, char *propVal)</font></h4>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">obj.dbReplaceProp(char *propName, int propVal)</font></h4>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">obj.dbReplaceProp(char *propName, double propVal)</font></h4>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">obj.dbReplaceProp(char *propName, bool propVal)</font></h4>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">obj.dbReplaceProp(char *propName, orient_t propVal)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Replace an existing property with one with a new value of a given type.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">char * prop = obj.dbGetStringProp(char *name)</font></h4>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int prop = obj.dbGetIntProp(char *name)</font></h4>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">double prop = obj.dbGetFloatProp(char *name)</font></h4>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int prop = obj.dbGetBoolProp(char *name)</font></h4>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">orient_t = obj.dbGetOrientProp(char *name)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get a property of a specified type by name.</font></p>
+
+<p>&nbsp;</p>
+<p class="shadowHeading1"><strong>propType type = obj.dbFindPropType(char *name)</strong></p>
+<p>Finds the type of a named property. propType is an enum with names stringType, integerType, floatType, booleanType, orientType.</p>
+<p>&nbsp;</p>
+<p class="shadowHeading1"><strong>list = obj.getPropList()</strong></p>
+<p>Gets the object's property list as a Python list of <em>prop</em> objects. A <em>prop</em> object is a helper class with the following accessor methods:</p>
+<blockquote>
+  <p><strong>char *name = prop.name()</strong></p>
+  <p>Returns the name of the property.</p>
+  <p><strong>prop.setName(char *name)</strong></p>
+  <p>Sets the name of the property.</p>
+  <p><strong>propType type = prop.type()</strong></p>
+  <p>Returns the type of the property.</p>
+  <p><strong>prop.setType(propType type)</strong></p>
+  <p>Sets the type of the property.</p>
+  <p><strong>union value = prop.data()</strong></p>
+  <p>Returns the property value. value.s is the string data, value.i the integer data, value,f the float data, value.b the boolean data.</p>
+  <p><strong>prop.setData(value)</strong></p>
+  <p>Sets the property value. The function is overloaded for the common propType types.</p>
+  <p>&nbsp;</p>
+</blockquote>
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int b = obj.dbDeleteProp(char *name)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Delete a property by name.</font></p>
+
+<p>&nbsp;</p>
+
+<p><font face="Arial" size="5"><strong>Casting a dbObj to a derived class</strong></font></p>
+
+<p><font face="Arial" pbzloc="1380">In Python, there is no means of casting a base class to a derived class. So for example if you use the cellView::dbGetOverlaps() function to get a list of objects, these are returned as dbObj class. So to facilitate conversion, there are a set of functions that convert a dbObj to a derived class e.g. rectangle.</font></p>
+
+<p class="shadowHeading1"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial" size="3"><strong>arc a = d.toArc()</strong></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></p>
+<p class="shadowHeading1"><strong><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><a href="array.htm"><font color="#0000ff"><font color="#0000ff"><font color="#0000ff"><font face="Arial" pbzloc="1385" size="3">array</font></font></font></font></a><font size="+0"><font face="Arial" pbzloc="1382" size="3"> a = d.toArray()</font></font></font></font></font></font></font></font></font></font></font></font></font></font></strong></p>
+<p class="shadowHeading1"><strong><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial" pbzloc="1389" size="3"><a href="cell.htm" pbzloc="1392">cell</a> c = d.toCell()</font> </font></font></font></font></strong></p>
+<p class="shadowHeading1"><strong><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial" pbzloc="1388" size="3"><a href="cellview.htm" pbzloc="1390">cellView</a> cv = d.toCellView()</font></font></font></strong></p>
+<p class="shadowHeading1"><strong><font size="3" face="Arial">ellipse e = d.toEllipse()</font></strong></p>
+<p class="shadowHeading1"><strong><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial" size="3">HSeg h = d.toHSeg()</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></strong></p>
+<p class="shadowHeading1"><strong><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" pbzloc="1387" size="2"><font face="Arial" size="3"><a href="inst.htm" pbzloc="1395">inst</a> i = d.toInst()</font></font></font></font></font></font></font></font></font></strong></p>
+<p class="shadowHeading1"><strong><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial" size="3"><a href="label.htm" pbzloc="1397">labe</a>l l = d.toLabel()</font></font></font></font></font></font></font></font></font></font></font></font></font></strong></p>
+<p class="shadowHeading1"><strong><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" pbzloc="1408" size="2"><font face="Arial" size="3"><a href="line.htm">line</a> l = d.toLine()</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></strong></p>
+<p class="shadowHeading1"><strong><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" pbzloc="1403" size="2"><font face="Arial" size="3"><a href="path.htm" pbzloc="1398">path</a> p = d.toPath()</font> </font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></strong></p>
+
+<p class="shadowHeading1"><strong><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font size="+0"><font face="Arial" size="3"><a href="polygon.htm" pbzloc="1399">polygon</a> p = d.toPolygon()</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></strong></p>
+<p class="shadowHeading1"><strong><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" pbzloc="1384" size="2"><font face="Arial" size="3"><a href="rectangle.htm" pbzloc="1396">rectangle</a> r = d.toRectangle()</font></font></font></font></font></font></font></font></font></font></font></strong></p>
+<p class="shadowHeading1"><strong><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial" size="3"><a href="segment.htm" pbzloc="1401">segment</a> d = d.toSegment()</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></strong></p>
+<p class="shadowHeading1"><strong><font size="3" face="Arial"><a href="shape.htm">shape</a> s = d.toShape()</font></strong></p>
+<p class="shadowHeading1"><strong><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" pbzloc="1393" size="2"><font face="Arial" size="3"><a href="view.htm" pbzloc="1394">view</a> v =d.toView()</font></font></font></font></font></font></font></strong></p>
+
+<p class="shadowHeading1"><strong><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial" size="3"><a href="vertex.htm" pbzloc="1402">vertex</a> v = d.toVertex()</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></strong></p>
+<p class="shadowHeading1"><strong><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial" size="3"><a href="viaInst.htm" pbzloc="1400">viaInst</a> v = d.toViaInst()</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></strong></p>
+<p class="shadowHeading1"><strong><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font size="+0"><font face="Arial" size="3">VSeg v = d.toVSeg()</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></strong></p>
+<p><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2">&nbsp;</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></p>
+
+<p><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial" size="3"><strong>Getting bounding box coords</strong></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></p>
+
+<p><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial" pbzloc="1404" size="3">Note that you can only get the bounding box coordinates of shapes, insts or viaInsts. </font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></p>
+
+<p class="shadowHeading1"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font pbzloc="1406"><strong>int x = r.left();</strong></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></p>
+
+<p class="shadowHeading1"><strong><span style="font-family: arial,helvetica,sans-serif"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font pbzloc="1405">int y = r.bottom();</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></span></strong></p>
+
+<p class="shadowHeading1"><strong><span style="font-family: arial,helvetica,sans-serif"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2">int x = r.right();</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></span></strong></p>
+
+<p class="shadowHeading1"><strong><span style="font-family: arial,helvetica,sans-serif"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font size="2"><font pbzloc="1407">int y = r.top();</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></span></strong></p>
+
+<p><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial, Helvetica, sans-serif" size="3">Gets the specified bounding box coordinate.</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></p>
+<p><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Consolas" size="2">&nbsp;</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></p>
+<!-- #EndEditable --> 
+  <p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-2">Copyright &copy; Peardrop 
+    Design 2018.</font></p>
+</div>
+</body>
+<!-- #EndTemplate --></html>

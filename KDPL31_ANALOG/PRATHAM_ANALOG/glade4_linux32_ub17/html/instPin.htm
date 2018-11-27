@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- #BeginTemplate "/Templates/glade.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Glade Reference Manual</title>
+<link href="CSS Docs/shadowHeading1.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<div align="left"><img src="images/canvasview" width="32" height="32" align="right"><br>
+</div>
+<div align="left">
+  <p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade 
+    Reference</font></b></font></p>
+  <hr>
+  <!-- #BeginEditable "text" -->
+<h2><font face="Arial, Helvetica, sans-serif">instPin class. </font></h2>
+
+<p><font face="Arial, Helvetica, sans-serif">An instPin is usually created by its constructor. An instPin represents the hierarchical crossing of a net at one level of hierarchy to a pin on the instance of a cell (the lower level of hierarchy). Thus an instPin needs a valid <a href="net.htm">net</a> and <a href="inst.htm">instance</a> whose master must have a pin of the&nbsp;given name.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">instPin *ip = instPin(<a href="inst.htm">inst</a> *i, <a href="net.htm">net</a> *n, char *name)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1554">Create an instPin for inst<i> i </i>and net <i>n</i> with name <i>name</i>.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ip.setInst(<a href="inst.htm">inst</a> *i)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1556">Set the instPin&#39;s instance to <i>i</i>.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="inst.htm">inst</a> *i = ip.getInst()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1558">Get the instance pin&#39;s inst.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ip.setName(char *name)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1560">Set the instance pin&#39;s name</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">char *name = ip.getName()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1562">Get the instance pin&#39;s name</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ip.setNet(<a href="net.htm">net</a> *n)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1564">Set the instance pin&#39;s net</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="net.htm">net</a> *n = ip.getGet()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1566">Get the instance pin&#39;s net</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ip.setPin(<a href="pin.htm">pin</a> *p)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1568">Set the instance master&#39;s pin</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="pin.htm">pin</a> *p = ip.getPin()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1570">Get the instance master&#39;s pin</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ip.setSpecial(bool s)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1572">Set this </font><font face="Arial, Helvetica, sans-serif" pbzloc="1556">instPin</font><font face="Arial, Helvetica, sans-serif" pbzloc="1572"> as special</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool special = ip.isSpecial()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1574">Get the </font><font face="Arial, Helvetica, sans-serif" pbzloc="1556">instPin</font><font face="Arial, Helvetica, sans-serif" pbzloc="1574">&#39;s special status</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="Point.htm">Point</a> ip.getPortLoc()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1576">Get the centre of the bounding box of the </font><font face="Arial, Helvetica, sans-serif" pbzloc="1556">instPin</font><font face="Arial, Helvetica, sans-serif" pbzloc="1576">&#39;s port(s)</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool ip.isSupplyPin()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Retuens true if this </font><font face="Arial, Helvetica, sans-serif" pbzloc="1556">instPin</font><font face="Arial, Helvetica, sans-serif"> is a supply pin.</font></p>
+
+<p>&nbsp;</p>
+<!-- #EndEditable --> 
+  <p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-2">Copyright &copy; Peardrop 
+    Design 2018.</font></p>
+</div>
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- #BeginTemplate "/Templates/glade.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Glade Reference Manual</title>
+<link href="CSS Docs/shadowHeading1.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<div align="left"><img src="images/canvasview" width="32" height="32" align="right"><br>
+</div>
+<div align="left">
+  <p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade 
+    Reference</font></b></font></p>
+  <hr>
+  <!-- #BeginEditable "text" -->
+<h2><font face="Arial, Helvetica, sans-serif">net class</font></h2>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="218">The net class is normally created in a <a href="cellview.htm">cellView</a> using the dbCreateNet() function. A net is derived from a <a href="dbObj.htm">dbObj</a>. Nets have <a href="pin.htm">pins</a> (which represent connections at this level of hierarchy with upper levels of hierarchy) and <a href="instPin.htm">instPins</a> (which represent connections with instances, i.e. lower levels of hierarchy). These provide a means for hierarchical connectivity from the pins on an instance of the cellView to the instPins on instances in the cellView.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="219">n.name(char *name)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="221">Sets the name of the net.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">char *name = n.name()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the net name.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">dbtype_t t = n.objType()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the net object type as NET</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">char *name = n.objName()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="220">Gets the net object name as &quot;NET&quot;.</font></p>
+
+<p pbzloc="97">&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="85"><font face="Arial, Helvetica, sans-serif" pbzloc="87"><a href="instPin.htm" pbzloc="84">instPin </a>*ip = n.dbCreateInstPin(char *instName, char *pinName)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Creates an inst pin for this net with <i>instName</i> as the instance name and <i>pinName</i> as the name of the pin.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="96"><font face="Arial, Helvetica, sans-serif" pbzloc="94">n.dbDeleteInstPin(<a href="instPin.htm">instPin </a>*ip)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Deletes an inst pin of this net.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">n.dbDeleteinstPin(char *instname, char *pinname)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Deletes an inst pin of this net.</font></p>
+
+<p pbzloc="122">&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="107">int num = n.getNumInstPins()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the number of inst pins for this net.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="106"><font face="Arial, Helvetica, sans-serif" pbzloc="104">n.addInstPin(<a href="instPin.htm">instPin </a>*ip)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Add an inst pin for this net.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="121"><font face="Arial, Helvetica, sans-serif" pbzloc="118">list = n.getInstPins()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the net&#39;s inst pin list.</font></p>
+
+<p pbzloc="144">&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="123">double l = n.getHPWL(double &amp;x, double &amp;y)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the half perimeter wirelength of this net.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">n.setSpecial(bool special)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="156">Sets the net as a specialnet.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="134">bool n.isSpecial()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the net&#39;s specialnet status.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="143"><font face="Arial, Helvetica, sans-serif" pbzloc="166">n.setPins(<a href="dbObjList.htm">dbObjList</a>&lt;<a href="pin.htm">pin</a>&gt; *pins)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Set the net&#39;s pin list</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="155"><font face="Arial, Helvetica, sans-serif" pbzloc="153">list = n.getPins()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the net&#39;s pin list.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="165"><font face="Arial, Helvetica, sans-serif" pbzloc="163">n.addPin(<a href="pin.htm">pin </a>*p)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="185">Add a pin to this net.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="184"><font face="Arial, Helvetica, sans-serif" pbzloc="182">n.setShapes(<a href="dbObjList.htm">dbObjList</a>&lt;<a href="shape.htm">shape</a>&gt; *shapes)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets the net&#39;s shape list.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="194"><font face="Arial, Helvetica, sans-serif" pbzloc="192">list = n.getShapes()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the net&#39;s shape list.</font></p>
+<p pbzloc="205">&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="217"><font face="Arial, Helvetica, sans-serif">int n.getNumShapes()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the number of shapes associated with this net.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="204"><font face="Arial, Helvetica, sans-serif" pbzloc="202">n.addShape(<a href="dbObj.htm">dbObj </a>*shp)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Add a shape to the net&#39;s shape list.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="214"><font face="Arial, Helvetica, sans-serif" pbzloc="212">n.deleteShape(<a href="dbObj.htm">dbObj </a>*shp)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Delete a shape from the net&#39;s shape list. </font></p>
+
+<p>&nbsp;</p>
+<!-- #EndEditable --> 
+  <p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-2">Copyright &copy; Peardrop 
+    Design 2018.</font></p>
+</div>
+</body>
+<!-- #EndTemplate --></html>

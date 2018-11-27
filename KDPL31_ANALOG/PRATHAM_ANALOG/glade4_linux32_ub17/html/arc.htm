@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- #BeginTemplate "/Templates/glade.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>Glade Reference Manual</title>
+<link href="CSS Docs/shadowHeading1.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<div align="left"><img src="images/canvasview" width="32" height="32" align="right"><br>
+</div>
+<div align="left">
+  <p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade 
+    Reference</font></b></font></p>
+  <hr>
+  <!-- #BeginEditable "text" -->
+  <h2>arc class</a></h2>
+  <p>An <a href="#_arc_class">arc</a> is a portion of an <a href="#_ellipse_class">ellipse</a> and is derived from an <a href="#_ellipse_class">ellipse</a>. It is normally  created by the cellView::dbCreateArc() function.</p>
+  <p class="shadowHeading1"><strong>a.setStartAngle(double  angle)</strong></p>
+  <p><br>
+    Sets the <a href="#_arc_class">arc</a> start <em>angle</em> in degrees. Zero degrees is at the  3 o&rsquo;clock position with respect to the centre of the arc.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>double angle =  a.startAngle()</strong></p>
+  <p><br>
+    Gets the <a href="#_arc_class">arc</a> start angle.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>a.setSpanAngle(double  angle)</strong></p>
+  <p><br>
+    Sets the <a href="#_arc_class">arc</a> span <em>angle</em> in degrees. The span is the angle  from the start to end point of the arc.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>double angle =  a.spanAngle()</strong></p>
+  <p><br>
+    Gets the <a href="#_arc_class">arc</a> span angle.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>dbtype_t_t type =  a.objType()</strong></p>
+  <p><br>
+    Gets the <a href="#_arc_class">arc</a> object type, ARC.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>char *name =  a.objName()</strong></p>
+  <p><br>
+    Gets the <a href="#_arc_class">arc</a> object name as &ldquo;ARC&rdquo;.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>Bool ok =  a.offGrid(int grid)</strong></p>
+  <p><br>
+    Returns True if the radius of the <a href="#_arc_class">arc</a> is offgrid.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>a.transform(</strong><a href="#_transform_class"><strong>transform</strong></a><strong> trans)</strong></p>
+  <p>Transforms this <a href="#_arc_class">arc</a> by <em>trans</em>.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>a.Move(</strong><a href="#_cellView_class"><strong>cellView</strong></a><strong> dest, </strong><a href="#_Point_class"><strong>Point</strong></a><strong> delta, bool opt=True)</strong></p>
+  <p><br>
+    Move the <a href="#_arc_class">arc</a> origin by <em>delta </em>in the cellView given by <em>dest</em>.&nbsp;If <em>opt</em> is true then the database is re-optimised for the new array  position. If there are a lot of objects to move it makes sense to turn this off  and instead use the cellView update() function after moving them all.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><a href="#_dbObj_class"><strong>dbObj</strong></a><strong> obj = a.Copy(</strong><a href="#_cellView_class"><strong>cellView</strong></a><strong> dest, </strong><a href="#_Point_class"><strong>Point</strong></a><strong> delta, int layer=-1)</strong></p>
+  <p><br>
+    Copy the <a href="#_arc_class">arc</a>. <em>dest</em> is the destination cellView, <em>delta</em> is the offset from the current origin. If <em>layer</em> is non-negative, the arc is copied  to the layer number.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><a href="#_dbObjList_class"><strong>dbObjList</strong></a><strong>&lt;</strong><a href="#_dbObj_class"><strong>dbObj</strong></a><strong>&gt; objs = a.Flatten(</strong><a href="#_cellView_class"><strong>cellView</strong></a><strong> dest, </strong><a href="#_transform_class"><strong>transform</strong></a><strong> trans, bool hier=True)</strong></p>
+  <p><br>
+    Flatten the <a href="#_arc_class">arc</a> into the cellView <em>dest</em>, with the given transform <em>trans</em>, and return a list of the  flattened objects.</p>
+  <p>&nbsp;</p>
+  <!-- #EndEditable --> 
+  <p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-2">Copyright &copy; Peardrop 
+    Design 2018.</font></p>
+</div>
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,6 @@
+
+setenv PYTHONHOME /usr/lib/python2.7:/home/cad/glade/bin/
+setenv PYTHONPATH /usr/bin/python2.7
+
+setenv PYTHONPATH /usr/lib/python2.7:/home/cad/glade/bin:/usr/local/lib/python2.7:/usr/local/lib/python2.7/lib-dynload
+setenv PYTHONHOME /usr/bin/python2.7

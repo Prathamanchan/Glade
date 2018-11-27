@@ -1,0 +1,171 @@
+#===============================================================
+# Virtuoso Layout Editor Layer Mapping File
+# Version 2.0.0
+# for 0.18um Technology Process: 1830AN18BA 
+#===============================================================
+# CHANGE HISTORY
+#---------------------------------------------------------------
+# Version     Date         Who          Description
+# -------     ----------   --------     ------------------------
+# preliminary 2009/01/19   B.R.Jung     Initial release
+# preliminary 2009/02/03   B.R.Jung     Add LDDBLK(28;0),RESIST(31;0),
+#                                           TRENCH(90;0)
+# preliminary 2009/05/19   B.R.Jung     Add DUMMETBLK(41;0),ZENER(88;0)
+#                                       Delete DNWELL(93;0),NCHSTBLK(30;0)
+# preliminary 2009/05/20   B.R.Jung     Add ESDT45(80;0)
+# preliminary 2009/07/08   B.R.Jung     Add FG(107;0),CVT(108;0),
+#                                           CSD(109;0),FC(110;0)
+#                                       Add viaLayers()
+# preliminary 2009/07/09   B.R.Jung     Add NSDBLK(116;0),PSDBLK(117;0),
+#                                           LVGD(118;)
+# preliminary 2009/10/30   B.R.Jung     Add CDM(137;0)
+#                                       Delete DIFF text21(3;21)
+# preliminary 2009/11/10   B.R.Jung     1824AN18BA techfile unification
+# preliminary 2010/02/02   I.H.Na       Change the layer number:
+#                                       MTM1(152;0) -> MTM1(147;0)
+# v1p0        2010/03/18   I.H.Na       Add layer : ISO_V7(#135), ISO_V30(#136)
+#                                                   NSDBLK(#161), PSDBLK(#162)
+# 1.6.0       2010/04/19   I.H.Na       Add layer : METTOP(#26)
+# 1.7.0       2010/11/17   I.H.Na       Add layer : FUSOR(#165), ESDSTK(#166), ESDBOT(#167)
+# 1.8.0       2011/01/14   I.H.Na       Add cust1(181:0),cust2(182:0),cust3(183:0),cust4(184:0)
+#                                           cust5(185:0)
+#                                       Modify "align" Packet (.tf)
+#                                       Add CUP_DIA(145:0)
+# 1.9.0       2011/02/21   A.R Han      Add LVGD(163:0)
+# 2.0.0       2011/06/30   J.Y.Baek     Add LDMTAG(94:0), NDT(100:0), DWELL(102:0), LVNW(140:0)
+#===============================================================
+PWELL 		drawing          1		0
+PWELL 		text             1		1
+NWELL 		drawing          2		0
+NWELL 		text             2		1
+DIFF  		drawing          3		0
+DIFF  		text             3		1
+POLY  		drawing          6		0
+POLY  		text             6		1
+PIMP  		drawing          7		0
+NIMP  		drawing          8		0
+CONT  		drawing          9		0
+MET1  		drawing         10		0
+MET1  		text            10		1
+MET1  		slot            10		2
+VIA1  		drawing         11		0
+MET2  		drawing         12		0
+MET2 		text            12		1
+MET2 		slot            12		2
+VIA2 		drawing         13		0
+MET3 		drawing         14		0
+MET3 		text            14		1
+MET3 		slot            14		2
+VIA3 		drawing         15		0
+MET4 		drawing         16		0
+MET4 		text            16		1
+MET4 		slot            16		2
+VIA4 		drawing         17		0
+MET5 		drawing         18		0
+MET5 		text            18		1
+MET5 		slot            18		2
+VIA5 		drawing         19		0
+MET6 		drawing         20		0
+MET6 		text            20		1
+MET6 		slot            20		2
+POR 		drawing         21		0
+DNW 		drawing         22		0
+SDPW 		drawing         23		0
+SDNW 		drawing         24		0
+METTOP          drawing         26              0
+RESIST		drawing         31		0
+NWRES		drawing         32		0
+BTAG		drawing         33		0
+SDI		drawing         34		0
+METRES          metres1         35              1
+METRES          metres2         35              2
+METRES          metres3         35              3
+METRES          metres4         35              4
+METRES          metres5         35              5
+METRES          metres6         35              6
+POWPRO          drawing         36              0
+HOTNW           drawing         37              0
+SEALRING        drawing         38              0
+POLY_CAP        drawing         39              0
+DUMBLK          alll            40              0
+DUMBLK          met1            40              1
+DUMBLK          met2            40              2
+DUMBLK          met3            40              3
+DUMBLK          met4            40              4
+DUMBLK          met5            40              5
+DUMBLK          met6            40              6
+DUMBLK          diff            40              7
+DUMBLK          poly            40              8
+DUMMETBLK       drawing         41              0
+ARTBOUNDRY      drawing         42              0
+PIP             drawing         43              0
+TXT             text            44              0
+MCW             drawing         45              0
+NOGRID          drawing         46              0
+SAB 		drawing         47		0
+DRCDMY 		drawing         48		0
+GR              drawing         49              0
+BOND            drawing         50              0
+ANT             drawing         51              0
+ESD 		drawing         52		0
+CELLNAME 	text            53		0
+VARDMY 		drawing         54		0
+ISPWELL 	drawing         55		0
+BOUNDARY 	drawing         56		0
+BLKIO           drawing         57              0
+DASDMY          drawing63       63             63
+SRAM            drawing         64              0
+ESDMY           drawing         68              0
+ESDMY2          drawing         69              0
+DTAG            drawing         70              0
+DRNTAG 		drawing         71		0
+ESDMY1 		drawing         76		0
+POLY2 		drawing         86		0
+MTM 		drawing         87		0
+FUSE 		drawing         88		0
+HRI 		drawing         90		0
+HRID 		drawing         91		0
+BLKWELL		drawing         92		0
+LDMTAG		drawing         94		0
+STD_B           drawing         95              0
+NDT 		drawing        100		0
+PDT 		drawing        101		0
+DWELL 		drawing        102		0
+PCHSTBLK	drawing        105		0
+SDBLK		drawing        107		0
+TGOX50 		drawing        111		0
+V2              drawing        112              0
+V5              drawing        114              0
+V7              drawing        115              0
+V12             drawing        116              0
+V20             drawing        117              0
+V30             drawing        118              0
+ESDT45 		drawing        131		0
+ISO_V7          drawing        135              0
+ISO_V30         drawing        136              0
+CDM             drawing        137              0
+LVNW            drawing        140              0
+FG              drawing        141              0
+CVT             drawing        142              0
+CSD             drawing        143              0
+FC              drawing        144              0
+CUP_DIA         drawing        145              0
+MTM1 		drawing        147		0
+ZENER           drawing        148              0
+EEPROM 		drawing        149		0
+EPROM 		drawing        150		0
+ANLGDMY		drawing        154		0
+LDDBLK		drawing        155		0
+NSDBLK		drawing        161		0
+PSDBLK		drawing        162		0
+LVGD		drawing        163		0
+FUSOR           drawing        165              0
+ESDSTK          drawing        166              0
+ESDBOT          drawing        167              0
+cust1           drawing        181              0
+cust2           drawing        182              0
+cust3           drawing        183              0
+cust4           drawing        184              0
+cust5           drawing        185              0
+OVERLAP		boundary       190		0
+DBL		drawing        191		0

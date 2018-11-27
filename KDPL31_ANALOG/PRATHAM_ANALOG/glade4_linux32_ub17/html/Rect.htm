@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- #BeginTemplate "/Templates/glade.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Glade Reference Manual</title>
+<link href="CSS Docs/shadowHeading1.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<div align="left"><img src="images/canvasview" width="32" height="32" align="right"><br>
+</div>
+<div align="left">
+  <p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade 
+    Reference</font></b></font></p>
+  <hr>
+  <!-- #BeginEditable "text" --> 
+  <h2><font face="Arial, Helvetica, sans-serif">Rect class</font></h2>
+  <p><font face="Arial, Helvetica, sans-serif">A Rect class is used to represent 
+    a rectangle comprising two coordinate pairs. Note that this is NOT the same 
+    as a <i>rectangle</i> object which is a database object instead.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">r = Rect</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Creates a Rect object r. The rectangle 
+    coordinates are set to invalid i.e. llx = +infinity, urx = -infinity etc.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">r = Rect(Point ll, Point ur)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Creates a Rect object r and initialises 
+    it with Point types ll, ur.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">r = Rect(int llx, int lly, int 
+    urx, int ury)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Creates a Rect object and initialises 
+    its coordinates.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int x = r.left()</font></h4>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int y = r.bottom()</font></h4>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int x = r.right()</font></h4>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int y = r.top()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Get the specified Rect coordinate.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">r.setLeft(int x)</font></h4>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">r.setBottom(int y)</font></h4>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">r.setRight(int x)</font></h4>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">r.setTop(int y)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Set the specified Rect coordinate.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="Point.htm">Point</a> ll = r.getLL()</font></h4>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="Point.htm">Point</a> ur = r.getUR()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Get the lower left or upper right Rect coordinates 
+    as Points.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">r.invalidate()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Set the Rect to invalid, i.e. llx =     +infinity, urx =       
+        -infinity etc.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">r.scale(double s)</font></h4>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">r.scale(int s)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Scale a Rect coordinates by dividing 
+    them by s.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">Rect s = r.offset(int x, int y)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Offset (transpose) a Rect by the 
+    specified x and y coordinates. The Rect <i>r</i> is modified.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">r.width(int w)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Set a Rect's width. The lower left 
+    remains the same.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int w = r.width()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Get the width of a Rect.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">r.height(int h)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Set the height of a Rect. The lower 
+    left remains the same.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int h = r.height()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Get the height of a Rect.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="Point.htm">Point</a> p = r.centre()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Get the centre point of a Rect.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool b = r.isSquare()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Returns True is the rectangle is square, 
+    False if it is not.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">transform(orient_t orient, <a href="Point.htm">Point</a> p)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Transforms a Rect using Point <i>p</i> 
+    and orientation <i>orient</i>.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">r.swapxy()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Swaps the X and Y coordinates of 
+    a Rect.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">r.unionWith(<a href="Rect.htm">Rect</a> p)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Rect <i>r</i> is set to the union 
+    of the Rects <i>r</i> and <i>p</i>, i.e. the bounding box of both.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">r.unionWith(<a href="Point.htm">Point</a> p)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Rect <i>r</i> is set to the union 
+    of itself and Point <i>p</i>, i.e. the bounding box of both.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool b = r.touchOrOverlaps(int 
+    x, int y)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Returns True if the Rect touches or 
+    overlaps the point x, y; returns False otherwise.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool b = r.touchOrOverlaps(int 
+    xlo, int ylo, int xhi, int yhi)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Returns True if the Rect touches or 
+    overlaps the rectangle formed by <i>xlo, ylo, xhi, yhi</i>; returns False otherwise.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool b = r.touchOrOverlaps(<a href="Rect.htm">Rect</a> p)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Returns True if the Rect touches or 
+    overlaps the Rect <i>p</i>; returns False otherwise.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool b = r.touch(int x, int y)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Returns True if the Rect touches the 
+    point x, y; returns False otherwise.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool b = r.touch(int xlo, int ylo, 
+    int xhi, int yhi) </font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Returns True if the Rect touches the 
+    rectangle formed by <i>xlo, ylo, xhi, yhi</i>; returns False otherwise.</font></p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><strong>bool  b = r.touch(<a href="Rect.htm">Rect</a> p) </strong></font></p>
+  <p><font face="Arial, Helvetica, sans-serif">Returns True if the Rect touches the 
+    Rect <i>p</i>; returns False otherwise.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool b = r.overlaps(int x, int 
+    y)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Returns True if the Rect overlaps 
+    the point x, y; returns False otherwise.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool b = r.overlaps(int xlo, int 
+    ylo, int xhi, int yhi)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Returns True if the Rect overlaps 
+    the rectangle formed by <i>xlo, ylo, xhi, yhi</i>; returns False otherwise.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool b = r.overlaps(<a href="Rect.htm">Rect</a> p)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Returns True if the Rect overlaps 
+    the Rect <i>p</i>; returns False otherwise.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool b = r.contains(int x, int 
+    y)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Returns True if the Rect contains 
+    the point x, y; returns False otherwise.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool b = r.contains(int xlo, int 
+    ylo, int xhi, int yhi)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Returns True if the Rect contains 
+    the rectangle formed by <i>xlo, ylo, xhi, yhi</i>; returns False otherwise.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool b  = r.contains(<a href="Rect.htm">Rect</a> p)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Returns True if the Rect contains 
+    the Rect <i>p</i>; returns False otherwise.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">r.intersectsWith(<a href="Rect.htm">Rect</a> p)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Modifies Rect r to the intersection 
+    of itself and Rect p.</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <p class="shadowHeading1"><font face="Arial"><strong>Rect&nbsp;s = 
+r.intersectsWith(Rect p)</strong></font></p>
+  <p><font face="Arial">Returns a rectangle which is the 
+intersection of r and p.</font></p>
+  <p>&nbsp;</p><!-- #EndEditable --> 
+  <p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-2">Copyright &copy; Peardrop 
+    Design 2018.</font></p>
+</div>
+</body>
+<!-- #EndTemplate --></html>

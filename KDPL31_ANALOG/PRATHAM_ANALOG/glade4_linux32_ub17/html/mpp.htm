@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- #BeginTemplate "/Templates/glade.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>Glade Reference Manual</title>
+<link href="CSS Docs/shadowHeading1.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<div align="left"><img src="images/canvasview" width="32" height="32" align="right"><br>
+</div>
+<div align="left">
+  <p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade 
+    Reference</font></b></font></p>
+  <hr>
+  <!-- #BeginEditable "text" -->
+<h2 pbzloc="541"><font face="Arial, Helvetica, sans-serif">mpp&nbsp;class</font></h2>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="547">The mpp class is derived from a shape. This class is normally created in a cellView using the dbCreateMPP() function.</font></p>
+
+<p pbzloc="568">&nbsp;</p>
+
+<p class="shadowHeading1" pbzloc="561"><strong><span style="font-family: arial,helvetica,sans-serif">mpp *m = mpp;</span></strong></p>
+
+<p pbzloc="559"><span style="font-family: arial,helvetica,sans-serif">Creates a mpp.</span></p>
+
+<p pbzloc="562">&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="548"><font face="Arial, Helvetica, sans-serif" pbzloc="574">m.addLayer(mppLayer l)</font></h4>
+
+<p pbzloc="566"><font face="Arial, Helvetica, sans-serif" pbzloc="564">Adds a layer to the mpp.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="569"><font face="Arial, Helvetica, sans-serif" pbzloc="574">mppLayer</font><font face="Arial, Helvetica, sans-serif" pbzloc="575">&nbsp;l&nbsp;&nbsp;= mpp.getLayer(int idx)</font></h4>
+
+<p pbzloc="577"><font face="Arial, Helvetica, sans-serif" pbzloc="570">Gets the mpp_layer by index.&nbsp;</font></p>
+
+<p pbzloc="572">&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="573"><font face="Arial, Helvetica, sans-serif" pbzloc="574">mppLayer</font><font face="Arial, Helvetica, sans-serif"> *l = mpp.getLayers()</font></h4>
+
+<p pbzloc="578"><font face="Arial, Helvetica, sans-serif" pbzloc="579">Gets the mpp_layers as an array for the mpp.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="580"><font face="Arial, Helvetica, sans-serif">mpp.setLayers(</font><font face="Arial, Helvetica, sans-serif" pbzloc="574">mppLayer</font><font face="Arial, Helvetica, sans-serif"> *l, int numLayers)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="582">Sets the mpp layers.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="583"><font face="Arial, Helvetica, sans-serif" pbzloc="589">int num = mpp.numLayers()</font></h4>
+
+<p pbzloc="586"><font face="Arial, Helvetica, sans-serif">Get the number of mpp layers.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="590"><font face="Arial, Helvetica, sans-serif" pbzloc="600">mpp.setNumLayers(int num)</font></h4>
+
+<p pbzloc="591"><font face="Arial, Helvetica, sans-serif" pbzloc="592">Set the number of mpp layers.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="593"><font face="Arial, Helvetica, sans-serif" pbzloc="594">mpp.setMppRule(mppRule *rule)</font></h4>
+
+<p pbzloc="595"><font face="Arial, Helvetica, sans-serif">Set the mpp rule.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="596"><font face="Arial, Helvetica, sans-serif" pbzloc="594">mppRule</font><font face="Arial, Helvetica, sans-serif"> *rule = mpp.getMppRule()</font></h4>
+
+<p pbzloc="597"><font face="Arial, Helvetica, sans-serif" pbzloc="598">Get the mpp_rule.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="601"><font face="Arial, Helvetica, sans-serif"><a href="Rect.htm">Rect</a> b = m.bBox()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="603">Get the bounding box of this mpp.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="604"><font face="Arial, Helvetica, sans-serif" pbzloc="606">m.bBox(<a href="Rect.htm">Rect</a> b)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="605">Set the bounding box of this mpp. Not useful and will throw an exception if called.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="607"><font face="Arial, Helvetica, sans-serif">dbtype_t t = m.objType()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="608">Returns the object type of this path as MPP.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="610"><font face="Arial, Helvetica, sans-serif" pbzloc="611">char *name = m.objName()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="609">Returns the object name of this path as &quot;MPP&quot;.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int n = p.nPoints()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Returns the number of points of the path.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="613"><font face="Arial, Helvetica, sans-serif"><a href="Point.htm">Point</a> * pts = m.ptlist()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="614">Returns the point list of this mpp as an array or Points.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="617"><font face="Arial, Helvetica, sans-serif">m.bias(int bias, double grid)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="615">Bias this mpp by <i>bias</i>, snapping to the grid <i>grid</i>.</font></p>
+
+<p pbzloc="612">&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="618"><font face="Arial, Helvetica, sans-serif">m.scale(double scale, double grid)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="619">Scale this mpp by <i>scale</i>, snapping to the grid <i>grid</i>.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="620"><font face="Arial, Helvetica, sans-serif">int d = m.getNearestEdge(<a href="Point.htm">Point</a> p, <a href="segment.htm">segment</a> s)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="621">Get the distance of the nearest segment <i>s</i> of this mpp to the point <i>p</i></font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="623"><font face="Arial, Helvetica, sans-serif">int d = m.getNearestVertex(<a href="Point.htm">Point</a> p, <a href="vertex.htm">vertex</a> s)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="627">Get the distance of the nearest vertex <i>s</i> of this mpp to the point <i>p</i></font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="628"><font face="Arial, Helvetica, sans-serif">m.transform(<a href="transform.htm">transform</a> trans)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="629">Transform this mpp using <i>trans</i>.</font></p>
+
+<p pbzloc="632">&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="631"><font face="Arial, Helvetica, sans-serif">bool m.ptInPoly(<a href="Point.htm">Point</a> p)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="630">Returns true if the Point p is contained in the mpp or on its edges.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="633"><font face="Arial, Helvetica, sans-serif">m.Move(<a href="cellview.htm">cellView</a> *cv, <a href="Point.htm">Point</a> delta, bool opt = True)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="634">Move this mpp by distance <i>delta</i>. If opt is True then the database is re-optimised for the new mpp position. If there are a lot of objects to move it makes sense to turn this off and instead use the cellView update() function after moving them all. </font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="640"><font face="Arial, Helvetica, sans-serif"><a href="dbObj.htm">dbObj</a> *obj = m.Copy(<a href="cellview.htm">cellView</a> cv, <a href="Point.htm">Point</a> delta)</font></h4>
+
+<p pbzloc="638"><font face="Arial, Helvetica, sans-serif" pbzloc="639">Copy this mpp to cellView <i>cv</i>, with offset <i>delta</i>. </font></p>
+
+<p pbzloc="637">&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="641"><font face="Arial, Helvetica, sans-serif"><a href="dbObj.htm">dbObj</a> *obj = m.Flatten(<a href="cellview.htm">cellView</a> cv, <a href="transform.htm">transform</a> trans)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="642">Flatten this mpp into cellView <i>cv</i> with transformation <i>trans</i>.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="643"><font face="Arial, Helvetica, sans-serif">mpp.Stretch(Point delta, segment seg)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="644">Stretch segment <i>seg</i> of this mpp by <i>delta</i>.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="645"><font face="Arial, Helvetica, sans-serif">m.compressPoints()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Removes colinear points.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="646"><font face="Arial, Helvetica, sans-serif" pbzloc="649"><a href="polygon.htm">polygon</a> q = m.shapeToPoly()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="647">Converts this mpp to polygons.</font></p>
+
+<h4>&nbsp;</h4>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<!-- #EndEditable --> 
+  <p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-2">Copyright &copy; Peardrop 
+    Design 2018.</font></p>
+</div>
+</body>
+<!-- #EndTemplate --></html>

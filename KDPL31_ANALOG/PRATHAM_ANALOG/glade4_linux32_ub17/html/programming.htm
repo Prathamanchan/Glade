@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- #BeginTemplate "/Templates/glade.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Glade Reference Manual</title>
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<div align="left"><img src="images/canvasview" width="32" height="32" align="right"><br>
+</div>
+<div align="left">
+  <p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade 
+    Reference</font></b></font></p>
+  <hr>
+  <!-- #BeginEditable "text" -->
+
+<h2 align="left"><font face="Arial, Helvetica, sans-serif">Programming Glade in Python</font></h2>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">The entire Glade database and much of the UI is wrapped in Python using SWIG. This means you can write Python scripts to automate tasks - <a href="pcells.htm">PCells</a> (parameterised cells) are a good example. Why Python? Well it is an object-oriented language and so it wraps C++ well, unlike some other interpreted languages.</font></p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">You can enter python commands directly at the command line. Some useful ones:</font></p>
+
+<div align="left">
+<pre>
+    getSelectedSet()
+</pre>
+</div>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" pbzloc="1160">returns a python list of the selected objects. You can print information about an object using the print command:</font></p>
+
+<div align="left">
+<pre>
+    objs = getSelectedSet()
+    for obj in objs :
+       print obj</pre>
+</div>
+
+<p align="left" pbzloc="1161"><br />
+<font face="Arial, Helvetica, sans-serif">To get the current cellview, use:</font></p>
+
+<div align="left">
+<pre>
+    cv = getEditCellView()</pre>
+</div>
+
+<p align="left">&nbsp;</p>
+<p align="left">To open a library, use:</p>
+<div>
+  <pre align="left">
+    lib = getLibByName(&quot;myLib&quot;)</pre></div>
+<p align="left">&nbsp;</p>
+<p align="left">To open a cellView, use:</p>
+<div>
+  <pre align="left"># 'r' opens an existing cell for read, 'a' opens an existing cell for edit, 'w' creates a new cell.</pre>
+  <pre align="left">    cv = lib.dbOpenCellView(&quot;myCell&quot;, &quot;layout&quot;, 'a')</pre>
+</div>
+<p align="left">&nbsp;</p>
+<p align="left"><font face="Arial, Helvetica, sans-serif">Some python bindings require arrays of coordinates. You can use the python intarray(number_of_elements) function to create an array with a specified size.</font></p>
+
+<p align="left" pbzloc="1162">&nbsp;</p>
+
+<h2 align="left"><font face="Arial" size="4">The command line interpreter</font></h2>
+
+<p align="left"><font face="Arial">The message window at the bottom of the Glade main window is split into two parts: the message pane, which shows messages and output from the Python interpreter. You can use the Right Mouse Button to copy text from the message pane. Below the message pane is the command line. You can type Python commands into the command line.</font></p>
+
+<p align="left"><img border="0" height="0" hspace="0" src="images/cmdLine.png" width="0" /></p>
+
+<p align="left">&nbsp;</p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">The Python command line supports various control characters to assist in typing in Python commands:</font></p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif"><strong>Left Arrow</strong> - move the cursor one character left.</font></p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif"><strong>Right Arrow</strong> - move the cursor one character right.</font></p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif"><strong>Up arrow</strong> - retrieve previous command (or clear line if no previous command)</font></p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif"><strong>Down arrow</strong> - retrieve next command (or clear line if no next command)</font></p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif"><strong>Home</strong> - move the cursor to the start of the line</font></p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif"><strong>End</strong> - move the cursor to the end of the line</font></p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif"><strong>Ctrl-A</strong> - select all text on the line</font></p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif"><strong>Ctrl-C</strong> - copy the selected text to the clipboard</font></p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif"><strong>Ctrl-V</strong> - paste the clipboard to the line</font></p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif"><strong>Ctrl-X</strong> - delete the selected text</font></p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif"><strong>Ctrl-Z</strong> - undo the last editing operation</font></p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif"><strong>Ctrl-Y</strong> - redo the last editing operation</font></p>
+
+<p align="left">&nbsp;</p>
+
+<h4 align="left"><font face="Arial, Helvetica, sans-serif">Writing Python scripts</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">An example of a Python script follows. At present, the python bindings are&nbsp;not completely&nbsp;undocumented. Don&#39;t forget that Python relies on indentation for e.g. <em>for</em> and <em>while</em> loops!</font></p>
+
+<div align="left">
+<pre pbzloc="1166">
+     # Example python script
+     print &#39;Starting script...&#39;
+
+     #
+     # Create a new library, called &#39;fred&#39;
+     lib = library(&quot;fred&quot;)
+     #
+     # Create a new cellView in this library
+     cv = lib.dbOpenCellView(&quot;test&quot;, &quot;layout&quot;, &#39;w&#39;)
+     #
+     # A rectangle. By default database units are 0.001 micron
+     width = 10000
+     pitch = width * 2
+     r = Rect(0, 0, 0, 0)
+     #
+     # Create four rectangles on layer 1
+     layer = 1
+     for i in range(2) :
+     	for j in range(2) :
+     &nbsp;&nbsp;		r.setLeft(j * pitch) 
+     &nbsp;&nbsp;		r.setRight(j * pitch + width)
+     &nbsp;&nbsp;		r.setBottom(i * pitch)
+     &nbsp;&nbsp;		r.setTop(i * pitch + width)
+     &nbsp;&nbsp;		cv.dbCreateRect(r, layer);
+     #
+     # Update the cellView after creating any objects
+     cv.update()
+     #
+     # Open the cellView for display
+     ui().openCellView(&quot;fred&quot;, &quot;test&quot;, &quot;layout&quot;)
+     #
+     # Do a region query
+     q = cv.bBox()
+     objs = cv.dbGetOverlaps(q, layer)
+     obj = objs.first()
+     while obj :
+     &nbsp;	print &#39;found object &#39;, obj.objName(), &#39; with origin = (&#39;, obj.left(), obj.bottom(), &#39;)&#39;
+     &nbsp;	obj = objs.next()
+     #
+     print &#39;Finished script...&#39;
+</pre>
+</div>
+<p align="left">&nbsp;</p>
+
+<h4 align="left"><font face="Arial, Helvetica, sans-serif">Database reference</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">The following sections of the database bindings have been documented. More will be added when time permits.</font></p>
+
+<div align="left">
+<ul>
+	<li><a href="arc.htm">arc</a></li>
+	<li><font face="Arial"><a href="array.htm">array</a></font></li>
+	<li><font face="Arial"><a href="cell.htm">cell</a></font></li>
+	<li><font face="Arial"><a href="cellview.htm">cellView</a></font></li>
+	<li><font face="Arial"><a href="dbObj.htm">dbObj</a></font></li>
+	<li><font face="Arial"><a href="dbHierObj.htm">dbHierObj</a></font></li>
+	<li><font face="Arial"><a href="dbObjList.htm">dbObjList</a></font></li>
+	<li><font face="Arial"><a href="Edge.htm">Edge</a></font></li>
+	<li><a href="ellipse.htm">ellipse</a></li>
+	<li><a href="HSeg.htm">HSeg</a></li>
+	<li><font face="Arial"><a href="inst.htm">inst</a></font></li>
+	<li><font face="Arial"><a href="instPin.htm">instPin</a></font></li>
+	<li><font face="Arial"><a href="label.htm">label</a></font></li>
+	<li><font face="Arial"><a href="library.htm">library</a></font></li>
+    <li><font face="Arial"><a href="lpp.htm">lpp</a></font></li>
+	<li><font face="Arial"><a href="mpp.htm">mpp</a></font></li>
+	<li><font face="Arial"><a href="net.htm">net</a></font></li>
+	<li><font face="Arial"><a href="path.htm">path</a></font></li>
+	<li><font face="Arial"><a href="pin.htm">pin</a></font></li>
+	<li><font face="Arial"><a href="Point.htm">Point</a></font></li>
+	<li><font face="Arial"><a href="pointList.htm">pointlist</a></font></li>
+	<li><font face="Arial"><a href="polygon.htm">polygon</a></font></li>
+	<li><font face="Arial"><a href="Rect.htm">Rect</a></font></li>
+	<li><font face="Arial"><a href="rectangle.htm">rectangle</a></font></li>
+	<li><font face="Arial"><a href="segment.htm">segment</a></font></li>
+	<li><font face="Arial"><a href="shape.htm">shape</a></font></li>
+	<li><font face="Arial"><a href="techFile.htm">techfile</a></font></li>
+	<li><font face="Arial"><a href="transform.htm">transform</a></font></li>
+	<li><font face="Arial"><a href="transform64.htm">transform64</a></font></li>
+	<li><font face="Arial"><a href="ui.htm">ui</a></font></li>
+	<li><font face="Arial"><a href="Vector.htm">Vector</a></font></li>
+	<li><font face="Arial"><a href="vertex.htm">vertex</a></font></li>
+	<li><a href="VSeg.htm">VSeg</a></li>
+	<li><font face="Arial"><a href="via.htm">via</a></font></li>
+	<li><font face="Arial"><a href="viaInst.htm">viaInst</a></font></li>
+	<li><font face="Arial"><a href="view.htm">view</a></font></li>
+</ul>
+<!-- #EndEditable --> 
+  <p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-2">Copyright &copy; Peardrop 
+    Design 2018.</font></p>
+</div>
+</body>
+<!-- #EndTemplate --></html>

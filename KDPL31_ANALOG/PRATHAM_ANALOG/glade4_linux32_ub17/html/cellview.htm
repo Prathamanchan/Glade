@@ -1,0 +1,554 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- #BeginTemplate "/Templates/glade.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>Glade Reference Manual</title>
+<style type="text/css"></style>
+<link href="CSS Docs/shadowHeading1.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<div align="left"><img src="images/canvasview" width="32" height="32" align="right"><br>
+</div>
+<div align="left">
+  <p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade 
+    Reference</font></b></font></p>
+  <hr>
+  <!-- #BeginEditable "text" -->
+
+<h2 align="left"><font face="Arial, Helvetica, sans-serif" size="6">cellView</font></h2>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">A <a href="cellview.htm">cellView</a> stores design data. It is a unique combination of a <a href="cell.htm">cell </a>and a <a href="view.htm">view</a>. A <a href="cellview.htm">cellView</a> corresponds to GDS2 STRUCTs, LEF MACROs or a DEF DESIGN. A <a href="cellview.htm">cellView</a> is stored in a <a href="library.htm">library</a>. The <a href="cellview.htm">cellView</a> access functions are as follows. Note that all coordinate values are expected in database units. To find the number of database units per micron, use the <a href="library.htm">library</a> dbuPerUU() function.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<p align="left"><font face="Arial" size="5"><u><strong>Creating or opening cellViews</strong></u></font></p>
+<p align="left">A <a href="cellview.htm">cellView</a> is created using a <a href="library.htm">library</a> object.</p>
+<h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="1064"><a href="cellview.htm">cellView</a> *cv = lib.dbOpenCellView(char *cellName, char *viewName, &#39;mode&#39;)</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" pbzloc="1065">Create a cellView in an existing library <i>lib</i> with&nbsp;cell <i>cellName</i> and view <i>viewName</i>. The function returns a <a href="cellview.htm">cellView</a><i>. mode</i> is a single character denoting the access mode; &#39;r&#39; signifies readonly access, &#39;w&#39; signifies write access (the cellview should not already exist and will be created), and &#39;a&#39; signifies append access (the cellview already exists and is opened for modification). Note that after creating a new <a href="cellview.htm">cellView</a> and any objects in it, <i>update()</i> <strong>must</strong> be called to build the data structures before editing/viewing/querying.</font></p>
+
+<p align="left" pbzloc="1066">&nbsp;</p>
+
+<p align="left"><font face="Arial" size="5"><strong><u>Creating objects in a cellView</u></strong></font></p>
+
+<p align="left"><font face="Arial" pbzloc="1063">A cellView contains <a href="shape.htm">shape</a> and <a href="inst.htm">instance</a>/array objects. Shape objects are created on a specified layer number, which is internally represented by a signed 16 bit integer value. To get a layer number given a layer name and purpose, you can use the <a href="techfile_into.htm">techfile</a> class functions to get and manipulate layers:</font>  </p>
+<blockquote>
+  <pre align="left"><font face="Courier New, Courier, mono" pbzloc="1022">layer = tech.getLayerNum(layerName, purposeName)</font></pre>
+  <p>&nbsp;</p>
+</blockquote>
+<p align="left" class="shadowHeading1" pbzloc="389"><a href="rectangle.htm"><strong>rectangle</strong></a><strong> r = cv.dbCreateRect(<a href="Rect.htm">Rect</a> box, int layer, bool use_rect = False)</strong></p>
+<p align="left" pbzloc="389"><font face="Arial, Helvetica, sans-serif">Creates a <a href="rectangle.htm">rectangle</a> object in the cellView with bounding box <i>box</i> and on layer <i>laye</i>r and returns the created rectangle. If use_rect is&nbsp;false (the default), a square will be created instead of a rectangle if the box width equals the box height.</font></p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">For example to create a rectangle on layer 3:</font></p>
+
+<blockquote>
+<pre pbzloc="101">
+<font face="Courier New, Courier, mono" pbzloc="1022">box = Rect(0, 0, 1000, 2000)
+layer = 3
+cv.dbCreateRect(box, layer</font></pre></blockquote>
+<h4 align="left" class="shadowHeading1" pbzloc="1028"><font face="Arial, Helvetica, sans-serif" pbzloc="1023"><a href="polygon.htm" pbzloc="1027">polygon </a>p&nbsp; = cv.dbCreatePolygon(int * xpts, int *ypts, int numPoints, int layer,&nbsp;bool use_poly = </font><font face="Arial" pbzloc="387">False</font><font face="Arial, Helvetica, sans-serif">)</font></h4>
+
+<p align="left" pbzloc="388"><font face="Arial, Helvetica, sans-serif" pbzloc="113">Create a <a href="polygon.htm">polygon</a> object in the cellView and returns the polygon created. The array <i>xpts</i> and <i>ypts</i> are the X and Y coordinates of the polygon and should be created in python using the intarray() function. <i>numPoints</i> specifies the number of points and <i>layer</i> the layer the polygon is created on. If <em>use_poly</em> is&nbsp;false (the default), a rectangle will be created instead of a polygon if possible.</font></p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" pbzloc="114">For example to create a triangle on layer 3:</font></p>
+
+<blockquote>
+<pre>
+<font face="Courier New, Courier, mono" pbzloc="1034">numPoints = 3
+x = intarray(numPoints)
+y = intarray(numPoints)</font><font face="Courier New, Courier, mono" pbzloc="111">
+x[0] = 0
+y[0] = 0
+x[1] = 2000
+y[1] = 0
+x[2] = 0
+y[2] = 2000
+layer = 3
+poly = cv.dbCreatePolygon(x, y, numPoints, layer)</font></pre></blockquote>
+
+<h4 align="left" class="shadowHeading1" pbzloc="511"><font face="Arial, Helvetica, sans-serif" pbzloc="506"><a href="polygon.htm" pbzloc="510">polygon </a> p = cv.dbCreatePolygon(ptlist, int numPoints, int layer,&nbsp;bool use_poly = </font><font face="Arial" pbzloc="391">False</font><font face="Arial, Helvetica, sans-serif" pbzloc="134">)</font></h4>
+
+<p align="left"><font face="Arial" pbzloc="137">Similar to the above, but uses a python list of points, each of which is a list of x and y coordinates of the point.</font></p>
+
+<blockquote>
+  <pre align="left" pbzloc="121"><font face="Courier New, Courier, mono" pbzloc="111"> 
+poly = cv.dbCreatePolygon([[0,0],[1000,0],[1000,1000],[0,1000]], 4, 3)</font></pre>
+</blockquote>
+<p align="left" class="shadowHeading1" pbzloc="504"><font face="Arial"><a href="polygon.htm"><strong pbzloc="505">polygon</strong></a><strong pbzloc="503"> p = cv.dbCreateHole(int *xpts, int *ypts,&nbsp;int nPoints,&nbsp;int&nbsp;lyr, shape&nbsp;*obj=NULL)</strong></font></p>
+
+<p align="left" pbzloc="127"><font face="Arial" pbzloc="125">Creates a hole in a <a href="polygon.htm">polygon</a> . The hole to be &#39;cut&#39; is represented by the poygon defined by xpts, ypts, nPoints. The polygon and hole are on layer <em>lyr</em>. If <em>obj </em>is non-null, it is assumed to be the polygon to cut the hole in; if non-null, the largest polygon that overlaps the hole will be cut. In general, it is better to use the boolean operations to cut holes in polygons as they are more robust.</font></p>
+
+<h4 align="left" pbzloc="657">&nbsp;</h4>
+
+<h4 align="left" class="shadowHeading1" pbzloc="502"><font face="Arial, Helvetica, sans-serif" pbzloc="497"><a href="label.htm" pbzloc="501">label</a> l = cv.dbCreateLabel(<a href="Point.htm">Point </a>origin, char *name, int orient, double height, int presentation, int layer)</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" pbzloc="145">Creates a <a href="label.htm">label</a> in the cellView at location <i>origin</i> with text <i>name</i> and returns the label created. The orientation of the label is given by <i>orient</i> and the label height by <i>height</i>. <i>presentation</i> is the alignment of the text label and <i>layer</i> is the label&#39;s layer.</font></p>
+
+<p align="left" pbzloc="512">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1" pbzloc="496"><font face="Arial, Helvetica, sans-serif" pbzloc="489"><a href="path.htm" pbzloc="495">path</a> p = cv.dbCreatePath(int *xpts, int *ypts, int numPoints, int layer, int width, int style, int beginExtent, int endExtent)</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" pbzloc="656">Create a <a href="path.htm">path</a> object in the cellView and returns the path created. The array <i>xpts</i> and <i>ypts</i> are the X and Y coordinates of the path. <i>numPoints</i> specifies the number of points and <i>layer</i> the layer the polygon is created on. <i>width</i> is the width of the path and <i>style</i> the path style (0 = TRUNCATE, 1 = ROUND, 2 = EXTEND, 4 = VAREXTEND, 8 = OCTAGONAL). If the path style is type 4, varExtend, then <i>beginExtent</i> and <i>endExtent</i> specify the path extension beyond the beginning and ending points.</font></p>
+
+<h4 align="left" pbzloc="496">&nbsp;</h4>
+<h4 align="left" class="shadowHeading1" pbzloc="496"><font face="Arial, Helvetica, sans-serif" pbzloc="489"><a href="path.htm" pbzloc="495">path</a> p = cv.dbCreatePath(ptlist, int numPoints, int layer, int width, int style, int beginExtent, int endExtent)</font></h4>
+<p align="left"><font face="Arial, Helvetica, sans-serif" pbzloc="656">Create a <a href="path.htm">path</a> object in the cellView and returns the path created. The python ptlist is a list of points, each of which is a list of x and y coordinates of the point. <i>numPoints</i> specifies the number of points and <i>layer</i> the layer the polygon is created on. <i>width</i> is the width of the path and <i>style</i> the path style (0 = TRUNCATE, 1 = ROUND, 2 = EXTEND, 4 = VAREXTEND, 8 = OCTAGONAL). If the path style is type 4, varExtend, then <i>beginExtent</i> and <i>endExtent</i> specify the path extension beyond the beginning and ending points.</font></p>
+<p align="left" pbzloc="488">&nbsp;</p>
+
+<p align="left" class="shadowHeading1" pbzloc="653"><font face="Arial"><a href="mpp.htm"><strong pbzloc="654">mpp</strong></a><strong pbzloc="485"> m = cv. dbCreateMPP(inst *xpts, int *ypts, int nPoints)</strong></font></p>
+
+<p align="left"><font face="Arial">Creates a MPP (MultiPartPath) in the cellView and returns the mpp created. The array <i>xpts</i> and <i>ypts</i> are the X and Y coordinates of the path. <i>numPoints</i> specifies the number of points.</font></p>
+<p align="left">&nbsp;</p>
+
+<p align="left" class="shadowHeading1" pbzloc="653"><font face="Arial"><a href="mpp.htm"><strong pbzloc="654">mpp</strong></a><strong pbzloc="485"> m = cv. dbCreateMPP(ptlist,  int nPoints)</strong></font></p>
+<p align="left"><font face="Arial">Creates a MPP (MultiPartPath) in the cellView and returns the mpp created. The python list <i>pts</i> is the coordinates of the path. <i>nPoints</i> specifies the number of points.</font> </p>
+<blockquote>
+  <pre align="left"><font face="Courier New, Courier, mono" pbzloc="111"> poly = cv.dbCreateMPP([[0,0],[1000,0],[1000,1000],[0,1000]], 4)</font></pre>
+  <p>&nbsp;</p>
+  </blockquote>
+<p align="left" class="shadowHeading1" pbzloc="653"><font face="Arial"><a href="mpp.htm"><strong pbzloc="654">mpp</strong></a><strong pbzloc="485"> m = cv. dbCreateMPP(char *ruleName, ptlist,  int nPoints)</strong></font></p>
+<p align="left"><font face="Arial">Creates a MPP (MultiPartPath) in the cellView using the specified rule <em>ruleName</em> and returns the mpp created. The python list <i>ptlist</i> is the coordinates of the path. <i>nPoints</i> specifies the number of points.</font> ruleName is the name of the (existing) mpp rule, as defined in the techfile.</p>
+<blockquote>
+  <p>&nbsp;</p>
+</blockquote>
+<h4 align="left" class="shadowHeading1" pbzloc="484"><font face="Arial, Helvetica, sans-serif" pbzloc="479"><a href="inst.htm" pbzloc="483">inst</a> i = cv.dbCreateInst(char *libName, char *cellName, char *viewName, <a href="Point.htm">Point </a>origin, int orient, double mag, char *instName=null) </font></h4>
+
+<p align="left" pbzloc="1089"><font face="Arial, Helvetica, sans-serif" pbzloc="1087">Create an <a href="inst.htm">inst </a>in the cellView and returns the instance created. The instance master <a href="cellview.htm">cellView </a>is specified by <i>libName</i>/<i>cellName</i>/<i>viewName</i>. The instance&#39;s origin is given by <i>origin</i> and its orientation by <i>orient</i>. The enumerations R0, R90, R180, R270, MX, MXR90, MY, MYR90 can be used to specify the orientation. Orientations other than variants of 90 degrees are not currently supported. The magnification is specified by <i>mag</i>. If specified, <i>instName</i> is used to name the instance; else the instance name is autogenerated with the first being I0, then I1, I2 etc.</font></p>
+
+<p align="left" pbzloc="1082">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1" pbzloc="1055"><font face="Arial"><font face="Arial, Helvetica, sans-serif" pbzloc="1094"><a href="inst.htm" pbzloc="478">inst</a> i = cv.dbCreateInst(<a href="library.htm">library </a>*lib, char *cellName, char *viewName, <a href="Point.htm">Point </a>origin, int orient, double mag, char *instName=null) </font></font></h4>
+
+<p align="left" pbzloc="1092"><font face="Arial"><font face="Arial, Helvetica, sans-serif" pbzloc="1093">Create an <a href="inst.htm">inst </a>in the cellView and returns the instance created. This is identical to the above but takes a library *, rather than a library name, as argument. The instance master <a href="cellview.htm">cellView </a>is specified by<i>cellName</i>/<i>viewName</i>. The instance&#39;s origin is given by <i>origin</i> and its orientation by <i>orient</i>. The enumerations R0, R90, R180, R270, MX, MXR90, MY, MYR90 can be used to specify the orientation. Orientations other than variants of 90 degrees are not currently supported. The magnification is specified by <i>mag</i>. If specified, <i>instName</i> is used to name the instance; else the instance name is autogenerated with the first being I0, then I1, I2 etc.</font></font></p>
+
+<p align="left"><font face="Arial" pbzloc="1069">&nbsp;</font></p>
+
+<h4 align="left" class="shadowHeading1" pbzloc="473"><font face="Arial"><font face="Arial, Helvetica, sans-serif" pbzloc="1095"><a href="inst.htm" pbzloc="474">inst</a> i = cv.dbFindInstByName(char *name)</font></font></h4>
+
+<p align="left"><font face="Arial"><font face="Arial, Helvetica, sans-serif" pbzloc="1097">Finds the instance with name <i>name</i> in the cellView and returns it, or null if not found.</font></font></p>
+
+<p align="left"><font face="Arial">&nbsp;</font></p>
+
+<h4 align="left" class="shadowHeading1" pbzloc="1039"><font face="Arial"><font face="Arial, Helvetica, sans-serif" pbzloc="1046"><a href="array.htm" pbzloc="1040">array</a> a&nbsp; = cv.dbCreateArray(char *libName, char *cellName, char *viewName, <a href="Point.htm">Point </a>origin, int orient, double mag, int numRows, int numCols, int rowSpacing, int colSpacing, char *instName=null) </font></font></h4>
+
+<p align="left"><font face="Arial"><font face="Arial, Helvetica, sans-serif" pbzloc="1058">Create an array in the cellView and returns the array created. The array master cellView is specified by <i>libName, cellName </i>and<i> viewName</i>. The array&#39;s origin is given by <i>origin</i> and its orientation by <i>orient</i>. The enumerations R0, R90, R180, R270, MX, MXR90, MY, MYR90 can be used tp specify the orientation. Orientations other than variants of 90 degrees are not supported. The magnification is specified by <i>mag</i>. If specified, <i>instName</i> is used to name the instance; else the instance name is autogenerated with the first being I0, then I1, I2 etc. <i>numRows</i> specifies the number of rows and must be greater than 0. <i>numCols</i> specifies the number of columns and must be greater than 0. <i>rowSpacing</i> is the spacing between rows and can be negative or positive, as can <i>colSpacing</i>.</font></font></p>
+
+<p align="left"><font face="Arial" pbzloc="1052">&nbsp;</font></p>
+
+<h4 align="left" class="shadowHeading1" pbzloc="1050"><font face="Arial"><font face="Arial, Helvetica, sans-serif" pbzloc="1051"><a href="array.htm" pbzloc="1045">array</a> a&nbsp; = cv.dbCreateArray(<a href="library.htm">library</a>*lib, char *cellName, char *viewName, <a href="Point.htm">Point </a>origin, int orient, double mag, int numRows, int numCols, int rowSpacing, int colSpacing, char *instName=null) </font></font></h4>
+
+<p align="left"><font face="Arial"><font face="Arial, Helvetica, sans-serif" pbzloc="538">Create an array in the cellView and returns the array created. This is identical to the above but takes a library *, rather than a library name, as argument. The array master cellView is specified by <i>libName, cellName </i>and<i> viewName</i>. The array&#39;s origin is given by <i>origin</i> and its orientation by <i>orient</i>. The enumerations R0, R90, R180, R270, MX, MXR90, MY, MYR90 can be used tp specify the orientation. Orientations other than variants of 90 degrees are not supported. The magnification is specified by <i>mag</i>. If specified, <i>instName</i> is used to name the instance; else the instance name is autogenerated with the first being I0, then I1, I2 etc. <i>numRows</i> specifies the number of rows and must be greater than 0. <i>numCols</i> specifies the number of columns and must be greater than 0. <i>rowSpacing</i> is the spacing between rows and can be negative or positive, as can <i>colSpacing</i>.</font></font></p>
+
+<p align="left"><font face="Arial" pbzloc="520">&nbsp;</font></p>
+
+<h4 align="left" class="shadowHeading1" pbzloc="515"><font face="Arial"><font face="Arial, Helvetica, sans-serif" pbzloc="513"><a href="viaInst.htm" pbzloc="516">viaInst</a> v&nbsp; = cv.dbCreateViaInst(char *name, <a href="Point.htm">Point </a>origin, orient_t orient = R0)</font></font></h4>
+
+<p align="left"><font face="Arial"><font face="Arial, Helvetica, sans-serif">Creates an&nbsp;<a href="viaInst.htm">viaInst</a> of a <a href="via.htm">via</a> &nbsp;with master <i>name,</i> origin <i>origin</i> and orient <em>orient</em> and returns the viaInst created.</font></font></p>
+
+<p align="left">&nbsp;</p>
+
+<p align="left" pbzloc="524"><font face="Arial" class="shadowHeading1"><strong pbzloc="517">HSeg h = cv.dbCreateHSeg(int x1, int y1, int x2, int y2, int layer, net *n, int width=0, int style=DB_TRUNCATED)</strong></font></p>
+
+<p align="left"><font face="Arial">A HSeg is a horizontal track segment. HSegs are a memory efficient way of representing a two point path with a given layer that has a fixed width and style, and as such are used in representing DEF&nbsp;regular net routing.&nbsp;This function creates a HSeg object in the cellView and returns the HSeg created. (x1, y1) is the first point of the HSeg, (x2, y2) is the second point. <em>layer</em> is the layer the HSeg is created on. <em>width</em> is the HSeg width (defaults to 0) and <em>style</em> is the HSeg&#39;s path style (defaults to truncated). If the cellView&#39;s library does not contain a segparam&nbsp;index for the HSeg with matching layer and width/style, one is created.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<p align="left"><font face="Arial" class="shadowHeading1"><strong>VSeg v&nbsp; = cv.dbCreateVSeg(int x1, int y1, int x2, int y2, int layer, net *n, int width=0, int style=DB_TRUNCATED)</strong></font></p>
+
+<p align="left"><font face="Arial" pbzloc="537">A VSeg is a vertical track segment. VSegs are a memory efficient way of representing a two point path with a given layer that has a fixed width and style, and as such are used in representing DEF regular net routing. This function creates a VSeg object in the cellView and returns the VSeg created. (x1, y1) is the first point of the VSeg, (x2, y2) is the second point. <em>layer</em> is the layer the VSeg is created on. <em>width</em> is the VSeg width (defaults to 0) and <em>style</em> is the VSeg&#39;s path style (defaults to truncated).&nbsp; If the cellView&#39;s library does not contain a segparam entry for the VSeg, one will be created with matching layer and width/style, one is created.</font></p>
+
+<p><font face="Consolas" size="2"><font face="Consolas" size="2">&nbsp;</font></font></p>
+
+<h4 align="left" class="shadowHeading1" pbzloc="531"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif" pbzloc="521">ellipse e&nbsp; = cv.dbCreateEllipse(<a href="Point.htm">Point </a>origin, int xRadius, int yRadius, int layer)</font></font></h4>
+
+<p align="left"><font face="Arial" pbzloc="183">Create an ellipse with given origin (the centre of the ellipse), xRadius, yRadius and layer number</font></p>
+
+<h4 align="left"><font face="Arial, Helvetica, sans-serif">&nbsp;</font></h4>
+
+<h4 align="left" class="shadowHeading1" pbzloc="181"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif" pbzloc="182">ellipse e&nbsp; = cv.dbCreateCircle(<a href="Point.htm">Point </a>origin, int radius, int layer)</font></font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif">Create a circular ellipse, i.e. one with the same X and Y radius.</font></font></p>
+
+<h4 align="left"><font face="Arial, Helvetica, sans-serif" pbzloc="534">&nbsp;</font></h4>
+
+<h4 align="left" class="shadowHeading1" pbzloc="186"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif" pbzloc="187">arc a&nbsp; = cv.dbCreateArc(<a href="Point.htm">Point </a>origin, int xRadius, int yRadius, double startAngle, double stopAngle, int layer)</font></font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif">Create an arc with the specified origin, X and Y radius. The arc is part of an ellipse with the specified startAngle and stopAngle.</font></font></p>
+
+<h4 align="left">&nbsp;</h4>
+
+<h4 align="left" class="shadowHeading1" pbzloc="536"><font face="Arial, Helvetica, sans-serif" pbzloc="527">line l&nbsp; = cv.dbCreateLine(<a href="Point.htm">Point </a>p1, <a href="Point.htm">Point </a>p2, int layer)</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" pbzloc="203">Creates a line in the cellView with vertices defined by&nbsp;points <em>p1</em> and <em>p2</em>&nbsp;on layer <i>layer </i>and returns the line created.</font></p>
+
+<h4 align="left">&nbsp;</h4>
+
+<h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">line l&nbsp; = cv.dbCreateLine(int *x, int *y, int numPoints, int layer)</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" pbzloc="398">Creates a line in the cellView with vertices defined by integer arrays <em>x</em> and <em>y </em>with size <em>numPoints</em> on layer <i>layer </i>and returns the line created.</font></p>
+
+<h4 align="left">&nbsp;</h4>
+<h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">line l&nbsp; = cv.dbCreateLine(ptlist, int numPoints, int layer)</font></h4>
+<p align="left"><font face="Arial, Helvetica, sans-serif" pbzloc="398">Creates a line in the cellView with vertices defined by the python list ptlist, which is a list of points. Each point is a list of x and y coordinates. <em>numPoints</em> is the number of points. The line is created on layer <i>layer.</i>.</font></p>
+<p align="left">&nbsp;</p>
+
+<p align="left"><font face="Arial" size="5"><strong><u pbzloc="397">Creating connectivity in a cellView</u></strong></font></p>
+
+<p align="left"><font face="Arial" size="5"><font pbzloc="206" size="3">A cellView can also contain connectivity, such as nets, pins and ports (physical pin shapes).</font></font></p>
+
+<p align="left">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1" pbzloc="414"><font face="Arial, Helvetica, sans-serif" pbzloc="409"><a href="net.htm">net</a> = cv.dbCreateNet(char *name)</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Creates a <a href="net.htm">net</a> in the cellView with name <i>name </i>and returns the net created. If the net already exists in the cellView, the net is not created.</font></p>
+
+<h4 pbzloc="205">&nbsp;</h4>
+
+<h4 align="left" class="shadowHeading1" pbzloc="420"><font face="Arial, Helvetica, sans-serif" pbzloc="415"><a href="net.htm" pbzloc="419">net</a> n&nbsp; = cv.dbFindNetByName(char *name)</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" pbzloc="433">Finds the <a href="net.htm">net</a> with name <i>name</i> in the cellView and returns it, or null if not found.</font></p>
+
+<h4 align="left">&nbsp;</h4>
+
+<h4 align="left" class="shadowHeading1" pbzloc="426"><font face="Arial, Helvetica, sans-serif" pbzloc="421"><a href="pin.htm" pbzloc="425">pin</a> p&nbsp; = cv.dbCreatePin(char *name, db_PinDirection</font><span style="font-family: arial,helvetica,sans-serif"><font color="#2b91af" pbzloc="403" size="2">&nbsp;</font></span><font face="Arial, Helvetica, sans-serif" pbzloc="392">dir, <a href="net.htm">net </a>*n)</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" pbzloc="405">Creates a logical&nbsp; <a href="pin.htm">pin</a> in the cellView with name <i>name</i> and db_PinDirection <i>dir</i> for the net<i> n</i> and returns the pin created. The net <em>n</em> must exist in the cellView.</font></p>
+
+<h4 pbzloc="408">&nbsp;</h4>
+
+<h4 align="left" class="shadowHeading1" pbzloc="432"><font face="Arial, Helvetica, sans-serif" pbzloc="427"><a href="pin.htm" pbzloc="431">pin</a> p = cv.dbFindPinByName(char *name)</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Finds the&nbsp;<a href="pin.htm">pin</a> with name <i>name</i> in the cellView and returns it, or null if not found.</font></p>
+
+<h4 align="left" pbzloc="1098">&nbsp;</h4>
+
+<h4 align="left" class="shadowHeading1" pbzloc="228"><font face="Arial, Helvetica, sans-serif" pbzloc="226">cv.dbCreatePort(<a href="pin.htm">pin </a>p, <a href="shape.htm">shape </a> s)</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" pbzloc="1099">Creates a port for pin <i>p</i> . A port is a physical representation of a pin so a valid shape <i>s</i> must be specified.</font></p>
+
+<p align="left" pbzloc="1100">&nbsp;</p>
+
+<p align="left" pbzloc="233"><strong><u><font face="Arial" pbzloc="268" size="5">Creating&nbsp;and updating PCell instances&nbsp;in a cellView</font></u></strong></p>
+
+<p pbzloc="259"><span pbzloc="269" style="font-family: arial,helvetica,sans-serif">&nbsp;<a href="pcells.htm">PCell </a>(programmable cell) instances can be created in a cellView. See also <a href="ui.htm">loadPCell</a>.</span></p>
+
+<h4 pbzloc="260">&nbsp;</h4>
+
+<h4 align="left" class="shadowHeading1" pbzloc="251"><font face="Arial, Helvetica, sans-serif" pbzloc="249">inst i = cv.dbCreatePCellInst(char *libName, char *cellName, char *viewName, <a href="Point.htm">Point </a>origin, int orient=R0, int numRows=1, int numCols=1, int rowSpacing=0, int colSpacing=0)</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" pbzloc="270">Create an instance of a <a href="pcells.htm">PCell</a> in the cellView and returns the instance created. The PCell master must have been previously created e.g. by a call to ui::loadPCell(). <i>libName</i> is the library name containing the pcell, <i>cellName</i> is the cellView name of the PCell and <i>viewName</i> is the view type of the PCell. <i>origin</i> is the instance&#39;s origin. If specified, <i>orient</i> is the instance&#39;s orientation, otherwise defaulting to R0. If <i>numRows</i> or <i>numCols</i> are not 1, an array is created of PCells.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1" pbzloc="267"><font face="Arial, Helvetica, sans-serif" pbzloc="265">inst newInst = cv.dbUpdatePCell(<a href="inst.htm">inst</a> originalInst)</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Updates a <a href="pcells.htm">PCell</a> instance after any of its properties have been changed. This is equivalent to querying the PCell instance properties in the GUI and changing them. Note that the <em>originalInst</em> is destroyed, and <em>newInst</em> is created.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<p align="left"><strong><u><font face="Arial" size="5">Searching for objects&nbsp;in a cellView</font></u></strong></p>
+
+<h4 align="left" class="shadowHeading1" pbzloc="440"><font face="Arial, Helvetica, sans-serif" pbzloc="438"><a href="dbObjList.htm">dbObjList</a>&lt;dbObj&gt; list = cv.dbGetOverlaps(<a href="Rect.htm">Rect </a>box, int layer, bool allLayers=False, bool instsToo=</font><font face="Arial" pbzloc="439">False</font><font face="Arial, Helvetica, sans-serif" pbzloc="438">, bool viaInstsToo=</font><font face="Arial" pbzloc="441">False</font><font face="Arial, Helvetica, sans-serif" pbzloc="438">)</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Searches the area given by <i>box</i> for any objects whose bounding boxes overlap the area. If <i>allLayers</i> is 0, then shapes on only the specified <i>layer</i> are returned. If <i>allLayers</i> is 1, shapes on all layers are searched. If instsToo is 1, any instances whose bounding box overlaps the area are returned in addition to any valid shapes, similarly is viaInstsToo is 1 then any via insts that overlap are also checked.</font></p>
+
+<h4 align="left" pbzloc="452">&nbsp;</h4>
+<h4 align="left" class="shadowHeading1" pbzloc="452"><font face="Arial, Helvetica, sans-serif" pbzloc="285">cv.dbGetOverlaps(<a href="dbObjList.htm">dbObjList</a>&lt;dbObj&gt; &amp;list, <a href="Rect.htm">Rect </a>box, int layer,&nbsp;bool allLayers=</font><font face="Arial" pbzloc="449">False</font><font face="Arial, Helvetica, sans-serif" pbzloc="285">, bool instsToo=</font><font face="Arial" pbzloc="451">False</font><font face="Arial, Helvetica, sans-serif" pbzloc="285">, bool viaInstsToo=</font><font face="Arial" pbzloc="453">False</font><font face="Arial, Helvetica, sans-serif" pbzloc="285">)</font></h4>
+<p align="left"><font face="Arial, Helvetica, sans-serif">As dbGetOverlaps, but appends objects found to<i pbzloc="308"> list.</i></font></p>
+<p align="left" pbzloc="280">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1" pbzloc="446"><font face="Arial, Helvetica, sans-serif" pbzloc="290">list = cv.dbGetOverlaps_py(<a href="Rect.htm">Rect </a>box, int layer, bool allLayers=</font><font face="Arial" pbzloc="447">False</font><font face="Arial, Helvetica, sans-serif" pbzloc="290">, bool instsToo=</font><font face="Arial" pbzloc="445">False</font><font face="Arial, Helvetica, sans-serif" pbzloc="290">, bool viaInstsToo=</font><font face="Arial" pbzloc="443">False</font><font face="Arial, Helvetica, sans-serif" pbzloc="290">)</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" pbzloc="291">As above, but returns a Python list of dbObj. </font></p>
+<p align="left">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1" pbzloc="454"><font face="Arial">cv.dbGetHierOverlaps(</font><a href="dbObjList.htm"><font face="Arial">dbObjList</font></a><font face="Arial" pbzloc="309">&lt;<a href="dbHierObj.htm">dbHierObj</a>&gt; &amp;list , <a href="Rect.htm">Rect </a>box, int layer, bool allLayers = </font><font face="Arial" pbzloc="456">False</font><font face="Arial" pbzloc="309">, int level = 99)</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Searches the are given by <i>box</i> for any objects whose bounding boxes overlap the area. If <i>allLayers</i> is 0, only the shapes on the specified <i>layer</i> are returned. If <i>allLayers</i> is 1, shapes on all layers are searched. The search is carried out hierarchically up to <i>level</i> levels deep.</font></p>
+
+<p align="left"><font face="Arial">A <a href="dbHierObj.htm">dbHierObj</a> is a simple class conatining </font><font size="2"><font face="Arial" size="3">&nbsp;the object itself, the cellView containing the object&nbsp;and the transform of the object relative to the top level.</font></font></p>
+
+<p><font size="2">&nbsp;</font></p>
+<p class="shadowHeading1"><font face="Arial"><strong>cv.getHierOverlaps(</strong></font><strong><font face="Arial" pbzloc="309"><a href="Rect.htm">Rect </a>box, int layer, bool allLayers = </font><font face="Arial" pbzloc="456">False</font><font face="Arial" pbzloc="309">, int level = 99)</font></strong><font face="Arial" pbzloc="309"></font></p>
+<p>As above, but returns a Python list of <a href="dbHierObj.htm">dbHierObj</a>s.</p>
+<p>&nbsp;</p>
+
+<p><font size="2"><font face="Arial" size="5"><strong><u>cellView utility functions</u></strong></font></font></p>
+
+<p align="left" class="shadowHeading1"><font face="Arial"><strong>UserUnits units =  cv.userUnits()</strong></font></p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Returns the user units as <em>inches</em> or <em>microns</em>.</font></p>
+
+<p align="left">&nbsp;</p>
+  
+<p align="left" class="shadowHeading1"><font face="Arial"><strong>cv.userUnits(units)</strong></font></p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Sets the user units. <em>units</em> can be either <em>inches</em> or <em>microns</em>.</font></p>
+  
+<p align="left">&nbsp;</p>
+
+<p class="shadowHeading1"><strong>int dbu =  cv.dbuPerUU()</strong></p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Returns the number of database units per user unit. The  default number of dbu is 1000 if user units are <em>microns</em>, and 160 if user units are <em>inches</em>.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<p align="left" class="shadowHeading1"><font face="Arial"><strong>cv.dbuPerUU(dbu)</strong></font></p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Sets the database units per user unit.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<p align="left" class="shadowHeading1"><font face="Arial"><strong>cv.updateBbox()</strong></font></p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Updates the cellView&#39;s bounding box to enclose all objects it contains. This function is deprecated and update() should be used.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<p align="left" class="shadowHeading1"><font face="Arial"><strong>cv.optimiseTrees()</strong></font></p>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Build the internal data structures for the cellView. This <b>must</b> be called after creating any objects in&nbsp;a new&nbsp;cellView, but before viewing / editing / querying the cellView. This function is deprecated and update() should be used.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<p align="left" class="shadowHeading1"><font face="Arial"><strong>cv.update()</strong></font></p>
+
+<p align="left"><font face="Arial" pbzloc="310">Calls updateBbox(), optimiseTrees(), sets the cellView as edited and sets the modification date. This should be called after a modification, or a set of modifications, to the cellView. For perfomance reasons it is better to call this after a set of operations rather than for each operation.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1" pbzloc="316"><font face="Arial, Helvetica, sans-serif" pbzloc="311"><a href="Rect.htm" pbzloc="315">Rect </a>box = cv.bBox()</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Get the bounding box of the cellView as a Rect.</font></p>
+
+<p align="left" pbzloc="317">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="325">cv.clearBbox()</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Resets the cellView&#39;s bounding box to (0,0) (0,0).</font></p>
+
+<p align="left">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1" pbzloc="324"><font face="Arial, Helvetica, sans-serif" pbzloc="333">cv.bBox(<a href="Rect.htm">Rect </a>box)</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">The existing cellView&#39;s bounding box becomes the union of the current bounding box and <i>box</i>.</font></p>
+
+<p align="left">&nbsp;</p>
+<p align="left" class="shadowHeading1"><strong><a href="Rect.htm">Rect</a> box = cv.getBoundary()</strong></p>
+<p align="left">Gets the cellView's boundary rectangle, if such a shape exists on the boundary drawing layer.</p>
+<p align="left">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1" pbzloc="332"><font face="Arial, Helvetica, sans-serif" pbzloc="334">cv.dbDeleteObj(<a href="dbObj.htm">dbObj</a> object, bool reallyDelete=True, bool opt=True)</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Delete the database object <i>object</i>. If <em>reallyDelete</em> is true, the object is deleted, else it is just removed from the object trees (and hence undoing the delete is possible). If <em>opt</em> is true, the tree is (re)optimised after the delete.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int num = cv.getNumShapes()</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Get the number of shapes in the cellview.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int num = cv.getNumInsts()</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Get the number of instances in the cellview.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int num = cv.getNumViaInsts()</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Get the number of viaInsts in the cellview</font></p>
+
+<p align="left">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int num = cv.getNumNets()</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Get the number of nets in the cellview.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int num = cv.getNumPins()</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" pbzloc="341">Get the number of pins in the cellview. </font></p>
+
+<p align="left">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1" pbzloc="340"><font face="Arial, Helvetica, sans-serif" pbzloc="335"><a href="library.htm" pbzloc="339">library</a> lib = cv.lib()</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Get the cellview&#39;s library.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<p align="left" class="shadowHeading1"><font face="Arial"><strong>bool val = cv.isPCell()</strong></font></p>
+
+<p align="left"><font face="Arial">returns true if the cellView is a PCell superMaster.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<p align="left" class="shadowHeading1"><font face="Arial"><strong>bool val = cv.isSubMaster()</strong></font></p>
+
+<p align="left"><font face="Arial">Returns true if the cellView is a PCell subMaster.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">char *s = cv.cellName()</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Get the cellview&#39;s name.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">char *s = cv.viewName()</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif" pbzloc="355">Get the cellview&#39;s viewname.</font></p>
+
+<p align="left" pbzloc="369">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1" pbzloc="354"><font face="Arial, Helvetica, sans-serif" pbzloc="352"><a href="dbObj.htm" pbzloc="346">dbObj</a> obj = cv.getNearestObj(<a href="Point.htm">Point </a>p, int dist)</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Get the nearest object to a point <i>p</i> in the cellview, up to a maximum distance <i>dist</i>.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1" pbzloc="361"><font face="Arial, Helvetica, sans-serif" pbzloc="356"><a href="lpp.htm" pbzloc="360">dbLpp</a> lpp = cv.getLpp(int layer)</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Get the layer-purpose pair with layer number <i>layer</i> in this cellview.</font></p>
+<p align="left">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1" pbzloc="361"><font face="Arial, Helvetica, sans-serif" pbzloc="356"><a href="lpp.htm" pbzloc="360">dbLpp</a> lpp = cv.getLpp(char *layerName, char *purposeName)</font></h4>
+<p align="left"><font face="Arial, Helvetica, sans-serif">Get the layer-purpose pair with layer <em>layerName</em> and purpose <em>purposeName</em> in this cellview.</font></p>
+<p align="left">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1" pbzloc="368"><font face="Arial, Helvetica, sans-serif" pbzloc="366">bool b=cv.deleteLpp(<a href="lpp.htm">dbLpp </a>*lpp)</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Delete the layer-purpose pair <i>lpp</i> in this cellview. All objects (shapes, insts and viaInsts) on that lpp will be deleted.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">list = cv.getLpps()</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Returns a&nbsp;Python list of all layer-purpose pairs in the cellview. This is a python wrapper created using the SWIG %extend function.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">list&nbsp; = cv.getInsts()</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Returns a Python list of all instances in the cellView. This is a python wrapper created using the SWIG %extend function.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">list&nbsp; = cv.getNets()</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Returns a Python list of all nets in the cellView. This is a python wrapper created using the SWIG %extend function.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">list&nbsp; = cv.getPins()</font></h4>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif">Returns a Python list of all pins in the cellView. This is a python wrapper created using the SWIG %extend function.</font></p>
+
+<p align="left" pbzloc="378">An example of using the access functions to create text labels on pins follows.</p>
+<pre>	# script to create labels from pins
+   #
+   # Get the current edit cellView, lib and technology
+   cv = getEditCellView()
+   lib = cv.lib()
+   tech = lib.tech()
+   #
+   # Get desired pin layer
+   lyr = tech.getLayerNum(&quot;text&quot;, &quot;drawing&quot;)
+   #
+   # Iterate over all top level pins
+   #
+   pins = cv.getPins()
+   for pn in pins :
+   	name = pn.name()
+   	# Get the pin shapes and iterate over them
+   	shapes = pn.getPorts()
+   	for shp in shapes :
+   		box = shp.bBox()
+   		origin = box.centre()
+   		cv.dbCreateLabel(origin, name, R0, 1.0, centreCentre, lyr)
+   	# end while
+   # end while
+   #
+   # commit edits
+   cv.update()
+</pre>
+<p align="left" class="shadowHeading1" pbzloc="375"><font face="Arial" pbzloc="376"><a href="shape.htm"><strong pbzloc="372">shape</strong></a><strong pbzloc="373"> new_shp = cv.roundCorners(</strong><a href="shape.htm"><strong pbzloc="373">shape </strong></a><strong pbzloc="373">*shp, int inner_radius, int outer_radius, int segs, double grid)</strong></font></p>
+
+<p align="left"><font face="Arial">Rounds the shape <em>shp</em> with the radius given in dbu, using a minimum number of segments <em>segs</em>, and snaps the vertices of the curve to <em>grid</em> in microns. <em>inner_radius</em> is the radius of inner (concave) corners; <em>outer_radius</em> is the radius of outer (convex) corners.</font></p>
+
+<p align="left" pbzloc="379">&nbsp;</p>
+
+<p align="left"><font face="Arial" size="5"><strong><u>Iterators</u></strong></font></p>
+
+<p align="left"><font face="Arial">Instead of using getInsts/getNets/getPins/getLpps it is possible to use iterators in Python:</font></p>
+
+<p align="left" class="shadowHeading1"><font face="Arial"><strong>iter = instIterator(cellView *cv)</strong></font></p>
+
+<p align="left"><font face="Arial">Initialises the inst iterator for the cellView. For example:</font></p>
+
+<pre>
+	# Script to print instance names in a cellview
+	#
+	from ui import *
+	#
+	cv = getEditCellView()
+	iter = instIterator(cv)
+	while not iter.end() :
+		inst = iter.value()
+		name = inst.instName()
+		print &quot;inst name = &quot;, name
+		iter.next()
+	#
+</pre>
+
+<p align="left" class="shadowHeading1"><strong>iter.next()</strong></p>
+<p align="left">Advances the iterator to the next instance.</p>
+<p align="left">&nbsp;</p>
+
+<p align="left" class="shadowHeading1"><strong>bool iter.end()</strong></p>
+<p align="left">Returns false if there are more instances, else returns true if there are no more.</p>
+<p align="left">&nbsp;</p>
+
+<p align="left" class="shadowHeading1"><a href="inst.htm"><strong>inst</strong></a><strong> = iter.value()</strong></p>
+<p align="left">Returns the current instance.</p>
+<p align="left">&nbsp;</p>
+
+<p align="left" class="shadowHeading1"><strong>iter = netIterator(cellView *cv)</strong></p>
+<p align="left">Initialises the net iterator for the cellView. The iterator has similar next(), end();and value() functions as above.</p>
+<p align="left">&nbsp;</p>
+
+<p align="left" class="shadowHeading1"><strong>iter = pinIterator(cellView *cv)</strong></p>
+<p align="left">Initialises the pin iterator for the cellView. The iterator has similar next(), end() and value() functions as above.</p>
+<p align="left">&nbsp;</p>
+
+<p align="left" class="shadowHeading1"><strong>iter = lppIterator(cellView *cv)</strong></p>
+<p align="left">Initialises the dbLpp iterator for the cellView. The iterator has similar next(), end() and value() functions as above.</p>
+<p align="left">&nbsp;</p>
+
+<p align="left" class="shadowHeading1"><strong>iter = dbObjIterator(dbObjList *list)</strong></p>
+<p align="left">Initialises the dbObj iterator for a dbObjList. The iterator has similar next(), end() and value() functions as above.</p>
+<p align="left">&nbsp;</p>
+
+<p align="left" class="shadowHeading1">iter = shapeIterator(shape *list)</strong></p>
+<p align="left">Initialises the shape iterator for a shape. The iterator has similar next(), end() and value() functions as above.</p>
+
+<p align="left"><font face="Courier" pbzloc="384" size="2">&nbsp;</font></p>
+
+<p><font face="Courier" size="2"><!-- #EndEditable --> 
+  <p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-2">Copyright &copy; Peardrop 
+    Design 2018.</font></p>
+</div>
+</body>
+<!-- #EndTemplate --></html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- #BeginTemplate "/Templates/glade.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Glade Reference Manual</title>
+<link href="CSS Docs/shadowHeading1.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<div align="left"><img src="images/canvasview" width="32" height="32" align="right"><br>
+</div>
+<div align="left">
+  <p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade 
+    Reference</font></b></font></p>
+  <hr>
+  <!-- #BeginEditable "text" -->
+<h2><font face="Arial, Helvetica, sans-serif">path class</font></h2>
+
+<p><font face="Arial, Helvetica, sans-serif">The path class is derived from a shape. A path is represented by a list of vertices, plus a width, style, beginExtent and endExtent. This class is normally created in a cellView using the dbCreatePath() function.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">p.width(int w)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets the path width to w.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int w = p.width()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the path width.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="224">p.style(int s)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets the path style, i.e. the type of the path end. The style can be one of: 0 - truncate, 1 - round, 2 - extend, 4 - varextend</font>, 8 - <font face="Arial, Helvetica, sans-serif">octagonal</font>. Python global variables TRUNCATE, ROUND, EXTEND, VAREXTEND, OCTAGONAL are defined to these values.</p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int s = p.style()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the path style.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">p.beginExt(int e)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Set the path begin extent. For a path style 2 (extend) or 4 (varextend) , this is the begin extent of the path.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int e = p.beginExt()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the path begin extent. For a path style of 2 (extend) this is half the path&#39;s width. For a path style 4 (varextend), this is the begin extent of the path.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">p.endExt(int e)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Set the path end extent. For a path style 2 (extend) or 4 (varextend), this is the end extent of the path.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int e = p.endExt()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the path end extent. For a path style of 2 (extend) this is half the path&#39;s width. For a path style 4 (varextend), this is the end extent of the path.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="228"><font face="Arial, Helvetica, sans-serif" pbzloc="229"><a href="Rect.htm" pbzloc="227">Rect </a>b = p.bBox()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the bounding box of this path.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="241"><font face="Arial, Helvetica, sans-serif" pbzloc="239">p.bBox(<a href="Rect.htm">Rect </a>b)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Set the bounding box of this path. Not useful and will throw an exception if called.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="242">dbtype_t t = p.objType()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Returns the object type of this path as PATH.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">char *name = p.objName()</font></h4>
+
+<p pbzloc="234"><font face="Arial, Helvetica, sans-serif" pbzloc="248">Returns the object name of this path as &quot;PATH&quot;.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="243">int n = p.nPoints()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Returns the number of points of the path.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="247"><font face="Arial, Helvetica, sans-serif" pbzloc="244"><a href="Point.htm" pbzloc="246">Point </a>* pts = p.ptlist()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Returns the point list of this path as a C array of Points.</font></p>
+<p>&nbsp;</p>
+<p class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><strong><a href="Point.htm">Point</a> p = p[index]</strong></font></p>
+<p><font face="Arial, Helvetica, sans-serif">Returns the Point <em>p</em> at the <em>index</em> into the list of points.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">p.bias(int bias, double grid)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Bias this path by <i>bias</i>, snapping to the grid <i>grid</i>.</font></p>
+
+<p pbzloc="268">&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">p.scale(double scale, double grid)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="287">Scale this path by <i>scale</i>, snapping to the grid <i>grid</i>.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="267"><font face="Arial, Helvetica, sans-serif" pbzloc="265">int d = p.getNearestEdge(<a href="Point.htm">Point </a>p, <a href="segment.htm">segment </a>&amp;s)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the distance of the nearest segment <i>s</i> of this path to the point <i>p</i>;</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="286"><font face="Arial, Helvetica, sans-serif" pbzloc="284">int d = p.getNearestVertex(<a href="Point.htm">Point </a>p, <a href="vertex.htm">vertex </a>&amp;s)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the distance of the nearest vertex <i>s</i> of this path to the point <i>p</i>;</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">double a = p.area()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the area of this path.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int p = p.perimeter()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the perimeter of this path.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="306">p.transform(<a href="transform.htm">transform</a> trans)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Transform this path using <i>trans</i>.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="305"><font face="Arial, Helvetica, sans-serif" pbzloc="303">bool p.ptInPoly(<a href="Point.htm">Point </a>p)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="338">Returns true if the Point p is contained in the path or on its edges.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="315"><font face="Arial, Helvetica, sans-serif" pbzloc="317">p.Move(<a href="cellview.htm">cellView </a>*cv, <a href="Point.htm">Point </a>delta, bool opt = True)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Move this path by distance <i>delta</i>. If opt is True then the database is re-optimised for the new path position. If there are a lot of objects to move it makes sense to turn this off and instead use the cellView update() function after moving them all. </font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="352"><font face="Arial, Helvetica, sans-serif" pbzloc="349"><a href="dbObj.htm" pbzloc="351">dbObj </a>*obj = p.Copy(<a href="cellview.htm">cellView </a>*cv, <a href="Point.htm">Point </a>delta, int layerNum = -1)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Copy this path to cellView <i>cv</i>, with offset <i>delta</i>. If layerNum is a positive integer the path will be copied to the new layer number.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="356"><font face="Arial, Helvetica, sans-serif" pbzloc="357"><a href="dbObj.htm" pbzloc="355">dbObj </a>*obj = p.Flatten(<a href="cellview.htm">cellView </a>*cv, <a href="transform.htm">transform</a> trans)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="377">Flatten this path into cellView <i>cv</i> with transformation <i>trans</i>.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="376"><font face="Arial, Helvetica, sans-serif" pbzloc="374">p.Stretch(<a href="Point.htm">Point </a>delta, <a href="segment.htm">segment </a>seg)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="388">Stretch segment <i>seg</i> of this path by <i>delta</i>.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="382">p.compressPoints()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="389">Removes colinear points from the path.</font></p>
+
+<p pbzloc="387">&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="381"><font face="Arial, Helvetica, sans-serif" pbzloc="383"><a href="polygon.htm" pbzloc="380">polygon </a>*q = p.shapeToPoly ()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Converts this path to a polygon.</font></p>
+
+<h4>&nbsp;</h4>
+
+<p>&nbsp;</p>
+
+<p pbzloc="386">&nbsp;</p>
+<!-- #EndEditable --> 
+  <p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-2">Copyright &copy; Peardrop 
+    Design 2018.</font></p>
+</div>
+</body>
+<!-- #EndTemplate --></html>

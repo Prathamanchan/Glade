@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- #BeginTemplate "/Templates/glade.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>Glade Reference Manual</title>
+<link href="CSS Docs/shadowHeading1.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<div align="left"><img src="images/canvasview" width="32" height="32" align="right"><br>
+</div>
+<div align="left">
+  <p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade 
+    Reference</font></b></font></p>
+  <hr>
+  <!-- #BeginEditable "text" -->
+  <h2>HSeg class</h2>
+  <p>A <a href="#_HSeg_class">HSeg</a> represents a wiring segment for place&amp;route data. It is a 2 vertex  horizontal path. A <a href="#_HSeg_class">HSeg</a> is normally created by the cellView::dbCreateHSeg()  function.</p>
+  <p class="shadowHeading1"><strong>v.setPoints(int x1,  int y1, int x2, int y2)</strong></p>
+  <p><br>
+    Sets the vertices of the <a href="#_HSeg_class">HSeg</a></p>
+  <p class="shadowHeading1"><strong>v.left()</strong></p>
+  <p><br>
+    Gets the leftmost X coordinate of a <a href="#_HSeg_class">HSeg</a>.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>v.right()</strong></p>
+  <p><br>
+    Gets the rightmost X coordinate of a <a href="#_HSeg_class">HSeg</a>.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>v.bottom()</strong></p>
+  <p><br>
+    Gets the lowest Y coordinate of a <a href="#_HSeg_class">HSeg</a>.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>v.top()</strong></p>
+  <p><br>
+    Gets the highest Y coordinate of a <a href="#_HSeg_class">HSeg</a>.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>int w = v.width()</strong></p>
+  <p><br>
+    Gets the <a href="#_HSeg_class">HSeg</a> width.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>v.setStyle(int s)</strong></p>
+  <p><br>
+    Sets the <a href="#_HSeg_class">HSeg</a> style, i.e. the  type of the path end. The style can be one of: 0 - truncate, 1 - round, 2 -  extend, 4 - varextend, 8 - octagonal. Python global variables TRUNCATE, ROUND,  EXTEND, VAREXTEND, OCTAGONAL are defined to these values.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>int s = v.getStyle()</strong></p>
+  <p><br>
+    Gets the <a href="#_HSeg_class">HSeg</a> style.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>v.setSpecial(bool  val)</strong></p>
+  <p><br>
+    Sets the <a href="#_HSeg_class">HSeg</a> specialNet status</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>v.isSpecial()</strong></p>
+  <p><br>
+    Returns true is the <a href="#_HSeg_class">HSeg</a> is a  specialNet.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>v.setNet(net n)</strong></p>
+  <p><br>
+    Sets the <a href="#_HSeg_class">HSeg</a> net</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>v.getNet()</strong></p>
+  <p><br>
+    Returns the <a href="#_HSeg_class">HSeg</a> net.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><a href="#_Rect_class">Rect</a><strong>&nbsp; b = v.bBox()</strong></p>
+  <p><br>
+    Get the bounding box of this <a href="#_HSeg_class">HSeg</a>.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>dbtype_t_t t = v.objType()</strong></p>
+  <p><br>
+    Returns the object type of this <a href="#_HSeg_class">HSeg</a> as HSEG.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>char *name =  p.objName()</strong></p>
+  <p><br>
+    Returns the object name of this <a href="#_HSeg_class">HSeg</a> as &quot;HSEG&quot;.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>int n = v.nPoints()</strong></p>
+  <p><br>
+    Returns the number of points of the <a href="#_HSeg_class">HSeg</a> (2).</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><a href="#_Point_class"><strong>Point</strong></a><strong> &nbsp;*  pts = v.ptlist()</strong></p>
+  <p><br>
+    Returns the point list of this <a href="#_HSeg_class">HSeg</a> as a C array of Points.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>double a = v.area()</strong></p>
+  <p><br>
+    Get the area of this <a href="#_HSeg_class">HSeg</a>.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>int p = v.perimeter()</strong></p>
+  <p><br>
+    Get the perimeter of this <a href="#_HSeg_class">HSeg</a>.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><a href="#_Point_class"><strong>Point</strong></a><strong> v.origin()</strong></p>
+  <p><br>
+    Returns the origin point of a <a href="#_HSeg_class">HSeg</a></p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>v.setOrigin(</strong><a href="#_Point_class"><strong>Point</strong></a><strong> p)</strong></p>
+  <p><br>
+    Sets the origin of a <a href="#_HSeg_class">HSeg</a>.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>int e = v.extent()</strong></p>
+  <p><br>
+    Returns the extent, i.e. the length of the <a href="#_HSeg_class">HSeg</a>.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>v.setExtent(int e)</strong></p>
+  <p><br>
+    Sets the extent of the <a href="#_HSeg_class">HSeg</a>.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><a href="#_Point_class"><strong>Point</strong></a><strong> p = v.getFirstVertex()</strong></p>
+  <p><br>
+    Gets the first vertex of this <a href="#_HSeg_class">HSeg</a></p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><a href="#_Point_class"><strong>Point</strong></a><strong> p = v.getLastVertex()</strong></p>
+  <p><br>
+    Gets the last vertex of this <a href="#_HSeg_class">HSeg</a>.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>bool v.ptInPoly(</strong><a href="#_Point_class"><strong>Point</strong></a><strong> &nbsp;p)</strong></p>
+  <p><br>
+    Returns true if the <a href="#_Point_class">Point</a><strong> </strong>&nbsp;p is contained in the <a href="#_HSeg_class">HSeg</a> or on its edges.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>v.Move(</strong><a href="#_cellView_class"><strong>cellView</strong></a><strong>&nbsp; dest, </strong><a href="#_Point_class"><strong>Point</strong></a><strong> &nbsp;delta, bool opt = True)</strong></p>
+  <p><br>
+    Move this <a href="#_HSeg_class">HSeg</a> by distance <em>delta</em>. If <em>opt</em> is True then the database is re-optimised for the new <a href="#_HSeg_class">HSeg</a> position. If there are a lot of objects to move it  makes sense to turn this off and instead use the <a href="#_cellView_class">cellView</a><strong> </strong>&nbsp;update() function after moving them all.</p>
+  <p>&nbsp; </p>
+  <p class="shadowHeading1"><a href="#_dbObj_class"><strong>dbObj</strong></a> <strong>&nbsp;obj = v.Copy(</strong><a href="#_cellView_class"><strong>cellView</strong></a><strong> &nbsp;dest, </strong><a href="#_Point_class"><strong>Point</strong></a><strong> &nbsp;delta, int layerNum = -1)</strong></p>
+  <p><br>
+    Copy this <a href="#_HSeg_class">HSeg</a> to <a href="#_cellView_class">cellView</a><strong> </strong>&nbsp;<em>dest</em>,  with offset <em>delta</em>. If <em>layer</em> is a positive integer the <a href="#_HSeg_class">HSeg</a> will be copied to the new layer number.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><a href="#_dbObj_class"><strong>dbObj</strong></a> <strong>&nbsp;obj = v.Flatten(</strong><a href="#_cellView_class"><strong>cellView</strong></a><strong>&nbsp; dest, </strong><a href="#_transform_class"><strong>transform</strong></a><strong> &nbsp;trans)</strong></p>
+  <p><br>
+    Flatten this <a href="#_HSeg_class">HSeg</a> into <a href="#_cellView_class">cellView</a><strong> </strong>&nbsp;<em>dest</em> with transformation <em>trans</em>.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>int dist =  v.getNearestEdge(</strong><a href="#_Point__class"><strong>Point</strong></a><strong> p, </strong><a href="#_segment_class"><strong>segment</strong></a><strong> &amp;edge, bool centreLine=True, bool  outLine=True)</strong></p>
+  <p><br>
+    Gets the nearest segment <em>edge</em> to the <a href="#_HSeg_class">HSeg</a> from the <a href="#_Point_class">Point</a> <em>p</em> and returns the distance. If <em>centreline</em> is True, the centre line of  the <a href="#_HSeg_class">HSeg</a> is considered. If <em>outLine</em> is True, the outline edges of the <a href="#_HSeg_class">HSeg</a> are considered.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>int dist =  v.getNearestVertex(</strong><a href="#_Point__class"><strong>Point</strong></a><strong> p, </strong><a href="#_vertex_class"><strong>vertex</strong></a><strong> &amp;vert)</strong></p>
+  <p><br>
+    Gets the nearest vertex &nbsp;<em>vert </em>to  the <a href="#_HSeg_class">HSeg</a> from the <a href="#_Point_class">Point</a> p and returns the distance.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>char *name =  v.getNetName()</strong></p>
+  <p><br>
+    Returns the <a href="#_HSeg_class">HSeg</a> net name as a  string.</p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><strong>bool ok = v.offGrid(int  grid)</strong></p>
+  <p><br>
+    Returns true if the <a href="#_HSeg_class">HSeg</a> is  offgrid.</p>
+  <h3 align="center">&nbsp;</h3>
+  <h3>&nbsp;</h3>
+  <!-- #EndEditable --> 
+  <p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-2">Copyright &copy; Peardrop 
+    Design 2018.</font></p>
+</div>
+</body>
+<!-- #EndTemplate --></html>

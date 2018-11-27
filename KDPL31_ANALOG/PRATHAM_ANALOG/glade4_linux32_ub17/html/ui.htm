@@ -1,0 +1,706 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- #BeginTemplate "/Templates/glade.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Glade Reference Manual</title>
+<link href="CSS Docs/shadowHeading1.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<div align="left"><img src="images/canvasview" width="32" height="32" align="right"><br>
+</div>
+<div align="left">
+  <p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade 
+    Reference</font></b></font></p>
+  <hr>
+  <!-- #BeginEditable "text" --> 
+  <h2 align="left"><font face="Arial, Helvetica, sans-serif">UI Python command reference</font></h2>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">This document describes the Python functions available to 
+control the Glade GUI. Argument types are shown as C++ types with default values 
+where applicable, however all arguments are really python variables. Note in 
+Python the bool type is mapped to an integer. All of the following functions are 
+part of the ui class. There is a global pointer to the gui called 
+<strong>cvar.guiptr</strong>     
+                
+               
+                  
+                   
+         . Therefore to use 
+    them , define you own variable e.g. gui=cvar.guiptr, then call as&nbsp; gui.OpenCellView(...)</font></p>
+  <p align="left"><font face="Arial"></font>&nbsp;</p>
+  <p align="left" class="shadowHeading1"><strong>int errors = ui.schCheck              (char *libName, char *cellName, char *viewName, bool snapLabels, float snapDist)</strong></p>
+  <p align="left">Check a schematic cellView. errors is the number of errors found, or -1 if the cell could not be checked. If <em>snapLabels</em> is True, labels within <em>snapDist</em> of a wire will be snapped to the wire.</p>
+  <p align="left">&nbsp;</p>
+  <p align="left" class="shadowHeading1"><strong>int errors = ui.symCheck              (char *libName, char *cellName, char *viewName, bool snapLabels, float snapDist)</strong></p>
+  <p align="left">Check a symbol cellView. errors is the number of errors found, or -1 if the cell could not be checked.</p>
+  <p align="left">&nbsp;</p>
+  
+  <p align="left"class="shadowHeading1"><strong><a href="line.htm">line</a> = ui.routeWire<a href="Point.htm">(Point</a> start,<a href="Point.htm"> Point</a> stop, char *netName=null)</strong></p>Routes a line on the wire layer from <em>start</em> to <em>stop</em>, avoiding  obstacles (symbols and parallel collinear wires). If the route is successful,  returns the <a href="line.htm">line</a> object created, or None if failed. If <em>netName</em> is specified,  then the line is assigned that net name.
+<p align="left">&nbsp;</p>
+  <p align="left" class="shadowHeading1"><strong>bool               ok = ui.createCellView     (char *libName, char *cellName, char *viewName, int shape=0, int pinSize=4, float snapGrid=0.0625)</strong></p>
+  <p align="left">Create a symbol cellView from the given cellView (normally a schematic). Returns True if successful. The symbol outline can be set by <em>shape</em>, and can be 0 (rectangular), 1 (triangular) or 2 (circular). <em>pinSize</em> sets the pi size in database units. <em>snapGrid</em> sets the snapping grid of the generated shapes.</p>
+  <p align="left">&nbsp;</p>
+  <p align="left" class="shadowHeading1"><font face=Arial><strong>bool ok = ui.loadPCell(char *libName, char *pcellName)</strong></font></p>
+  <p align="left"><font face="Arial">Loads the 
+PCell with name <em>pcellName</em> into the library <em>libName</em>. If the 
+PCell already exists in the library, the action is ignored and returns true. If a cellView with 
+the same name exists, it is deleted and is replaced by the PCell supermaster. 
+Note that once a PCell is loaded into a library and that library is saved, it 
+will remain a PCell, so there is no need to load it again (although it is 
+harmless and you will just get warnings about the load being 
+ignored).</font> If the PCell cannot be created, it returns false.</p>
+  <p align="left"><font size="2" 
+face=Consolas><font size="2" face="Consolas"><font color="#808080" 
+size=2 face=Consolas>&nbsp;</p>
+  <p align="left" class="shadowHeading1"><font face="Arial"><strong>ui.addMarker( int x, 
+  int y, int size=20, int lineWidth=0, color=Qt::yellow)</strong></font></p>
+  <p align="left"><font face="Arial">Adds a marker at the 
+specified x and y values (given in database units). The size of the marker 
+defaults to 20 dbu and the linewith to 0 (i.e. one pixel wide).</font></p>
+  <p align="left"><font face="Arial"></font>&nbsp;</p>
+<p class="shadowHeading1"><font face="Arial"><strong>ui.clearMarkers()</strong></font></p>
+<p><font face="Arial">Clears all markers.</font></p>
+<p><font face="Arial"></font>&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ui.getSelectedSet()</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Returns a dbObjList of the selected 
+    set. There is also a top level python binding of the same name that returns 
+    a python list of selected objects.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ui.getEditCellView()</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Returns the current cellview being edited. If multiple 
+cellviews are open, it returns the cellview of the 
+    current active window. There is also a top level python binding to this 
+    function, getEditCellView().</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ui.getLibByName(const char *name)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Returns the library given by name.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ui.getLibList()</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Returns a dbObjList of all open 
+    libraries. There is also a top level python binding of the same name that 
+    returns a python list of open libraries.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ui.getCellList()</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Returns a dbObjList of all open 
+    cellViews. There is also a top level python binding of the same name that 
+    returns a python list of open cellViews.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ui.openCellView (const char * libName, 
+    const char * cellName, const char * viewName)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Opens the cellview specified by 
+    libName, cellName and viewName in a new window.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool ok = ui.importTech(const char *libName, 
+    const char *techFileName, unsigned int dbu=1000)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Imports the techfile <i>techFileName</i> 
+    into the library <i>libName</i>. The library is created if it does not already 
+    exist.</font> Returns true if no error occurred.</p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool ok = ui.exportTech(const char *libName, const 
+    char *techFileName,&nbsp;bool systemLayers)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Ex</font><font face="Arial, Helvetica, sans-serif">ports 
+    the techfile <i>techFileName</i> from the library <i>libName</i>. The library must exist. If 
+<em>systemLayers</em> is 1, Glade system layers e.g. cursor, backgnd etc will be 
+written to the techfile. This is only necessary if you have modified the system 
+layers in the LSW - for example changed the backgnd color from black 
+    to white.</font> Returns true if no error occurred.</p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left"><font face="Arial, Helvetica, sans-serif" class="shadowHeading1">bool ok = ui.importGds2 (const char * libName, 
+    const char * gdsFileName, const char * dumpFile = NULL, int csen = 0, bool 
+    do_dump = False, double gdsScaleFactor = 1.0, double gdsXOffset = 0.0, double 
+    gdsYOffset = 0.0, int gdsNetAttr = 0, int gdsInstAttr = 0, bool compressed=False,
+    bool dubiousData=True, bool setDBUfromGDS=True, bool reportCells=False, int pathConv=2, 
+    int convLayers=0, int layer=0, int datatype=0, bool openTopCell=False, bool setLibName=False, bool convertVias=False, int duplicates=0, char *viewName=&quot;layout&quot;)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Import the GDS2 file <i>gdsFileName</i> 
+    into library <i>libName</i>. The library is created if it does not already 
+    exist. If <i>do_dump</i> is 1 and <i>dumpFile</i> is a valid file name, the 
+    GDS2 will be written in an ascii format suitable for debugging purposes. <i>gdsScaleFactor</i> 
+    can be used to scale all coordinates in the GDS2 file. <i>gdsXOffset</i> and 
+    <i>gdsYOffset</i> can be used to apply a fixed offset to all GDS2 coordinates. 
+    <i>gdsNetAttr</i> specifies the GDS2 attribute number used for net names, 
+    if present, and <i>gdsInstAttr</i> specifies the GDS2 attribute number for 
+    instance names, if present. If <i>compressed</i> is true, a gzip compressed 
+    format file is expected and will be uncompressed during stream in. If <i>dubiousData</i>
+     is true, dubious data constructs in the GDS2 file are reported. If
+     <i>setDBUfromGDS</i> is true, the library DBUperUU is set from the GDS DBU.
+     If <i>reportCells</i> is true, cells are reported in the message window as
+     they are read.
+     <i>pathconv</i> is used to control 2 point path conversion. If set to 0, 2
+     point manhattan paths are converted to rectangles. If set to 1, 2 point
+     manhattan paths are set to H/VSegs. If set to 2 (the default), paths remain
+     as paths. <i>convLayers</i> determines which layers are imported. If set to
+     0 (the default), all layers found in the GDS2 file are converted. If set to
+     1, only layers that are defined in the techfile with gds layer
+     number/datatypes are imported. If set to 2, only a single layer will be
+     imported, defined by <i>layer</i> and <i>datatype</i>. If
+     <i>openTopCell</i> is true, all potential top cell candidates are opened in
+     the gui. A top cell candidate is any cell that is not referenced by another
+     cell, and is not empty.</font> If <em>setLibName</em> is true, the library name is set to that of the GDS2 library name. If <em>convertVias</em> is true, Glade will convert via cells to Glade vias, and instances of these via cells to viaInsts. <em>duplicates</em> controls handling of duplicate cell definitions. If 0, duplicate cells replace any existing cell definitions. If 1, duplicate cells definitions are ignored. If 2, duplicate cell data is merged into existing cells. <em>viewName</em> sets the view name of cellViews created during import GDS2.</p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left"><font face="Arial, Helvetica, sans-serif" class="shadowHeading1">bool ok = ui.exportGds2 (const char * libName, 
+    const char * viewNames, const char * gdsFileName, bool outputInstAttrs=0, 
+    bool outputNetAttrs=false, bool outputAllCells=true, const char * topCellName 
+    =NULL, int instAttr=0, int netAttr=0, bool compressed=False, bool 
+    reportCells=False, double grid=0.005, bool writeViaCells=True, int polyVertexLimit=8192)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Export a GDS2 file <i>gdsFileName</i> 
+    from the library <i>libName</i>. <i>viewNames</i> is a space seperated list 
+    of view names to export. If <i>outputAllCells</i> is true then all cells in 
+    the library are output to the GDS2 file and <i>topCellName</i> is ignored. 
+    If <i>outputAllCells</i> is false then <i>topCellName</i> is a space or comma 
+    delimited list of cells to output. If <i>outputInstAttrs</i> is true then 
+    instance names are output as GDS2 attributes with attribute number given by 
+    <i>instAttr</i>. If <i>outputNetAttrs</i> is true then net names are output 
+    as GDS2 attributes with attribute number given by <i>netAttr</i>. If <i>compressed</i> 
+    is true the GDS2 file is written in gzip compressed format according to RFC1951.
+    If <i>reportCells</i> is true, cells are reported in the message window as they
+    are written. <i>grid</i> specifies the manufacturing grid, used to snap
+    vertices of circles/ellipses as they are converted to polygons on export.</font> <em>writeViaCells</em> if true will write vias as cells and viaInsts as instances, else vias will get flattened. <em>polyVertexLimit</em> sets the maximum number of vertices for the polygon; polygons with more vertices will be decomposed into trapezoids.</p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left"><font face="Arial, Helvetica, sans-serif" class="shadowHeading1">bool ok = ui.importLef (const char * libName, const char * lefFileName, 
+bool compressed=        0, 
+bool generateLabels=     
+       1, float size=0.25. bool allPinShapes=false)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Import a LEF file <i>lefFileName</i> 
+    into the library <i>libName</i>. The library will be created if it does not 
+    already exist. If <i>compressed</i> is true a gzip compressed format file 
+    is expected and will be uncompressed during LEF in. If <i>generateLabels</i> is true, text 
+labels will be generated on the Text layer for each pin in the LEF macro. 
+<em>size</em> sets the size of the generated labels. If 
+allPinShapes is true (1), then text 
+               labels are generated for all 
+    pin shapes.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left"><font face="Arial, Helvetica, sans-serif" class="shadowHeading1">bool ok = ui.exportLef (const char * libName, 
+    const char * lefFileName, bool technology=1, bool allCells=1, const char * 
+    powerNets=NULL, const char * groundNets=NULL)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Export a LEF file <i>lefFileName</i> 
+    from library <i>libName</i>. If <i>technology</i> is true, the LEF technology 
+    section will be included in the LEF file. If <i>allCells</i> is true, all 
+    library cells will be output, else only the current open cellView will be 
+    output. The string <i>powerNets</i> is a space delimited list of net names.
+    Any pins with a name in this list will have their +USE attribute set to
+    POWER.  Similarly, the string <i>groundNets</i> is a space delimited list of 
+    net names; any pins with a name in this list will have their +USE attribute 
+    set to GROUND.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left"><font face="Arial, Helvetica, sans-serif" class="shadowHeading1">bool ok = ui.importDef (const char * libName, 
+    const char * viewName, const char * defFileName, bool ecoMode=0, bool 
+    compressed=0, bool reportMissingPins=1, bool importSpecial=1, 
+    bool importRegular=1, bool reportUnplacedComps=0)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Import a DEF file <i>defFileName</i> 
+    into the library <i>libName</i>, which must exist. The cellName is determined 
+    from the DEF DESIGN keyword and the view name from <i>viewName</i>. If <i>ecoMode</i> 
+    is true then the COMPONENTS and PINS sections only are read, and existing 
+    components and pins will have their origin and orientation updated from the 
+    DEF file. If <i>compressed</i> is true a gzip compressed format file is expected 
+    and will be uncompressed during DEF in. Id <i>reportMissingPins</i> is true, 
+    missing net connections to pins will be reported. If <i>importSpecial</i> 
+    is true then the SPECIALNETS section is imported; if <i>importRegular</i> 
+    is true then the NETS section is imported. If <i>reportUnplacedComps</i> is 
+    true then any components with a placement status of UNPLACED will be reported.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left"><font face="Arial, Helvetica, sans-serif" class="shadowHeading1">bool ok = ui.exportDef (const char * libName, 
+    const char * cellName, const char * viewName, const char * defFileName, bool 
+    comps=1, bool pins=1, bool regular=1, bool special=1, 
+    bool regularRouting=1, bool specialRouting=1)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Export a DEF file defFileName from 
+    the library libName, cell cellName and view viewName. if comps is true the 
+    COMPONENTS section will be output; if pins is true the PINS section will be 
+    output; if regular is true the NETS section will be output; if special is 
+    true the SPECIALNETS section will be output. If regularRouting is true then 
+    routing from the NETS section is output, else just the connectivity. If specialRouting 
+    is true then routing from the SPECIALNETS section is output, else just the 
+    connectivity.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left"><font face="Arial, Helvetica, sans-serif" class="shadowHeading1">bool ok = ui.importVerilog (const char * libName, 
+    const char * verilogFileName, const char * powerNet, const char * groundNet, 
+    const char * flatViewName, bool flatten, const char * topCellName, int hPinLayer, 
+    int vPinLayer, double aspect, double utilisation)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Import a Verilog file <i>verilogFileName</i> 
+    into library <i>libName</i>. Cells with names matching the verilog module 
+    names are created with a view type of netlist. <i>powerNet</i> and <i>groundNet</i> 
+    specify the supply and ground nets used to resolve 1'b1 and 1'b0 references 
+    respectively. If <i>flatten</i> is true the Verilog netlist will be flattened 
+    into view <i>flatViewName</i>; <i>topCellName</i> is used as the top cell 
+    of the design to flatten. <i>hPinLayer</i> and <i>vPinLayer</i> are the layer 
+    numbers that are used for pins created in the flattened view. <i>aspect</i> 
+    is the aspect ratio of the resulting boundary layer created in the flattened 
+    view and <i>utilisation</i> sets the area out the boundary layer such that 
+    the total cell area divided by the boundary area equals the utilisation.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool ok = ui.exportVerilog (const char * libName, 
+    const char * cellName, const char * viewName, const char * verilogFileName)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Export a Verilog file verilogFileName 
+    from library libName, cell name cellName, and view name viewName. Currently 
+    only a flat verilog netlist is output.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool ok = ui.importECO (const char * ecoFileName)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Import an ECO file from file <i>ecoFileName</i> 
+    into the current open cellView.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left"><font face="Arial, Helvetica, sans-serif" class="shadowHeading1">bool ok = ui.importOasis (const char * libName, 
+    const char * oasisFileName, bool dubiousData=True, bool
+    allowNonPrintingChars=False, bool reportCells=False, bool openTopCell=False, double scale=1.0, double xoffset=0.0, double yoffset=0.0, int csen=0, int duplicates=0, char *viewName=&quot;layout&quot;)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Import an OASIS file <i>oasisFileName</i> 
+    into the library <i>libName</i>. The library is created if it does not already 
+    exist. If <i>dubiousData</i> is true, dubious constructs in the Oasis data
+    are reported. is <i>allowNonPrintingChars</i> is true, non-printing
+    characters will be allowed to be read; normally Oasis only permits printable
+    characters in a-string or n-string types. If <i>reportCells</i> is true,
+    cells are reported in the message window as they are read.  If
+     <i>openTopCell</i> is true, all potential top cell candidates are opened in
+     the gui. A top cell candidate is any cell that is not referenced by another
+     cell, and is not empty.</font> <em>scale</em> allows scaling of all input data by the factor specified. <em>xoffset</em> will add the specified offset to all x coordinate data, <em>yoffset</em> will add the specified offset to all y coordinate data. <em>csen</em> controls case sensitivity, 0 means preserve case, 1 converts to uppercase, 2 to lowercase. <em>duplicates</em> controls handling of duplicate cell definitions. If 0, duplicate cells replace any existing cell definitions. If 1, duplicate cells definitions are ignored. If 2, duplicate cell data is merged into existing cells. <em>viewName</em> sets the view name of cellViews created during import. <em>viewName</em> sets the view name of imported cellviews.</p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left"><font face="Arial, Helvetica, sans-serif" class="shadowHeading1">bool ok = ui.exportOasis (const char * libName, const char * viewNames, 
+const char * oasisFileName, bool outputAllCells =     
+         True, bool outputChildCells = True, const char * topCellName = 
+          NULL, bool strict = False, bool cblock = False, 
+    bool cellOfsets = False, bool reportCells = False, double grid=0.005)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Export an OASIS file <i>oasisFileName</i> 
+    from library <i>libName</i>. All views specified in the space or comma delimited 
+    list viewNames are output. If <i>outputAllCells</i> is true then all cells 
+    in the library are output to the GDS2 file and <i>topCellName</i> is ignored. 
+    If <i>outputAllCells</i> is false then <i>topCellName</i> is a space or comma 
+    delimited list of cells to output. If <i>strict</i> is true, the OASIS file 
+    is written in STRICT mode. If <i>cblock</i> is true, CBLOCK compression is 
+    used which can substantially reduce the output file size. If
+    <i>cellOfsetts</i> is checked in STRICT mode, the property S_CELL_OFFSET is
+    written for each cell in the cellname table so that random access to cells
+    are possible allowing e.g. multithreaded reading of the OASIS file. If
+    <i>reportCells</i> is checked, cells are reported in the message window as
+    they are written.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool ok = ui.importDxf (const char * libName, 
+    const char * cellName, const char * dxfFileName, int dbu=1000)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Import a DXF file <i>dxfFileName</i> 
+    into the library <i>libName</i>. The library is created if it does not already 
+    exist. The DXF file is imported into a cell with name <i>cellName</i> and 
+    viewname layout.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool ok = ui.exportDxf (const char * libName, 
+    const char * cellName, const char * dxfFileName, bool outputText=1, bool 
+    allLayers=1)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Export a DXF file <i>dxfFileName</i> 
+    from the library <i>libName</i>, cell <i>cellName</i> and view name layout. 
+    If <i>outputText</i> is true then text labels are output. If <i>allLayers</i> 
+    is true then all layers are output to the DXF file, else only the currently 
+    visible layers are output.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool ok = ui.importCDL (const char * libName, 
+    const char * cdlFileName)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Import a CDL file <i>cdlFileName</i> 
+    into the library <i>libName</i>.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left"><font face="Arial, Helvetica, sans-serif" class="shadowHeading1">bool ok = ui.exportCDL (const char * libName, const char *cellname, const 
+char *viewName, const char * cdlFileName, const char *globals, bool 
+annotateXY=0, bool microns= 0, bool rmodel=0, char * rpropname="r", bool 
+cmodel=0, char *cpropname=         
+        "c", double 
+filterCapLimit=-1.0, bool mergeCaps=     
+             
+      0)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Export a flat CDL file <i>cdlFileName</i> 
+    from the library <i>libName</i> with cell <i>cellname</i>, view
+    <i>viewName</i>. <i>globals</i> is a space delimited list of global net names 
+e.g. VDD and VSS. If <em>annotateXY</em> is true, XY coordinates of instances 
+are written in the CDL file as $X= / $Y= values. If <em>rmodel</em> is true (1) 
+then the resistor model name is reported, else the resistor value (R=...) is 
+reported. <em>rpropname</em> is the property that is used to report the resistor 
+value and should be a property of the resistor extraction pcell. <em>cmodel</em> 
+and <em>cpropname</em> act similarly for capacitors (but not for parasitic 
+capacitors which are always reported by value). If a positive 
+<em>filterCapLimit</em> is specified, any parasitic capacitances below this 
+limit (in Farads) will not be written in the CDL file. If <em>mergeCaps</em> is 
+true (1) then parasitic caps&nbsp;between net pairs are lumped all togther and reported
+    only once per net pair.</font></p>
+  <p align="left">&nbsp;</p>
+  <p align="left" class="shadowHeading1"><strong>ui.schHNLOut          (char *libName, char *cellName, char *viewName, char *cdlFileName, char *switchList, char *stopList, char *globals)</strong></p>
+  <p align="left">Export a hierarchical CDL file <em>cdlFileName</em> from the library <em>libName</em> with cell <em>cellName</em> and view <em>viewName</em>. <em>switchList</em> is a space delimited list of view names the netlister can switch into e.g. &quot;schematic symbol&quot;. <em>stopList</em> is a space delimited list of views the netlist can stop on, which should have a NLPDeviceFormat string property to describe the netlist format for the cellView. <em>globals</em> is a space delimited list of global net names.</p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"> ui.zoomIn ()</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Zoom in according to the current 
+    zoomin factor.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ui.zoomIn (int x1, int y1, int x2, int y2)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Zoom in to the area given by x1 
+    y1 x2 y2.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ui.zoomOut ()</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Zoom out according to the current 
+    zoomout factor.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ui.zoomOut (int x1, int y1, int x2, int y2)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Zoom out by the area given by x1 
+    y1 x2 y2.</font></p>
+  <p align="left">&nbsp;  </p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"> ui.selectArea (int x1, int y1, int x2, int y2, bool add =       
+          False)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Select objects in the area given 
+    by x1 y1 x2 y2. If add is True, then the objects are added to the selected 
+    set.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ui.deselectArea (int x1, int y1, int x2, int y2)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Deselect objects in the area given 
+    by x1 y1 x2 y2.</font></p>
+  <p align="left">&nbsp;  </p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ui.selectAll ()</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Select all objects.</font></p>
+  <p align="left">&nbsp;</p>
+  
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ui.deselectAll (i)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Deselect all objects.</font></p>
+  <p align="left">&nbsp;</p>
+  <p align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">
+  
+    <strong>ui.selectPoint (int x1, int y1, bool add = 0)</strong></font></p>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Select an object at the coordinate 
+    x1 y1. If add is true, then the object is added to the selected set.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ui.deselectPoint (int x1, int y1)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Des</font><font face="Arial, Helvetica, sans-serif">elect 
+    an object at the coordinate x1 y1.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ui.execPythonFile (const char *fileName)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Execute the python script given 
+    by <i>fileName</i>.</font></p>
+  <p align="left"><font face="Arial"></font>&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"> <font face="Arial, Helvetica, sans-serif">ui.deleteCell(const char *libName, 
+    const char *cellName, const char *viewName)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Delete the cell specified by <em>libName</em>, 
+<em>cellName</em> and <em>viewName</em>      
+      .</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ui.renameCell(const char *libName, const char *cellName, const char *viewName)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Rename the cell specified by <em>libName</em>, 
+<em>cellName</em> and <em>viewName</em>      
+      . A dialog will be displayed prompting for the new cell 
+    name.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ui.copyCell(const char *libName, const char *cellName, const char *viewName)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Copy the cell specified by <em>libName</em>, 
+<em>cellName</em> and <em>viewName</em>      
+      . A dialog will be displayed prompting for the new cell 
+    name.</font></p>
+  <p align="left">&nbsp;</p>
+  <h4 align="left" class="shadowHeading1"><font face="Arial"></font><font face="Arial">ui.properties(const char *libName, const char 
+*cellName, const char *viewName)</font></h4>
+  <p align="left"><font face="Arial, Helvetica, sans-serif">Display the properties of the cell specified by 
+<em>libName</em>, <em>cellName</em> and <em>viewName</em>      
+         .</font></p>
+  <p align="left"><font face="Arial"></font>&nbsp;</p>
+<h4 align="left" class="shadowHeading1"><font face="Arial">ui.biasCells(cellView *cv, int 
+layer, int biasFactor, int grid, int allCells)</font>
+</h4>
+  <p align="left"><font face="Arial">Bias cell(s). <em>cv</em> is 
+the cellView of the cell to bias, or any cell in the library. <em>layer</em> is 
+the layer to bias, and <em>biasFactor</em> is the amount to bias the 
+<em>layer</em> in database units. A positive <em>biasFactor</em> will grow the 
+shapes, a negative <em>biasFactor</em> will shrink the shapes. <em>grid</em> is 
+the snap grid to snap resulting shapes to. If <em>allCells</em> is true (1), 
+then all cellViews in the library containing <em>cv</em> will be 
+biassed.</font></p>
+  <p align="left">&nbsp;</p>
+<h4 class="shadowHeading1"><font face="Arial">ui.scaleCells(cellView *cv, db_Float64 scaleFactor, db_Int32 
+grid, bool allCells)</font></h4>
+<p><font face="Arial">Scale cell(s). <em>cv</em> is the cellView of the cell to 
+bias, or any cell in the library. <em>scaleFactor</em> is the scale factor to 
+apply to the cell(s). <em>grid</em> is the snap grid to snap resulting shapes 
+to. If <em>allCells</em> is true (1), then all cellViews in the library 
+containing <em>cv</em> will be scaled.</font></p>
+<p><font size="2" face="Consolas"><font size="2" face="Consolas"><font 
+face=Arial></font></font></font>&nbsp;</p>
+<h4 class="shadowHeading1"><font face="Arial">ui.compareCells(char 
+*libName1, char *cellName1, char *viewName1, char 
+*libName2, char *cellName2, char *viewName2, int compareLayer, bool hier, 
+bool countShapes)</font></h4><font size="2" face="Consolas"><font size="2" face="Consolas">
+<p><font size="3" face="Arial">Compares 
+two cellViews using an XOR operation using a simple non-tiled approach. This is&nbsp;good for small-ish cells or less 
+than a few thousand transistors/shapes. The comparison is done for 
+<em>compareLayer;</em> if this 
+is set to -1 all layers in the cellViews are compared, else just the layer 
+specified. If <em>hier</em> is false(0, the default), then 
+the comparison is done at the top level only; if true (1) then it is done 
+hierarchically. The function returns 0 if the two cellViews are identical, -1 if 
+an error occurred e.g. different number of layers in the cells, or different 
+number of shapes (but see <em>countShapes</em>),&nbsp;or the number of 
+differences found. If <em>countShapes</em>    
+                
+            
+         
+    is false (0, the 
+default) then the number of shapes may differ between the cells, but the 
+XOR result must match.</font></p>
+<p><font size="2" face="Consolas"><font size="2" 
+face=Consolas></font></font>&nbsp;</p></font></font>
+<h4 class="shadowHeading1"><font face="Arial">int val = 
+ui.compareCells2 (char *libName1, char *cellName1, char 
+*viewName1, char *libName2, char *cellName2, char *viewName2, 
+int&nbsp;compareLayer, bool hier, bool multiThreaded=1, int 
+maxThreads=QThread::idealThreadCount(), bool tileAuto=1,&nbsp;int&nbsp; 
+tileWidth=1, int tileHeight=1, 
+int&nbsp;outputLayer=TECH_DRCMARKER_LAYER)</font></h4><font size="2" face="Consolas"><font size="2" face="Consolas"><font size="2" face="Consolas"><font size="2" face="Consolas"><font size="2" 
+face=Consolas><font size="2" face="Consolas">
+<p><font size="3" face="Arial">Compares two 
+cellViews using a tiled&nbsp;XOR operation. The comparison is done for 
+<em>compareLayer</em>; if this is set to -1 all layers in the cellViews are 
+compared. If <em>hier</em> is true (1), then 
+the comparison is done hierarchically. The function returns 0 if the two 
+cellViews are identical, -1 if an error occurred,&nbsp;or the number of 
+differences found. If <em>multiThreaded</em> is true (the default), then the 
+layout is tiled and run with <em>maxThreads</em>     threads. If tileAuto is 
+true (the default), an intelligent tiling algorithm is used, else tile widths and 
+heights must be specified.</font></p>
+<p>&nbsp;</p>
+</font></font></font>
+<p class="shadowHeading1"><strong>bool val = ui.runLVS(<font color="#0000ff"><font color="#0000ff"><font 
+color=#0000ff>char</font></font></font> *libName, <font color="#0000ff"><font 
+color=#0000ff><font color="#0000ff">char</font></font></font> *cellName, <font 
+color=#0000ff><font color="#0000ff"><font 
+color=#0000ff>char</font></font></font> *viewName, 
+<font color="#0000ff"><font 
+color=#0000ff><font color="#0000ff">char</font></font></font> *netlist, <font 
+color=#0000ff><font color="#0000ff"><font color="#0000ff">char</font></font></font> *globalNets= 
+NULL, <font color="#0000ff"><font color="#0000ff"><font 
+color=#0000ff>char</font></font></font> *workDir= ".", 
+<font color="#0000ff"><font 
+color=#0000ff><font color="#0000ff">bool</font></font></font> isHierNetList=      false, <font 
+color=#0000ff><font color="#0000ff"><font color="#0000ff">const</font></font></font> 
+<font color="#0000ff"><font color="#0000ff"><font 
+color=#0000ff>char</font></font></font> *delimiter= "/", <font color="#0000ff"><font 
+color=#0000ff><font color="#0000ff">const</font></font></font> <font 
+color=#0000ff><font color="#0000ff"><font 
+color=#0000ff>char</font></font></font> *topCellName=NULL, bool checkDeviceProps=false, 
+  
+<font color="#0000ff"><font 
+color=#0000ff><font color="#0000ff">bool</font></font></font> collapseLikeSized= false, 
+<font color="#0000ff"><font color="#0000ff"><font 
+color=#0000ff>bool</font></font></font> noCollapseFingered= 
+false,<font 
+color=#0000ff><font color="#0000ff"><font color="#0000ff">bool</font></font></font> 
+noCollapseChains= 
+false, <font color="#0000ff"><font color="#0000ff"><font 
+color=#0000ff>bool</font></font></font> warnChains= false, <font color="#0000ff"><font 
+color=#0000ff><font color="#0000ff">bool</font></font></font> caseFoldNets= false,<font 
+color=#0000ff><font color="#0000ff"><font color="#0000ff">bool</font></font></font> noLocalMatching= 
+false, <font color="#0000ff"><font color="#0000ff"><font 
+color=#0000ff>bool</font></font></font> noOptLabelling= 
+false,<font 
+color=#0000ff><font color="#0000ff"><font color="#0000ff"> bool matchProperties=false, bool matchPorts=false, bool</font></font></font> warnZeroNets= 
+false, <font color="#0000ff"><font color="#0000ff"><font 
+color=#0000ff>bool</font></font></font> verbose= 
+false,<font color="#0000ff"><font 
+color=#0000ff><font color="#0000ff">const</font></font></font> <font 
+color=#0000ff><font color="#0000ff"><font color="#0000ff">char</font></font></font> *errorLimit= 
+NULL, <font color="#0000ff"><font color="#0000ff"><font 
+color=#0000ff>const</font></font></font> <font color="#0000ff"><font 
+color=#0000ff><font color="#0000ff">char</font></font></font> *netSizeLimit= NULL,<font 
+color=#0000ff><font color="#0000ff"><font color="#0000ff">const</font></font></font> 
+<font color="#0000ff"><font color="#0000ff"><font 
+color=#0000ff>char</font></font></font> *progressLimit= NULL, <font 
+color=#0000ff><font color="#0000ff"><font color="#0000ff">const</font></font></font> 
+<font color="#0000ff"><font color="#0000ff"><font 
+color=#0000ff>char</font></font></font> *suspectNodeLimit= 
+NULL, double Tolerance=10.0 , <font color="#0000ff"><font color="#0000ff"><font 
+color=#0000ff>const</font></font></font> <font color="#0000ff"><font 
+color=#0000ff><font color="#0000ff">char</font></font></font> *equivInFileName=      NULL, 
+<font color="#0000ff"><font color="#0000ff"><font 
+color=#0000ff>const</font></font></font> <font color="#0000ff"><font 
+color=#0000ff><font color="#0000ff">char</font></font></font> 
+*equivOutFileName= 
+NULL)</strong></p>
+<font size="2" face="Consolas"><font size="2" face="Consolas"><font size="2" face="Consolas"><font size="2" face="Consolas"><font size="2" 
+face=Consolas>
+<p><font size="3" face="Arial">Runs LVS, comparing the cellview given by 
+<em>libName/cellName/viewName</em>, which should be an extracted cellView, 
+against the Spice/CDL netlist given by <em>netlist</em>. globalNets is a space 
+delimited list of global net names. workDir is used for the creation of 
+temporary files. If <em>isHierNetList</em> is true, then the <em>netlist</em> is 
+treated as hierarchical and will be flattened with delimiter character 
+<em>delimiter</em> and top cell name <em>topCellName</em>. If 
+<em>checkDeviceProps</em> is true, device properties e.g. W, L or MOS devices 
+are checked according to the tolerance specified by<em>Tolerance</em>.</font></p>
+<p><font size="3" face="Arial">The remainder of the parameters correspond to Gemini 
+options.</font></p>
+<p>&nbsp;</p>
+<p class="shadowHeading1"><font size="3" 
+face=Arial><strong>ui.updateLibBrowser()</strong></font></p>
+<p><font size="3" face="Arial">Updates (refreshes) &nbsp;the 
+library browser.</font></p>
+<p>&nbsp;</p>
+<p class="shadowHeading1"><font size="3" 
+face=Arial><strong>ui.updateLSW()</strong></font></p>
+<p><font size="3" face="Arial">Updates (refreshes) the 
+LSW.</font><font size="2" face="Consolas"><font size="2" 
+face=Consolas></p></font></font>
+<p>&nbsp;</p>
+<p class="shadowHeading1"><font size="3" face="Arial"><strong>bool 
+ok = ui.isLayerVisible(const char *layerName, const char *purpose)</strong></font></p>
+<p><font size="3" face="Arial">Returns True if the layer 
+specified by <em>layerName </em>and <em>purpose</em>&nbsp;is visible in the 
+current cellView or False if it is invisible, or there is no current 
+cellView.</font></p>
+<p>&nbsp;</p><font size="3" 
+face=Arial>
+<p class="shadowHeading1"><font size="3" face="Arial"><strong>bool 
+ok = ui.isLayerSelectable(const char *layerName, const char 
+*purpose)</strong></font></p>
+<p><font size="3" face="Arial">Returns True if the layer 
+specified by <em>layerName </em>and <em>purpose</em>&nbsp;is selectablein the 
+current cellView or False if it is invisible, or there is no current 
+cellView.</font></p>
+<p>&nbsp;</p>
+<p class="shadowHeading1"><font size="3" face="Arial"><strong>bool 
+ok = ui.setLayerVisible(const char *layerName, const char *purpose, bool 
+val)</strong></font></p>
+<p><font size="3" face="Arial">Returns True if the layer 
+specified by <em>layerName </em>and <em>purpose</em>&nbsp;can be set visible in 
+the current cellView&nbsp;or False&nbsp;if there is no current 
+cellView.</font></p>
+<p>&nbsp;</p><font size="3" 
+face=Arial>
+<p class="shadowHeading1"><font size="3" face="Arial"><strong>bool 
+ok = ui.setLayerSelectable(const char *layerName, const char *purpose, bool 
+val)</strong></font></p>
+<p><font size="3" face="Arial">Returns True if the layer 
+specified by <em>layerName </em>and <em>purpose</em>&nbsp;can be set visible in 
+the current cellView&nbsp;or False if there is no current 
+cellView.</font></p>
+<p>&nbsp;</p></font></font></font></font></font></font>
+<h2><font face="Arial">Extending Glade by creating menus / 
+  bindkeys etc.</font><font size="2" face="Consolas"><font size="2" face="Consolas"><font size="2" face="Consolas"><font size="2" face="Consolas"><font size="2" 
+face=Consolas><font size="2" face="Consolas"></h2><font face="Consolas"><font 
+face=Consolas>
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">cvar.uiptr</font></h4>
+<p><font face="Arial, Helvetica, sans-serif">A global pointer to the ui class 
+instanciation in Glade. Use this rather than creating your own ui variable using 
+ui(). For example:</font></p>
+<blockquote>
+  <p><font face="Arial, Helvetica, sans-serif">gui=cvar.uiptr</font></p>
+  <p><font face="Arial, Helvetica, sans-serif">gui.OpenCellView("default", 
+  "nand", "layout")</font></p></blockquote>
+<p><font face="Arial, Helvetica, sans-serif">Although you <i>can</i> use e.g. 
+ui().&lt;functionName()&gt;, this will not work for commands like createAction() 
+which only work with the existing instanciated ui object.</font></p>
+<p>&nbsp;</p>
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">menu = ui.createMenu(const char 
+*name)</font></h4>
+<p><font face="Arial, Helvetica, sans-serif">Creates a menu called <i>name</i> 
+in the menu bar.</font></p>
+<p>&nbsp;</p>
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">menu = ui.createMenu(QMenu *menu, 
+const char *name)</font></h4>
+<p><font face="Arial, Helvetica, sans-serif">Creates a submenu called 
+<i>name</i> in <i>menu</i>.</font></p>
+<p>&nbsp;</p>
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ui.addSeparator(QMenu 
+*menu)</font></h4>
+<p><font face="Arial, Helvetica, sans-serif">Adds a separator to the 
+menu.</font></p>
+<p>&nbsp;</p>
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">action = ui.createAction(const char 
+*name, const char *cmd)</font></h4>
+<p><font face="Arial, Helvetica, sans-serif">Creates an <i>action</i> called 
+<i>name</i> with a command <i>cmd</i>. The command should be a valid Python 
+command. An action defines a common command that can be invoked by any or all of 
+a menu item, a bindkey or a toolbar button.</font></p>
+<p>&nbsp;</p>
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">action = ui.createAction(const char 
+*name, const char *cmd, QActionGroup *group)</font></h4>
+<p><font face="Arial, Helvetica, sans-serif">Creates an <i>action</i> called 
+<i>name</i> with a command <i>cmd</i> that is part of an actionGroup 
+<i>group</i>. The command should be a valid Python command. An action defines a 
+common command that can be invoked by any or all of a menu item, a bindkey or a 
+toolbar button.</font></p>
+<p>&nbsp;</p>
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">actionGroup = 
+ui.createActionGroup()</font></h4>
+<p><font face="Arial, Helvetica, sans-serif">Create an actionGroup.</font></p>
+<p>&nbsp;</p>
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">ui.createMenuItem(menu, 
+action)</font></h4>
+<p><font face="Arial, Helvetica, sans-serif">Adds the <i>action</i> to the 
+<i>menu</i>. The action name will be shown on the menu, along with any key 
+binding defined for the action.</font></p>
+<p>&nbsp;</p>
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">setBindKey(action, const char 
+*keysequence)</font></h4>
+<p><font face="Arial, Helvetica, sans-serif" size="3">Sets the bindkey for <i>action</i>. 
+<i>keysequence</i> can be a key e.g. "k" or a combination e.g. "Ctrl+p", 
+"Shift+p", "Alt+p"</font></p>
+<p><font face="Arial"></font><font color="#008000" size="2" 
+face=Consolas><font color="#008000" size="2" face="Consolas"><font color="#008000" 
+size=2 face=Consolas>&nbsp;</p></font></font>
+  <p class="shadowHeading1"><font size="3" face="Arial"><strong>icon =  ui.createIcon 
+    (</strong></font><font face="Arial"><font size="3"><strong><font 
+color=#0000ff><font color="#0000ff"><font color="#0000ff">const</font></font></font> 
+  <font color="#0000ff"><font color="#0000ff"><font 
+color=#0000ff>char</font></font></font> *fileName)</strong></font></font></p>
+<p><font size="3" face="Arial">Creates an icon from an image file (.png 
+format)</font></p>
+<p><font color="#008000"><font color="#008000"><font color="#008000"><font size="3" 
+face=Arial></font>&nbsp;</p>
+<p class="shadowHeading1"><font size="3"><strong><font face="Arial">ui.setIcon (QAction *action, <font 
+color=#0000ff><font color="#0000ff"><font color="#0000ff">const</font></font></font> 
+  <font color="#0000ff"><font color="#0000ff"><font 
+color=#0000ff>char</font></font></font></font><font face="Arial"> 
+  *fileName)</font></strong></font></p>
+<p><font size="3" face="Arial">Sets the icon for an action from the image file (.png 
+format)</font></p>
+<p><font size="3" face="Arial"></font>&nbsp;</p>
+<p class="shadowHeading1"><font size="3"><strong><font face="Arial">ui.setIcon (QAction *action, QIcon 
+*icon)</font></strong></font></p>
+<p><font size="3" face="Arial">Sets the icon for an action</font></p>
+<p><font color="#008000"><font color="#008000"><font color="#008000"><font size="3" 
+face=Arial></font>&nbsp;</p>
+<p class="shadowHeading1"><font size="3"><strong><font face="Arial">toolbar = </font><font face="Arial"> ui.createToolBar (<font color="#0000ff"><font color="#0000ff"><font 
+color=#0000ff>const</font></font></font> <font color="#0000ff"><font 
+color=#0000ff><font color="#0000ff">char</font></font></font> *name)</font></strong></font></p>
+<p><font size="3" face="Arial">Creates a tool bar with name <em>name</em>. 
+</font></p>
+<p><font color="#008000"><font color="#008000"><font color="#008000"><font size="3" 
+face=Arial></font>&nbsp;</p>
+<p class="shadowHeading1"><font size="3"><strong><font face="Arial">ui.createToolBarItem (QToolBar *toolBar, 
+  QAction *action)</font></strong></font></p>
+<p><font size="3" face="Arial">Adds an action to a toolbar.</font></p>
+<p><font size="3" face="Arial"></font>&nbsp;</p>
+<p class="shadowHeading1"><font face="Arial"><font size="3"><strong><font size="2" face="Consolas"><font size="2" 
+face=Consolas><font size="3" face="Arial">ui.addSeparator (QToolBar 
+*toolBar)</font></font></font></strong></font></font></p>
+<p>       
+       &nbsp;<font size="3" face="Arial">Adds a separator to a toolbar.</font></p>
+<p>&nbsp;</p>
+<p><font face="Arial, Helvetica, sans-serif">An example of a python script for 
+setting up a user-defined menu is as follows:</font></p>
+<blockquote>
+  <p><font face="Arial, Helvetica, sans-serif"># define some user 
+  function</font></p>
+  <p><font face="Arial, Helvetica, sans-serif">def myFunction() :</font></p>
+  <blockquote>
+    <p><font face="Arial, Helvetica, sans-serif">print "Hello 
+  World!"</font></p></blockquote>
+  <p><font face="Arial, Helvetica, sans-serif">gui = cvar.uiptr</font></p>
+  <p><font face="Arial, Helvetica, sans-serif">menu = 
+  gui.createMenu("MyMenu")</font></p>
+  <p><font 
+  face="Arial, Helvetica, sans-serif">action=gui.createAction("MyAction", 
+  "myFunction()")</font></p>
+  <p><font face="Arial, Helvetica, sans-serif">gui.createMenuItem(menu, 
+  action)</font></p>
+  <p><font face="Arial, Helvetica, sans-serif">gui.setBindKey(action, 
+  "!")</font></p></blockquote>
+<p>&nbsp;</p>
+  <!-- #EndEditable --> 
+  <p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-2">Copyright &copy; Peardrop 
+    Design 2018.</font></p>
+</div>
+</body>
+<!-- #EndTemplate --></html>

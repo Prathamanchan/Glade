@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- #BeginTemplate "/Templates/glade.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Glade Reference Manual</title>
+<link href="CSS Docs/shadowHeading1.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<div align="left"><img src="images/canvasview" width="32" height="32" align="right"><br>
+</div>
+<div align="left">
+  <p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade 
+    Reference</font></b></font></p>
+  <hr>
+  <!-- #BeginEditable "text" --> 
+  <h2><font face="Arial, Helvetica, sans-serif">polygon class</font></h2>
+  <p><font face="Arial, Helvetica, sans-serif">The polygon class is derived from a shape. This class is 
+normally created in a cellView using the dbCreatePoly() function. Note that 
+dbCreatePoly() will create a square or a rectangle if the polygon 
+    has 4 points. A polygon is represented by a series of points, which 
+    represent the vertices of the polygon. There is an implicit edge between 
+    the first and last point.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="Rect.htm">Rect</a> b = p.bBox()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Get the bounding box of this polygon.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">p.bBox(<a href="Rect.htm">Rect</a> b)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Set the bounding box of this polygon. 
+    Not useful and will throw an exception if called.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">dbtype_t t = p.objType()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Returns the object type of this 
+    polygon as POLYGON.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">char *name = p.objName()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Returns the object name of this 
+    polygon as "POLYGON".</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int n = p.nPoints()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Returns the number of points of 
+    the polygon's boundary. Note that polygons are not closed as they are in GDS2.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="Point.htm">Point</a> * pts = p.ptlist()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Returns the point list of this polygon as a C array of Points.</font></p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><strong><a href="Point.htm">Point</a> q = p[index]</strong></font></p>
+  <p><font face="Arial, Helvetica, sans-serif">Returns the Point <em>p</em> at the <em>index</em> into the list of points.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">p.bias(int bias, double grid)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Bias this polygon by <i>bias</i>, 
+    snapping to the grid <i>grid</i>.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">p.scale(double scale, double grid)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Scale this polygon by <i>scale</i>, 
+    snapping to the grid <i>grid</i>.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int d = p.getNearestEdge(<a href="Point.htm">Point</a> p, <a href="segment.htm">segment</a> &amp;s)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Get the distance of the nearest 
+    segment <i>s</i> of this polygon to the point <i>p</i>;</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int d = p.getNearestVertex(<a href="Point.htm">Point</a> p, <a href="vertex.htm">vertex</a> &amp;s)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Get the distance of the nearest 
+    vertex <i>s</i> of this polygon to the point <i>p</i>;</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool ptInPoly(<a href="Point.htm">Point</a> p)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Returns true if the point in inside 
+    or on the edge of the polygon.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">double a = p.area()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Get the area of this polygon.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int p = p.perimeter()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Get the perimeter of this polygon.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">p.transform(<a href="transform.htm">transform</a> 
+    trans)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Transform this polygon using <i>trans</i>.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">p.Move(<a href="cellview.htm">cellView</a> *cv, <a href="Point.htm">Point</a> delta, bool opt = True)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Move this polygon by distance <i>delta</i>. If opt is True then the database is re-optimised 
+for the new polygon position. If there are a lot of objects to move it makes 
+sense to turn this off and instead use the cellView update() function after 
+moving them all. 
+    </font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="dbObj.htm">dbObj</a> *obj = p.Copy(<a href="cellview.htm">cellView</a> cv, 
+    <a href="Point.htm">Point</a> delta, int layer = -1)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Copy this polygon to cellView <i>cv</i>, 
+    with offset <i>delta</i>. If layerNum is non-negative the polygon will be 
+    copied to the new layer number.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="dbObj.htm">dbObj</a> *obj = p.Flatten(<a href="cellview.htm">cellView</a> cv, <a href="transform.htm">transform</a> trans)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Flatten this polygon into cellView 
+    <i>cv</i> with transformation <i>trans</i>.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">p.Stretch(<a href="Point.htm">Point</a> delta, <a href="segment.htm">segment</a> seg)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Stretch segment <i>seg</i> of this 
+    polygon by <i>delta</i>.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">p.Stretch(<a href="Point.htm">Point</a> delta, <a href="vertex.htm">vertex</a> v)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Stretch vertex <i>v</i> of this 
+    polygon by <i>delta</i>.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">p.compressPoints()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Removes colinear points, sets the 
+    point order to be counterclockwise and sets the first point to be the smallest 
+    in X and Y.</font></p>
+  <h4>&nbsp;</h4>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bool p.selfIntersecting()</font></h4>
+  <font face="Arial, Helvetica, sans-serif">Returns true if the polygon is self-intersecting.</font>
+<p>&nbsp;</p><!-- #EndEditable --> 
+  <p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-2">Copyright &copy; Peardrop 
+    Design 2018.</font></p>
+</div>
+</body>
+<!-- #EndTemplate --></html>

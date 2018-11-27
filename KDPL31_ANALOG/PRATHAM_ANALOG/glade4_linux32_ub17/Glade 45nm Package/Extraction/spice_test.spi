@@ -1,0 +1,27 @@
+* SPICE3 file
+
+
+
+.include /home/karmic/Downloads/Rizwan/GLADE_soft/FreePDK45/ncsu_basekit/models/hspice/tran_models/models_nom/NMOS_VTL.inc
+.include /home/karmic/Downloads/Rizwan/GLADE_soft/FreePDK45/ncsu_basekit/models/hspice/tran_models/models_nom/PMOS_VTL.inc
+.include /home/karmic/Desktop/tt1
+
+XINV_X1 ZN VDD VSS A INV_X1
+
+v1 VDD 0 dc 2
+v2 VSS 0 dc 0
+v3 A 0 dc pulse(0 2 0 1n 1n 1u 2u)
+
+*c ZN VSS 1f
+
+.tran 10n 4u
+.control
+reset
+		run
+		plot A ZN
+*		meas tran Delay_in_out_rise TRIG v(A) VAL=2.5 rise=1 TARG v(ZN) VAL=2.5 fall=1
+*		meas tran Delay_in_out_fall TRIG v(ZN) VAL=2.5 fall=2 TARG v(A) VAL=2.5 rise=2
+*                meas tran transition_rise TRIG v(ZN) VAL=0.5 rise=1 TARG v(ZN) VAL=4.5 rise=1
+*		meas tran transition_fall TRIG v(ZN) VAL=4.5 fall=1 TARG v(ZN) VAL=0.5 fall=1
+.endc
+.end

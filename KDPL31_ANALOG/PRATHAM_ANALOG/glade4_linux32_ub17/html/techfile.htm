@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- #BeginTemplate "/Templates/glade.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Glade Reference Manual</title>
+<link href="CSS Docs/shadowHeading1.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<div align="left"><img src="images/canvasview" width="32" height="32" align="right"><br>
+</div>
+<div align="left">
+  <p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade 
+    Reference</font></b></font></p>
+  <hr>
+  <!-- #BeginEditable "text" -->
+<h2><font face="Arial, Helvetica, sans-serif">techFile</font></h2>
+
+<p><font face="Arial, Helvetica, sans-serif">The techFile class contains technology related parameters, in particular the layers used in a design. A techFile object does not normally need to be created as creating a library will initialise a techfile associated with that library. For example:</font></p>
+
+<blockquote>
+<p><font face="Arial, Helvetica, sans-serif">lib = library(&quot;myLib&quot;)</font></p>
+
+<p><font face="Arial, Helvetica, sans-serif">tech = lib.tech()</font></p>
+</blockquote>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int tech.techLoad(char *fileName)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Loads a techfile specified by fileName.</font></p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int tech.techSave(char *fileName)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Saves a techfile to fileName.</font></p>
+
+<p pbzloc="1198">&nbsp;</p>
+
+<h2><font face="Arial, Helvetica, sans-serif">Layer related operations</font></h2>
+
+<p><font face="Arial, Helvetica, sans-serif">Layers are signed 16 bit integers and map to layer-purpose pairs. A layer number of -1 signifies an invalid layer.</font></p>
+
+<h4 class="shadowHeading1" pbzloc="1199"><font face="Arial, Helvetica, sans-serif">bool&nbsp;tech.isSelectable(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1200">Returns 1 if <i>layer</i> is selectable, else returns 0.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="1203"><font face="Arial, Helvetica, sans-serif">tech.selectable(int layer,&nbsp;bool sel)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets a <i>layer</i> selectable is <i>sel</i> is nonzero.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial" pbzloc="1205">bool </font><font face="Arial, Helvetica, sans-serif" pbzloc="1204">tech.isVisible(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Returns 1 if <i>layer</i> is visible, else returns 0.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="1207"><font face="Arial, Helvetica, sans-serif" pbzloc="1206">tech.visible(int layer, </font><font face="Arial">bool </font><font face="Arial, Helvetica, sans-serif" pbzloc="1206">vis)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets a <i>layer</i> visible is <i>vis</i> is nonzero.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="1209"><font face="Arial">bool </font><font face="Arial, Helvetica, sans-serif" pbzloc="1208">tech.isUsed(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Returns 1 if <i>layer</i> is used, else returns 0.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="1211"><font face="Arial, Helvetica, sans-serif" pbzloc="1210">tech.setUsed(int layer, </font><font face="Arial">bool </font><font face="Arial, Helvetica, sans-serif" pbzloc="1210">used)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets a <i>layer</i> used if <i>used</i> is nonzero.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int tech.color(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Returns a 32 bit int of the layer color in rgba format.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">tech.color(int layer, int color)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets a <i>layer</i> color. <i>color</i> is a 32 bit integer in rgba format.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">tech.setLayerName(int layer, char *name)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets a layer&#39;s name.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">char * tech.getLayerName(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the layer&#39;s name.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">tech.setLayerPurpose(int layer, char *name)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets a layer&#39;s purpose.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">char * tech.getLayerPurpose(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the layer&#39;s purpose.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">char * tech.getLayerPurposePair(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the layer&#39;s layer-purpose pair name e.g. &quot;metal1 drawing&quot;.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">tech.setLayerGdsLayer(int layer, int gdsNum)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets a layer&#39;s GDS number to gdsNum.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int tech.getLayerGdsLayer(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets a layer&#39;s GDS number.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">tech.setLayerDataType(int layer, int gdsNum)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets a layer&#39;s GDS datatype to gdsNum.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int tech.getLayerDataType(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets a layer&#39;s GDS datatype.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int tech.getLayerNum(char *name, char *purpose, int warn=1)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets a layer number if one exists with the specified name and purpose. If it does not exist a warning is given unless warn is set to 0.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int tech.createLayer(char *name, char *purpose)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Creates a layer in the techfile with the specified name and purpose. Returns the layer number or -1 if the layer cannot be created.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">tech.setLayerType(int layer, int type)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets the layer type. type can be one of T_CUT, T_ROUTING, T_BLOCKAGE, T_PIN, T_OVERLAP, T_MASTERSLICE or T_NONE.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int tech.getLayerType(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the layer type.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">tech.setLayerWidth(int layer, int width)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets the layer minWidth.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int tech.getLayerWidth(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the layer minWidth.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">tech.setLayerSpacing(int layer, int spacing)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets the layer minSpace.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int tech.getLayerSpacing(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the layer minSpacing.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">tech.setLayerPitch(int layer, int pitch)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets the layer pitch.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int tech.getLayerPitch(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the layer pitch.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">tech.setLayerDir(int layer, int dir)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets the layer routing direction. The routing direction can be LAYER_HORIZONTAL or LAYER_VERTICAL.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int tech.getLayerDir(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the layer routing direction.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">char *tech.getLayerDirAsStr(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the layer routing direction as a string.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">tech.setLayerResistance(int layer, double r)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets the layer resistance.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">double tech.getLayerResistance(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the layer resistance.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">tech.setLayerAreaCap(int layer, double c)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets the layer area capacitance.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">double tech.getLayerAreaCap(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the layer area capacitance.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">tech.setLayerEdgeCap(int layer, double c)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets the layer edge capacitance.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">double tech.getLayerEdgeCap(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the layer edge capacitance.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">tech.setLayerOrder(int layer, int order)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets the layer order</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int tech.getLayerOrder(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the layer order.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">tech.setLineStyle(int layer, int style)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets the layer linestyle</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int tech.getLineStyle(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the layer linestyle.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">tech.setLineWidth(int layer, int width)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets the layer linewidth</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int tech.getLineWidth(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the layer linewidth.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">tech.setFillPattern(int layer, bits[128], int exists=0, char *name = NULL, int full32bit=0)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Sets the layer fill pattern. The bit array is 128 bytes when using OpenGL, 32 bytes when not using OpenGL.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">bits[128] tech.getFillPattern(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the layer fill pattern as an array of bytes; 128 bytes when using OpenGL else 32 bytes.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">char * tech.getFillName(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets a fill pattern name for the layer.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">tech.setFillType(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the layer fill type. Can be one of F_HOLLOW, F_SOLID, F_CROSSED, F_STIPPLE.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int tech.getFillType(int layer)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Gets the layer fill type. Can be one of F_HOLLOW, F_SOLID, F_CROSSED, F_STIPPLE.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int tech.getCurrentLayer()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1212">Gets the current layer as set by the LSW.</font></p>
+
+<p>&nbsp;</p>
+<!-- #EndEditable --> 
+  <p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-2">Copyright &copy; Peardrop 
+    Design 2018.</font></p>
+</div>
+</body>
+<!-- #EndTemplate --></html>

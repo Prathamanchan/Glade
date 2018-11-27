@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- #BeginTemplate "/Templates/glade.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Glade Reference Manual</title>
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<div align="left"><img src="images/canvasview" width="32" height="32" align="right"><br>
+</div>
+<div align="left">
+  <p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade 
+    Reference</font></b></font></p>
+  <hr>
+  <!-- #BeginEditable "text" -->
+<h2 align="left"><font face="Arial, Helvetica, sans-serif"><font face="Arial"><b>Change Log</b> 2018 </font></font></h2>
+
+<p align="left"><font face="Arial, Helvetica, sans-serif"><font face="Arial" size="4"><strong>Contents for 2017 can be found <a href="changes_2017.htm">here</a></strong></font></font></p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.27 release on 07/01/2018</strong></p>
+<p align="left">- bugfix: Schematic Create Layout dialog did not set current library to that of the current cellView.</p>
+<p align="left">- bugfix: Import EDIF failed on some examples.</p>
+<p align="left">- bugfix: Invalid instance pins could cause an exception, now more gracefully handled.</p>
+<p align="left">- enhancement: improvements to arc drawing code.</p>
+<p align="left">- bugfix: Create CellView added cellName to NLPDeviceFormat property, now uses [@modelName] </p>
+<p align="left">- enhancement: Export CDL now supports using NLPDeviceFormat property on extraction PCells for user-defined netlist formatting.</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.28 release on 21/01/2018</strong></p>
+<p align="left">- bugfix: File-&gt;Exit with edited cells did not cancel if 'Cancel' button clicked.</p>
+<p align="left">- bugfix: Export CDL from extracted view with parasitics reported parasitics twice if 'merge parasitics' selected.</p>
+<p align="left">- enhancement: Added Cancel button to Create Instance dialog.</p>
+<p align="left">- enhancement: Added defaultParams property setup for Create CellView from CellView command..</p>
+<p align="left">- enhancement: Added Cross View Check to Schematic->Check and Symbol->Check menus. Checks that each view of a
+library cell has same number of pins, there are matching pin names, and pin directions match.</p>
+<p align="left">- bugfix: Import EDIF was incorrectly overwriting schematic info into symbol views since last version.</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.29 release on 28/01/2018</strong></p>
+<p align="left">- bugfix: Fixed a crash if e.g. Create Via bindkey (v) clicked while in symbol editor.</p>
+<p align="left">- enhancement: Added instName Spice prefix support for device types 'vsrc', 'isrc'.</p>
+<p align="left">- enhancement: Added 'Descend Read' / 'Descend Edit' option to Descend Hierarchy dialog.</p>
+<p align="left">- enhancement: Descend Hierarchy pre-seeds view name option to current view name.</p>
+<p align="left">- enhancement: Export CDL dialog remembers last switch list name setting.</p>
+<p align="left">- enhancement: PCell submaster names are now of the form &lt;cellName&gt;$$12345678, where the number is a hashed string result. This removes an issue where long PCell submaster names caused issues with filesystems with 256 character limits, such as Windows.</p>
+<p align="left">- enhancement: Added option to open new cellView when created using library browser or File-&gt;New Cell...</p>
+<p align="left">- enhancement: Create Symbol now has pins displayed in a table for easier setting of side. Pin style feature added for e.g. inverted or clock pins.</p>
+<p align="left">- enhancement: Create Symbol has user defined wire stub length and pin size options.</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.30 release on 03/02/2018</strong></p>
+<p align="left">- enhancement: Allow specification of NLP netlisting format property name in Export CDL dialog.</p>
+<p align="left">- bugfix: vsrc/isrc instName Spice prefix support was broken in Schematic-&gt;Check.</p>
+<p align="left">- bugfix: Map table entries for schematic Layout-&gt;Map Devices could be shown multiple times. Now duplicate entries eliminated when opening a library.</p>
+<p align="left">- bugfix: Create Inatance dialog did not show all views of a cell sometimes.</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.31 release on 09/02/2018</strong></p>
+<p align="left">- enhancement: Export CDL dialog allows replacing bus delimiter characters '&lt;' and '&gt;' with alternative characters.</p>
+<p align="left">- bugfix: Generate Layout did not preserve pin directions from netlist/schematic.</p>
+<p align="left">- enhancement: Net Browser is refreshed when running Schematic-&gt;Generate Layout.</p>
+<p align="left">- enhancement: Create Label in layout allows a space-delimited list of label names (as in schematics); every left click will pop a label name off the list, and the command will repeat until all label names are generated.</p>
+<p align="left">- enhancement: Create Pin layout dialog simplified by merging pin name and net name into one.</p>
+<p align="left">- bugfix: Fixed a bug moving/copying arrays.</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.32 release on 16/02/2018</strong></p>
+<p align="left">- enhancement: Internal property list code streamlined.</p>
+<p align="left">- enhancement: Python function getPropList() implemented for dbObj derived classes to get a Python list of properties.</p>
+<p align="left">- bugfix: Exporting GDS2 with via objects could create multiple STRUCT definitions.</p>
+<p align="left">- enhancement: Export GDS2 can now export PCell property information if desired. Import GDS2 can read this information to allow PCell info to be saved/restored via GDS2. Note that this info is exported as GDS2 properties, and may be incompatible with other GDS2 readers. It has been tested with Cadence which can read this GDS2 however use at your own risk.</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.33 release on 23/02/2018</strong></p>
+<p align="left">- bugfix: dbFindProp() caused a crash if object had no properties.</p>
+<p align="left">- bugfix: Fixed a potential crash if objects selected in the gui were deleted using Python scripts.</p>
+<p align="left">- bugfix: Creating an instance of a schematic view within a schematic was possible; now a warning is given and the command is aborted (only symbols can be placed in schematics).</p>
+<p align="left">- bugfix: Fixed a bug in Import EDIF which could give incorrect property name/values.</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.34 release on 03/03/2018</strong></p>
+<p align="left">- bugfix: Export CDL dialog split into 2 tabwidgets so make it easier to use on low resolution screens.</p>
+<p align="left">- bugfix: Display Options-&gt;Miscellaneous-&gt;AutoRaise now controls focus grabbing by the application under all cases. Turning it off means Glade will lose focus after e.g. export/import or other commands that display a dialog. Useful if e.g. launching another application from Glade.</p>
+<p align="left">- bugfix: Help Browser Previous/Next button icons missing.</p>
+<p align="left">- enhancement: Help Browser now displayed via F1 key.</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.35 release on 17/03/2018</strong></p>
+<p align="left">- bugfix: Export CDL (using hierarchical netlister) uses NLPDeviceFormat property from symbol view if stop view does not have that property present.</p>
+<p align="left">- bugfix: Crash could occur for importing Calibre/Hercules errors if no valid cellView was open.</p>
+<p align="left">- bugfix: fixed a crash reporting schematic check shorts between instance pins.</p>
+<p align="left">- bugfix: fixed a crash in short tracer</p>
+<p align="left">- bugfix: fixed a crash in Netlist Window -&gt; Generate Layout</p>
+<p align="left">- bugfix: Fixed a potential crash in e.g. schematic Check command, export CDL, export Verilog.</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.36 release on 23/03/2018</strong></p>
+<p align="left">- bugfix: Copying schematic instances did not set the instance name to spice compatible.</p>
+<p align="left">- bugfix: Entering schematic instances uses separate count for different spice-type elements, if symbols have the 'type' property set.</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.37 release on 30/03/2018</strong></p>
+<p align="left">- bugfix: Fixed a crash importing Cadence techfiles with standardViaDefs.</p>
+<p align="left">- bugfix: Crash on schematic check when no labelled nets or IO pins.</p>
+<p align="left">- bugfix: Selection mode was not shown when a window was opened, until the F4 (toggle selection mode) key was used. Now it is shown immediately the first cellView is opened.</p>
+<p align="left">- bugfix: Reading Oasis cell placements with negative angles gave incorrect results.</p>
+<p align="left">- bugfix: Setting width/height if schematic-&gt;Layout-&gt;Generate Layout value was scaled by 0.16</p>
+<p align="left">- bugfix: Fixed a trapezoid generation bug in geometry engine</p>
+<p align="left">- enhancement: Create Instance dialog populated only with views applicable to viewType of current cellView (symbol for schematic viewTypes; maskLayout for maskLayout viewTypes)</p>
+<p align="left">- enhancement: Added geomAddShape() / geomAddShapes() commands to create edgefile data for boolean engine from shape objects.</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.38 release on 07/04/2018</strong></p>
+<p align="left">- bugfix: LSW Display CellView Layers / Display Viewport Layers was not updating LSW when switching designs.</p>
+<p align="left">- bugfix: Dynamic adjustment of shape buffers for geomLabel to prevent a crash.</p>
+<p align="left">- bugfix: gemini can handle continuation characters in .subckt lines - no longer drops ports</p>
+<p align="left">- bugfix: gemini was not scaling units in .err file correctly.</p>
+<p align="left">- enhancement: Added geomStartPoly() / geomAddPoly() commands to create polygon edgefile data for boolean engine from lists of vertices.</p>
+<p align="left">- enhancement: Dynamic net highlighting added for schematics. Use the View-&gt;Selection Options dialog option to enable it.</p>
+<p align="left">- bugfix: switching tabs/windows could shift canvas towards bottom left.</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.39 release on 15/04/2018</strong></p>
+<p align="left">- bugfix: Fixed a potential crash on exit after deleting an object.</p>
+<p align="left">- enhancement: Can delete a wire segment in schematics. Select segment using partial select mode.</p>
+<p align="left">- bugfix: Backed up a change in trapezoid algorithm that caused several side effects.</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.40 release on 20/04/2018</strong></p>
+<p align="left">- bugfix: Fixed a bug where display for OpenGL canvas was inverted on window fit command.</p>
+<p align="left">- enhancement: Duplicate DRC markers removed after Verify-&gt;DRC-&gt;Run DRC...</p>
+<p align="left">- bugfix: dynamic highlight was not highlighting paths correctly when only path outlines enabled.</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.41 release on 29/04/2018</strong></p>
+<p align="left">- enhancement: Shape setNet() now removes the shape from it's net, and adds the shape to the new net, so a separate call to addShape() is not required.</p>
+<p align="left">- enhancement: dbMergeNet() command for merging a net into another net, handling net shapes, pins and instPins.</p>
+<p align="left">- bugfix: Improved schematic extraction performance.</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.42 release on 05/05/2018</strong></p>
+<p align="left">- bugfix: Fixed a potential crash when copying cellViews, if they contained references to unbound instances.</p>
+<p align="left">- bugfix: Fixed an issue with device extraction which gave incorrect W/L etc. if dbu was not 1/dbuPerUU (microns)</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.43 release on 19/05/2018</strong></p>
+<p align="left">- bugfix: Fixed a possible crash when re-running extraction.</p>
+<p align="left">- enhancement: added ui closeCellView(libName, cellName, viewName) python binding. Closes the named cellView window if open. The cellView remains in VM.</p>
+<p align="left">- bugfix: Fixed a possible crash in dbCreateNet()</p>
+<p align="left">- bugfix: Fixed a bug with extraction where bus names were badly formed.</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.44 release on 20/05/2018</strong></p>
+<p align="left">- bugfix: Array bounding box was not calculated correctly</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.45 release on 27/05/2018</strong></p>
+<p align="left">- bugfix: Application window was not initially receiving focus, causing e.g File-&gt; bindkeys not to work until a design window was opened.</p>
+<p align="left">- bugfix: Performance issues in geomConnect() and saveInterconnect()</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.46 release on 03/06/2018</strong></p>
+<p align="left">- enhancement: PCells can be loaded / modified using compiled Python code (.pyc files) allowing them to be distributed without source code.</p>
+<p align="left">- bugfix: Create Instance dialog allowed same cell name as current cell in cellName chooser.</p>
+<p align="left">- bugfix: Create Instance dialog didn't remember last cellName/viewName on repeat.</p>
+<p align="left">- enhancement: New function geomAreaIn() which checks area of shapes and flags those where (minarea > area) && (area < maxarea) i.e. the opposite of geomArea().</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.47 release on 08/06/2018</strong></p>
+<p align="left">- bugfix: Stretch vertex for path beginning / ends now honors diagonal snapping correctly.</p>
+<p align="left">- bugfix: Stretch of diagonal segment of path/line/mpp with lock45 sometimes failed.</p>
+<p align="left">- bugfix: Stretch of diagonal segment of polygon with lock45 did not maintain diagonal.</p>
+<p align="left">- bugfix: Stretch vertex did not snap to manhattan correctly in manhattan mode.</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.48 release on 24/06/2018</strong></p>
+<p align="left">- bugfix: Entering paths with stacked vias gave 1-point paths on the intermediate metal layers in the via stack. Now the Create Path command removes 1 point paths.</p>
+<p align="left">- enhancement: Improved schematic autorouter to avoid parallel coincident wires</p>
+<p align="left">- enhancement: Added ui::routeWire(startPt, stopPt, netName) Python API for point to point schematic autorouting.</p>
+<p align="left">- enhancement: Coordinate precision reported in status bar now depends on dbuPerUU of displayed cellView. For example, with 1000 dbuPerUU, 3 decimal places are reported; with 2000 dbuPerUU, 4 decimal places are reported. Schematic views with 160 dbuPerUU and userUnits of inches are reported to 5 decimal places.</p>
+<p align="left">- bugfix: Dock windows maintain size.</p>
+<p align="left">- bugfix: Create Polygon using trueColour mode was not using layer colour/fill.</p>
+<p align="left">- bugfix: Chop cmd using trueColour mode was using layer colour/fill for chop rectangle rather than outline.</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.49 release on 06/07/2018</strong></p>
+<p align="left">- bugfix: Creating a PCell supermaster set bounding box to 5x5um unnecessarily. Now sets actual bounding box.</p>
+<p align="left">- enhancement: Generate Layout from netlist will check if subcircuits (X devices in netlist) are present. If an X device has a master cell in the library with view &quot;layout&quot; then an instance of that cell will be created in the generated layout. </p>
+<p align="left">- enhancement: Generate Layout from schematics will ignore an instance if it has a 'nlAction' string property with value 'ignore'</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.50 release on 18/07/2018</strong></p>
+<p align="left">- bugfix: Paths of type TRUNCATE did not have bounding box calculated correctly if the first vertex was greater than the last. This could cause display issues.</p>
+<p align="left">- enhancement: Import Cadence techfile reads MPP definitions.</p>
+<p align="left">&nbsp;</p>
+<p align="left"><strong>Version 4.6.51 release on 29/07/2018</strong></p>
+<p align="left">- enhancement: Improved Find command. Multiple search criteria can be added. Objects can be searched for e.g. shapes by layer and/or attributes and properties. Objects that have been found can have their attributes/properties changed.</p>
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;</p>
+  <!-- #EndEditable --> 
+  <p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-2">Copyright &copy; Peardrop 
+    Design 2018.</font></p>
+</div>
+</body>
+<!-- #EndTemplate --></html>

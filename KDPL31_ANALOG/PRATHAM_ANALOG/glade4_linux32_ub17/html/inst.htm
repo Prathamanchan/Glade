@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- #BeginTemplate "/Templates/glade.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Glade Reference Manual</title>
+<link href="CSS Docs/shadowHeading1.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<div align="left"><img src="images/canvasview" width="32" height="32" align="right"><br>
+</div>
+<div align="left">
+  <p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade 
+    Reference</font></b></font></p>
+  <hr>
+  <!-- #BeginEditable "text" -->
+<h2><font face="Arial, Helvetica, sans-serif">Instance</font></h2>
+
+<p><font face="Arial, Helvetica, sans-serif">An instance is a reference to a cellview, in another cellview. Instances correspond to GDS2 SREFs or DEF components. Instances are created using the dbCreateInst cellview function.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int coord = i.left()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the left edge of the instance&#39;s bounding box</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int coord = i.bottom()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the bottom edge of the instance&#39;s bounding box</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int coord = i.right()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the right edge of the instance&#39;s bounding box</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int coord = i.top()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the top edge of the instance&#39;s bounding box</font></p>
+
+<p pbzloc="1550">&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong>bool&nbsp;&nbsp;i.offGrid(int grid)</strong> </font></p>
+
+<p><font face="Arial">Checks if an instance origin is on the grid <em>grid,</em> which is in database units.</font></p>
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong>i.status(db_PlaceStatus s)</strong></font></p>
+
+<p><font face="Arial">&nbsp;Set the placement status of the instance. db_PlaceStatus can be one of: <font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial" size="3">DB_UNPLACED, </font></font></font>DB_PLACED, DB_FIXED, DB_COVER, DB_UNKNOWN.</font></p>
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong>db_PlaceStatus i.status()</strong></font></p>
+
+<p><font face="Arial">&nbsp;Get the placement status of the instance.</font></p>
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong>char &nbsp;i.getPlacementStatusStr()</strong></font></p>
+
+<p><font face="Arial">&nbsp;Get the placement status of the instance as a string.</font></p>
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong>i.orient(orient_t orient)</strong></font></p>
+
+<p><font face="Arial">Set the instance orientation. orient_t can be one of: R0, R90, R180, R270, MX, MXR90, MY, MYR90.</font></p>
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong>orient_t&nbsp;&nbsp;i.orient()</strong>&nbsp;</font></p>
+<p><font face="Arial">Get the instance orientation.</font></p>
+<p>&nbsp;</p>
+<p class="shadowHeading1"><font face="Arial"><strong>i.source(db_SourceType s)</strong></font></p>
+
+<p><font face="Arial">Set the&nbsp;instance source type. db_SourceType can be one of: <font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial" size="3">DB_SRC_NONE, </font></font></font>DB_SRC_NETLIST, DB_SRC_DIST, DB_SRC_USER, <font face="Consolas" size="2"><font face="Arial" size="3">DB_SRC_TIMING.</font></font></font></p>
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong>db_SourceType&nbsp;&nbsp;i.source()</strong></font></p>
+
+<p><font face="Arial">Get the instance source type</font></p>
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong>char &nbsp;i.getPlacementSourceStr()</strong></font></p>
+
+<p><font face="Arial">Get the instance source type as a string</font></p>
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong>i.bound(bool b)</strong></font></p>
+
+<p><font face="Arial">Set the instance binding. This should probably not be set by the user.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong>bool i.bound()</strong></font></p>
+
+<p><font face="Arial">Get the instance binding status. An instance is bound if it references a valid master.</font></p>
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int i.orient()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the instance&#39;s orientation.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">double i.mag()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the instance&#39;s magnification. Magnifications other than 1.0 are supported, but their use is strongly discouraged.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">char s = i.libName()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the instance&#39;s lib name.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong><a href="library.htm">library</a> lib = i.lib()</strong></font></p>
+
+<p><font face="Arial">Get the instance&#39;s library.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">char s = i.cellName()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the instances&#39;s cell name.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong>i.cellName(char s)</strong></font></p>
+
+<p><font face="Arial">Set the instance master&#39;s cellName.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">char s = i.viewName()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the instance&#39;s view name.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong>i.instName(<a href="cellview.htm">cellView</a> cv, char instName)</strong></font></p>
+
+<p><font face="Arial">Set the instance&#39;s <em>instName</em>. <em>cv</em> is the cellView containing the instance.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong>char  i.instName()</strong></font></p>
+
+<p><font face="Arial">Get the instance&#39;s instName.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="cellview.htm">cellView</a> cv = i.getMaster()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the cellview of the instance&#39;s master.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong>i.setMaster(<a href="cellview.htm">cellView</a> cv)</strong></font></p>
+
+<p><font face="Arial">Set the instance&#39;s master.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="Point.htm">Point</a> p = i.origin()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the origin of the instance. Note that an instance&#39;s origin does not have to be e.g. the lower left of its bounding box - it can be anywhere.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">i.origin(<a href="Point.htm">Point</a> p)</font></h4>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">i.origin(int x, int y)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Set the origin of the instance.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="Rect.htm">Rect</a> box = i.bBox()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the instance&#39;s bounding box.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong><a href="Rect.htm">Rect</a> box = i.getBoundary()</strong></font></p>
+
+<p><font face="Arial">Gets the instance&#39;s boundary rectangle. If the instance is e.g. a LEF macro then it will contain a shape on the TECH_PRBOUNDARY_LAYER, and the Rect representing this boundary shape will be returned.</font> The shape is transformed according to the inst's origin, orientation and magnification.</p>
+
+<p><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial">&nbsp;</font></font></font></p>
+
+<p class="shadowHeading1"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial"><font face="Arial" size="3"><strong>dbtype_t i.objType()</strong></font></font></font></font></p>
+
+<p><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial"><font face="Arial" size="3">Returns the objects type as INST</font></font></font></font></p>
+
+<p><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial">&nbsp;</font></font></font></p>
+
+<p class="shadowHeading1"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial"><font face="Arial" size="3"><strong>char  i.objName()</strong></font></font></font></font></p>
+
+<p><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial"><font face="Arial" size="3">Returns the print name i.e. &quot;INST&quot;</font></font></font></font></p>
+
+<p><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial">&nbsp;</font></font></font></p>
+
+<p class="shadowHeading1"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial"><font face="Arial" size="3"><strong>int&nbsp;&nbsp;dist = i.getNearestEdge(<a href="Point.htm">Point</a> p, <a href="segment.htm">segment</a> &amp;edge)</strong></font></font></font></font></p>
+
+<p><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial"><font face="Arial" size="3">Get the nearest edge of this object.</font></font></font></font></p>
+
+<p><br />
+<font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial">&nbsp;</font></font></font></p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">i.transform(<a href="transform.htm">transform</a> trans)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Transform the instance by the given transform.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">i.scale(double scalefactor, double grid)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Scale the instance origin coordinates by scalefactor, snapping to grid.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">i.Move(<a href="cellview.htm">cellView</a> cv, <a href="Point.htm">Point</a> delta, bool opt = True)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Move the instance origin by delta.&nbsp; If opt is True then the database is re-optimised for the new inst position. If there are a lot of objects to move it makes sense to turn this off and instead use the cellView update() function after moving them all.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="dbObj.htm">dbObj</a> obj = i.Copy(<a href="cellview.htm">cellView</a> cv, <a href="Point.htm">Point</a> delta)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Copy the instance. <em>cv</em> is the destination cellview, <em>delta</em> is the offset from the current origin. </font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="dbObj.htm">dbObjList&lt;dbObj&gt;</a> objs = i.Flatten(cellView cv, <a href="transform.htm">transform</a> trans)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Flatten the instance into the cellView <em>cv</em>, with the given transform <em>trans</em> .</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">i.dbCreateInstPin(<a href="net.htm">net</a> n, char *name)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Create an instance pin on this instance for the net <em>n</em> and pin name <em>name</em> .</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">i.dbDeleteInstPin(<a href="instPin.htm">instPin</a> ip)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Delete the instPin ip from this instance.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="instPin.htm">instPin</a> ip = i.dbFindInstPinByName(char name)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Find the inst pin with name <em>name</em> on this instance. Returns null if not found.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">list = i.getInstPins()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get a list of all instPins for this instance.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int num = i.getNumInstPins()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif">Get the number of instPins for this instance.</font></p>
+
+<p>&nbsp;</p>
+<!-- #EndEditable --> 
+  <p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-2">Copyright &copy; Peardrop 
+    Design 2018.</font></p>
+</div>
+</body>
+<!-- #EndTemplate --></html>

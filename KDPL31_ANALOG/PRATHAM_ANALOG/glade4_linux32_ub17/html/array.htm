@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- #BeginTemplate "/Templates/glade.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Glade Reference Manual</title>
+<link href="CSS Docs/shadowHeading1.css" rel="stylesheet" type="text/css"><!-- #EndEditable -->
+<meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<div align="left"><img src="images/canvasview" width="32" height="32" align="right"><br>
+</div>
+<div align="left">
+  <p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade 
+    Reference</font></b></font></p>
+  <hr>
+  <!-- #BeginEditable "text" -->
+<h2 pbzloc="663"><font face="Arial, Helvetica, sans-serif">array</font></h2>
+
+<p pbzloc="867"><font face="Arial, Helvetica, sans-serif" pbzloc="865">An array is a reference to an array of <a href="cellview.htm">cellViews</a>, in another <a href="cellview.htm">cellView</a>. Arrays correspond to GDS2 AREFs. Arrays are created using the dbCreateArray <a href="cellview.htm">cellView </a>function. An array is derived from the <a href="inst.htm">inst </a>class.</font></p>
+
+<p pbzloc="788">&nbsp;</p>
+
+<p class="shadowHeading1" pbzloc="809"><strong><span class="shadowHeading1" style="font-family: arial,helvetica,sans-serif"><span class="shadowHeading1">a.numRows(int rows)</span></span></strong></p>
+
+<p pbzloc="785"><span pbzloc="824" style="font-family: arial,helvetica,sans-serif">Set the number of rows of this array.</span></p>
+
+<p pbzloc="785">&nbsp;</p>
+
+<p class="shadowHeading1" pbzloc="811"><strong><span pbzloc="839" style="font-family: arial,helvetica,sans-serif">int rows = a.rows()</span></strong></p>
+
+<p pbzloc="785"><span pbzloc="826" style="font-family: arial,helvetica,sans-serif">Get the number of rows for this array.</span></p>
+
+<p pbzloc="785">&nbsp;</p>
+
+<p class="shadowHeading1" pbzloc="813"><strong><span pbzloc="793" style="font-family: arial,helvetica,sans-serif">a.numCols(int cols)</span></strong></p>
+
+<p pbzloc="785"><span pbzloc="828" style="font-family: arial,helvetica,sans-serif">Set the number of columns for this array.</span></p>
+
+<p pbzloc="785">&nbsp;</p>
+
+<p class="shadowHeading1" pbzloc="815"><strong><span pbzloc="795" style="font-family: arial,helvetica,sans-serif">int cols = a.cols()</span></strong></p>
+
+<p pbzloc="785"><span pbzloc="830" style="font-family: arial,helvetica,sans-serif">Get the number of columns for this array.</span></p>
+
+<p pbzloc="785">&nbsp;</p>
+
+<p class="shadowHeading1" pbzloc="817"><strong><span pbzloc="800" style="font-family: arial,helvetica,sans-serif">a.rowSpacing(int spacing)</span></strong></p>
+
+<p pbzloc="785"><span pbzloc="832" style="font-family: arial,helvetica,sans-serif">Set the row spacing. This can be positive or negative.</span></p>
+
+<p pbzloc="785">&nbsp;</p>
+
+<p class="shadowHeading1" pbzloc="819"><strong><span pbzloc="802" style="font-family: arial,helvetica,sans-serif">int spacing = a.rowSpacing()</span></strong></p>
+
+<p pbzloc="785"><span pbzloc="834" style="font-family: arial,helvetica,sans-serif">Get the row spacing.</span></p>
+
+<p pbzloc="785">&nbsp;</p>
+
+<p class="shadowHeading1" pbzloc="821"><strong><span pbzloc="804" style="font-family: arial,helvetica,sans-serif">a.colSpacing(int spacing)</span></strong></p>
+
+<p pbzloc="785"><span pbzloc="836" style="font-family: arial,helvetica,sans-serif">set the column spacing for this array. This can be positive or negative.</span></p>
+
+<p pbzloc="785">&nbsp;</p>
+
+<p class="shadowHeading1" pbzloc="823"><strong><span pbzloc="806" style="font-family: arial,helvetica,sans-serif">int spacing = a.colSpacing()</span></strong></p>
+
+<p pbzloc="785"><span pbzloc="807" style="font-family: arial,helvetica,sans-serif">Get the column spacing.</span></p>
+
+<p pbzloc="785">&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="676"><font face="Arial, Helvetica, sans-serif" pbzloc="782">int coord = a.left()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="677">Get the left edge of the array&#39;s bounding box</font>. Note the bounding box of an array encloses all cells in the array, and depends on the origin, rotation and magnification, if any.</p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="681"><font face="Arial, Helvetica, sans-serif">int coord = a.bottom()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="678">Get the bottom edge of the array&#39;s bounding box</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="682">int coord = a.right()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="679">Get the right edge of the array&#39;s bounding box</font></p>
+
+<p pbzloc="660">&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="683">int coord = a.top()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="680">Get the top edge of the array&#39;s bounding box</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong pbzloc="684">bool&nbsp;&nbsp;a.offGrid(int grid)</strong> </font></p>
+
+<p><font face="Arial" pbzloc="702">Checks if an array origin is on the grid <em>grid,</em> which is in database units.</font></p>
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong pbzloc="693">a.orient(orient_t orient)</strong>&nbsp;</font></p>
+
+<p><font face="Arial" pbzloc="695">Set the array orientation. orient can be one of: R0, R90, R180, R270, MX, MXR90, MY, MYR90.</font></p>
+<p>&nbsp;</p>
+
+<p class="shadowHeading1" pbzloc="696"><font face="Arial"><strong>orient_t orient =&nbsp;&nbsp;a.orient ()</strong>&nbsp;</font></p>
+
+<p><font face="Arial" pbzloc="705">Get the array orientation.</font></p>
+<p>&nbsp;</p>
+
+<p class="shadowHeading1" pbzloc="707"><font face="Arial"><strong>a.bound(bool b)</strong></font></p>
+
+<p><font face="Arial" pbzloc="706">Set the array binding. This should probably not be set by the user.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1" pbzloc="708"><font face="Arial"><strong>bool a.bound()</strong></font></p>
+
+<p><font face="Arial" pbzloc="712">Get the instance binding status. An array is bound if it references a valid master.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="713"><font face="Arial, Helvetica, sans-serif">double a.mag()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="716">Get the array magnification. Magnifications other than 1.0 are supported, but their use is deprecated.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="715">char *s = a.libName()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="717">Get the array&#39;s lib name.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1" pbzloc="870"><font face="Arial"><a href="library.htm"><strong pbzloc="871">library</strong></a><strong pbzloc="869"> *lib = a.lib()</strong></font></p>
+
+<p><font face="Arial" pbzloc="719">Get the array&#39;s library.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="872">char *s = a.cellName()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="721">Get the array&#39;s master cell name.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong pbzloc="722">a.cellName(char *s)</strong></font></p>
+
+<p><font face="Arial" pbzloc="723">Set the array master&#39;s cellName.</font></p>
+
+<p pbzloc="724">&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="725">char *s = a.viewName()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="726">Get the array&#39;s view name.</font></p>
+
+<p pbzloc="877">&nbsp;</p>
+
+<p class="shadowHeading1" pbzloc="875"><font face="Arial" pbzloc="876"><strong pbzloc="873">a.instName(</strong><a href="cellview.htm"><strong pbzloc="873">cellView </strong></a><strong pbzloc="873">*cv, char *instName)</strong></font></p>
+
+<p pbzloc="884"><font face="Arial" pbzloc="882">Set the array&#39;s <em>instName</em>. <em>cv</em> is the <a href="cellview.htm">cellView </a>containing the instance.</font></p>
+
+<p>&nbsp;</p>
+
+<p class="shadowHeading1"><font face="Arial"><strong pbzloc="885">char * a.instName()</strong></font></p>
+
+<p><font face="Arial" pbzloc="730">Get the array&#39;s instName.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="891"><font face="Arial, Helvetica, sans-serif" pbzloc="886"><a href="cellview.htm" pbzloc="890">cellView </a>*cv = a.getMaster()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="732">Get the cellview of the array&#39;s master.</font></p>
+
+<p pbzloc="892">&nbsp;</p>
+
+<p class="shadowHeading1" pbzloc="895"><font face="Arial" pbzloc="896"><strong pbzloc="893">a.setMaster(</strong><a href="cellview.htm"><strong pbzloc="893">cellView </strong></a><strong pbzloc="903">*cv)</strong></font></p>
+
+<p><font face="Arial" pbzloc="734">Set the array&#39;s master cellView.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="902"><font face="Arial, Helvetica, sans-serif" pbzloc="897"><a href="Point.htm" pbzloc="901">Point </a>p = a.origin()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="736">Get the origin of the array. Note that an array&#39;s origin does not have to be e.g. the lower left of its bounding box - it can be anywhere.</font></p>
+
+<p pbzloc="911">&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="910"><font face="Arial, Helvetica, sans-serif" pbzloc="908">a.origin(<a href="Point.htm">Point </a>p)</font></h4>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="738">a.origin(int x, int y)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="739">Set the origin of the array.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="917"><font face="Arial, Helvetica, sans-serif" pbzloc="912"><a href="Rect.htm" pbzloc="916">Rect </a>box = a.bBox()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="741">Get the array&#39;s bounding box.</font></p>
+
+<p pbzloc="744"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial" pbzloc="745">&nbsp;</font></font></font></p>
+
+<p class="shadowHeading1"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial"><font face="Arial" size="3"><strong pbzloc="918">dbtype_t a.objType()</strong></font></font></font></font></p>
+
+<p><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial"><font face="Arial" pbzloc="747" size="3">Returns the objects type as ARRAY</font></font></font></font></p>
+
+<p><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial">&nbsp;</font></font></font></p>
+
+<p class="shadowHeading1"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial"><font face="Arial" size="3"><strong pbzloc="749">char * a.objName()</strong></font></font></font></font></p>
+
+<p><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial"><font face="Arial" pbzloc="748" size="3">Returns the print name i.e. &quot;ARRAY&quot;</font></font></font></font></p>
+
+<p><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial" pbzloc="923">&nbsp;</font></font></font></p>
+
+<p class="shadowHeading1"><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial"><font face="Arial" pbzloc="922" size="3"><strong pbzloc="919">int&nbsp;&nbsp;a.getNearestEdge(</strong><a href="Point.htm"><strong pbzloc="919">Point </strong></a><strong pbzloc="921">&amp;p, </strong><a href="segment.htm"><strong pbzloc="921">segment </strong></a><strong pbzloc="921">&amp;edge)</strong></font></font></font></font></p>
+
+<p><font face="Consolas" size="2"><font face="Consolas" size="2"><font face="Arial"><font face="Arial" pbzloc="763" size="3">Get the nearest <em>edge </em>of this object to a Point <em>p</em>.</font></font></font></font></p>
+
+<p pbzloc="925">&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="753">a.transform(<a href="transform.htm">transform</a> trans)</font></h4>
+
+<p pbzloc="760"><font face="Arial, Helvetica, sans-serif" pbzloc="759">Transform the array by the given transform <em>trans</em>.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="754">a.scale(double scalefactor, double grid)</font></h4>
+
+<p pbzloc="758"><font face="Arial, Helvetica, sans-serif" pbzloc="757">Scale the array origin coordinates by <em>scalefactor</em>, snapping to <em>grid</em>.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="932"><font face="Arial, Helvetica, sans-serif" pbzloc="930">a.Move(<a href="cellview.htm">cellView</a> cv, Point delta, bool opt=True)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="765">Move the array origin by delta.&nbsp; If opt is true then the database is re-optimised for the new array position. If there are a lot of objects to move it makes sense to turn this off and instead use the cellView update() function after moving them all.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="952"><font face="Arial, Helvetica, sans-serif" pbzloc="950"><a href="dbObj.htm" pbzloc="944">dbObj </a>obj = a.Copy(<a href="cellview.htm">cellView</a> cv, <a href="Point.htm">Point </a>delta)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="966">Copy the array. <em>cv</em> is the destination cellview, <em>delta</em> is the offset from the current origin. </font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="965"><font face="Arial, Helvetica, sans-serif" pbzloc="960"><a href="dbObj.htm" pbzloc="964">dbObjList&lt;dbObj&gt;</a> objs = a.Flatten(<a href="cellview.htm">cellView </a>cv, <a href="transform.htm">transform</a> trans)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="769">Flatten the array into the cellView <em>cv</em>, with the given transform <em>trans</em>.</font></p>
+
+<p pbzloc="986">&nbsp;</p>
+
+<p class="shadowHeading1" pbzloc="984"><strong><font face="Arial, Helvetica, sans-serif" pbzloc="987"><a href="instPin.htm" pbzloc="985">instPin</a> ip = a.dbCreateInstPin(<a href="net.htm">net</a> n, char *name)</font></strong></p>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="771">Create an instance pin on this array for the net <em>n</em> and pin name <em>name</em> .</font></p>
+
+<p pbzloc="996">&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="994"><font face="Arial, Helvetica, sans-serif" pbzloc="992">a.dbDeleteInstPin(<a href="instPin.htm">instPin</a> ip)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="774">Delete the instPin ip from this array.</font></p>
+
+<p pbzloc="1018">&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="1002"><font face="Arial, Helvetica, sans-serif" pbzloc="997"><a href="instPin.htm" pbzloc="1001">instPin</a> ip = a.dbFindInstPinByName(char *name)</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="775">Find the inst pin with name <em>name</em> on this array. Returns null if not found.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1" pbzloc="1016"><font face="Arial, Helvetica, sans-serif" pbzloc="1014"><a href="dbObjList.htm" pbzloc="1008">dbObjList</a>&lt;<a href="instPin.htm">instPin</a>&gt; instPins = a.getInstPins()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="778">Get a list of all instPins for this array.</font></p>
+
+<p>&nbsp;</p>
+
+<h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif" pbzloc="781">int num = a.getNumInstPins()</font></h4>
+
+<p><font face="Arial, Helvetica, sans-serif" pbzloc="1019">Get the number of instPins for this array.</font></p>
+
+<p>&nbsp;</p>
+<!-- #EndEditable --> 
+  <p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-2">Copyright &copy; Peardrop 
+    Design 2018.</font></p>
+</div>
+</body>
+<!-- #EndTemplate --></html>

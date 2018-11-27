@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- #BeginTemplate "/Templates/glade.dwt" --><!-- DW6 -->
+<head>
+<!-- #BeginEditable "doctitle" --> 
+<title>Glade Reference Manual</title>
+<link href="CSS Docs/shadowHeading1.css" rel="stylesheet" type="text/css">
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<div align="left"><img src="images/canvasview" width="32" height="32" align="right"><br>
+</div>
+<div align="left">
+  <p align="left"><font face="Arial, Helvetica, sans-serif"><b><font size="4">Glade 
+    Reference</font></b></font></p>
+  <hr>
+  <!-- #BeginEditable "text" --> 
+  <h2><font face="Arial, Helvetica, sans-serif">Vertex</font></h2>
+  <p><font face="Arial, Helvetica, sans-serif">A vertex is a point. It is derived 
+    from a dbObj so it can be selectable; it also refers to a dbObj. Vertices 
+    are used when selecting a vertex of e.g. a rectangle or polygon.</font></p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">vert = vertex(<a href="Point.htm">Point</a> p)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Creates a vertex with coordinate 
+    p.</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">vert = vertex(int x, int y)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Creates a vertex with the specified 
+    xy coordinates.</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">dbtype_t vert.objType()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Returns the objects type - VERTEX.</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <p class="shadowHeading1"><font face="Arial"><strong>char * 
+vert.objName()</strong></font></p>
+  <p><font face="Arial">Returns the print name i.e. 
+"VERTEX"</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <p class="shadowHeading1"><font face="Arial"><strong>operator ==</strong></font></p>
+  <p><font face="Arial">Is one vertex equal to 
+another.</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <p class="shadowHeading1"><font face="Arial"><strong>operator !=</strong></font></p>
+  <p><font face="Arial">Is one vertex different from the 
+other.</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">vert.SetObj(<a href="dbObj.htm">dbObj</a> *obj)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Sets the dbObj associated with 
+    this vertex.</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="dbObj.htm">dbObj</a> * vert.GetObj()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Gets the dbObj associated with 
+    this vertex.</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif"><a href="Rect.htm">Rect</a> vert.bBox()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Returns a fake bounding box 10 
+    dbu larger than the vertex itself.</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">vert.transform(<a href="transform.htm">transform</a> trans)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Transforms this vertex according 
+    to trans.</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">vert.Move(<a href="cellview.htm">cellView</a> *cv, <a href="Point.htm">Point</a> delta, bool opt =     
+ True)</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">Moves this vertex by delta.&nbsp; If opt is True then the 
+database is re-optimised for the new vertex position. If there are a lot of 
+objects to move it makes sense to turn this off and instead use the cellView 
+update() function after moving them all.</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <p class="shadowHeading1"><font face="Arial"><strong>dbObj&nbsp;&nbsp;*newVert = 
+&nbsp;vert.Copy(<a href="cellview.htm">cellView</a> *from, <a href="Point.htm">Point</a> delta)</strong> </font></p>
+  <p><font face="Arial">Copies the vertex. cv is the cellView 
+containing the vertex, delta is the XY coordinate to move the vertex by during 
+the copy.</font></p>
+  <p>&nbsp;</p>
+  <p class="shadowHeading1"><font face="Arial"><strong>vert.transform(<a href="transform.htm">transform</a> trans)</strong></font></p>
+  <p><font face="Arial">Transforms the vertex by the transform 
+trans.</font></p>
+  <p>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int vert.x()</font></h4>
+  <p><font face="Arial, Helvetica, sans-serif">The x coordinate of the vertex.</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <h4 class="shadowHeading1"><font face="Arial, Helvetica, sans-serif">int vert.y()</font></h4>
+  <p><font face="Arial"  >The y coordinate of the vertex.</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <p class="shadowHeading1"><font face="Arial"><strong>vert.setX(int 
+x)</strong></font></p>
+  <p><font face="Arial">Set the X coordinate of the 
+vertex.</font></p>
+  <p><font face="Arial"></font>&nbsp;</p>
+  <p class="shadowHeading1"><font face="Arial"><strong>vert.setY(int 
+y)</strong></font></p>
+  <p><font face="Arial">Set the Y coordinate of the 
+vertex.</font></p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p><!-- #EndEditable --> 
+  <p><a href="contents.htm"><font face="Arial, Helvetica, sans-serif">Contents</font></a><font face="Arial, Helvetica, sans-serif">|<a href="subject_index.htm">Index</a></font></p>
+  <p><font face="Arial, Helvetica, sans-serif" size="-2">Copyright &copy; Peardrop 
+    Design 2018.</font></p>
+</div>
+</body>
+<!-- #EndTemplate --></html>

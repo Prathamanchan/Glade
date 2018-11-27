@@ -1,0 +1,21 @@
+*******************************************************************************
+* CDL netlist
+*
+* Library : NangateOpenCellLibrary
+* Top Cell Name: Buffer_X2
+* View Name: layout
+* Netlist created: 7.Jul.2017
+*******************************************************************************
+
+*.SCALE METER
+*.GLOBAL addEnd 0 
+
+*******************************************************************************
+* Library Name: NangateOpenCellLibrary
+* Cell Name:    Buffer_X2
+* View Name:    layout
+*******************************************************************************
+
+.SUBCKT Buffer_X2
+
+.ENDS
